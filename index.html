@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ציר הזמן של חב"ד | ChabadPedia Timeline</title>
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --surface: #1a1a24;
+      --surface2: #22222f;
+      --border: #2e2e40;
+      --accent: #c8963e;
+      --accent2: #7b5ea7;
+      --text: #e8e6e0;
+      --text-dim: #9a9888;
+      --rebbe: #e8a83e;
+      --education: #5ba87e;
+      --publication: #5898c8;
+      --organization: #a878c8;
+      --conflict: #c85858;
+      --calendar: #78a8a8;
+      --general: #888;
+      --location: #8aaa58;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      direction: rtl;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a1020 0%, #0f1520 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    header h1 span {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      font-weight: 400;
+      margin-right: 12px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 200px;
+      max-width: 340px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      color: var(--text);
+      font-size: 0.9rem;
+      direction: rtl;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-box:focus { border-color: var(--accent); }
+    .search-box::placeholder { color: var(--text-dim); }
+
+    .filter-group {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 5px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-dim);
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+    .filter-btn.active { color: #fff; border-color: transparent; }
+    .filter-btn[data-cat="all"].active { background: var(--accent); }
+    .filter-btn[data-cat="rebbe"].active { background: var(--rebbe); }
+    .filter-btn[data-cat="education"].active { background: var(--education); }
+    .filter-btn[data-cat="publication"].active { background: var(--publication); }
+    .filter-btn[data-cat="organization"].active { background: var(--organization); }
+    .filter-btn[data-cat="conflict"].active { background: var(--conflict); }
+    .filter-btn[data-cat="general"].active { background: #555; }
+
+    .era-tabs {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .era-tab {
+      padding: 4px 10px;
+      border-radius: 5px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: all 0.2s;
+    }
+    .era-tab:hover, .era-tab.active { background: var(--accent2); color: #fff; border-color: transparent; }
+
+    .stats-bar {
+      padding: 8px 24px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      display: flex;
+      gap: 16px;
+    }
+
+    .main {
+      display: flex;
+      height: calc(100vh - 140px);
+    }
+
+    /* Year sidebar */
+    .year-nav {
+      width: 80px;
+      flex-shrink: 0;
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      overflow-y: auto;
+      padding: 8px 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .year-nav-item {
+      padding: 4px 10px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-align: center;
+      border-radius: 4px;
+      margin: 1px 4px;
+      transition: all 0.15s;
+    }
+    .year-nav-item:hover { background: var(--surface2); color: var(--text); }
+    .year-nav-item.era-break {
+      color: var(--accent);
+      font-size: 0.65rem;
+      font-weight: 600;
+      border-top: 1px solid var(--border);
+      margin-top: 6px;
+      padding-top: 6px;
+    }
+
+    /* Timeline */
+    .timeline {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 0 40px 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .era-header {
+      padding: 14px 24px 10px;
+      background: linear-gradient(90deg, var(--surface2) 0%, transparent 100%);
+      border-bottom: 1px solid var(--border);
+      border-top: 2px solid var(--accent2);
+      margin-top: 16px;
+    }
+    .era-header:first-child { margin-top: 0; }
+
+    .era-header h2 {
+      font-size: 1rem;
+      color: var(--accent2);
+      font-weight: 600;
+    }
+    .era-header p {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .year-group {
+      padding: 0;
+    }
+
+    .year-label {
+      padding: 10px 24px 4px;
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+    }
+
+    .event-card {
+      padding: 10px 24px 10px 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: relative;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .event-card:hover { background: rgba(255,255,255,0.03); }
+
+    .event-dot {
+      position: absolute;
+      left: 24px;
+      top: 16px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--general);
+    }
+    .event-dot.rebbe { background: var(--rebbe); }
+    .event-dot.education { background: var(--education); }
+    .event-dot.publication { background: var(--publication); }
+    .event-dot.organization { background: var(--organization); }
+    .event-dot.conflict { background: var(--conflict); }
+    .event-dot.calendar { background: var(--calendar); }
+    .event-dot.location { background: var(--location); }
+
+    .event-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .event-desc {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 3px;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .event-meta {
+      font-size: 0.7rem;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    .event-card.expanded .event-desc {
+      -webkit-line-clamp: unset;
+    }
+
+    .cat-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      padding: 1px 6px;
+      border-radius: 10px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    .cat-badge.rebbe { background: rgba(232,168,62,0.15); color: var(--rebbe); }
+    .cat-badge.education { background: rgba(91,168,126,0.15); color: var(--education); }
+    .cat-badge.publication { background: rgba(88,152,200,0.15); color: var(--publication); }
+    .cat-badge.organization { background: rgba(168,120,200,0.15); color: var(--organization); }
+    .cat-badge.conflict { background: rgba(200,88,88,0.15); color: var(--conflict); }
+    .cat-badge.general { background: rgba(136,136,136,0.1); color: #888; }
+    .cat-badge.calendar { background: rgba(120,168,168,0.15); color: var(--calendar); }
+    .cat-badge.location { background: rgba(138,170,88,0.15); color: var(--location); }
+
+    .empty-state {
+      padding: 60px 24px;
+      text-align: center;
+      color: var(--text-dim);
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    #loading {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+<div id="loading">טוען נתונים...</div>
+
+<header>
+  <h1>ציר הזמן של חב"ד <span>| ChabadPedia History Timeline</span></h1>
+  <div class="controls">
+    <input type="search" class="search-box" id="search" placeholder="חיפוש...">
+    <div class="filter-group">
+      <button class="filter-btn active" data-cat="all">הכל</button>
+      <button class="filter-btn" data-cat="rebbe">רבי</button>
+      <button class="filter-btn" data-cat="education">חינוך</button>
+      <button class="filter-btn" data-cat="publication">פרסום</button>
+      <button class="filter-btn" data-cat="organization">ארגון</button>
+      <button class="filter-btn" data-cat="conflict">סכסוך</button>
+      <button class="filter-btn" data-cat="general">כללי</button>
+    </div>
+  </div>
+  <div class="controls" style="margin-top:8px">
+    <div class="era-tabs">
+      <button class="era-tab active" data-era="all">כל התקופות</button>
+      <button class="era-tab" data-era="early_chabad">חסידות מוקדמת (1740-1812)</button>
+      <button class="era-tab" data-era="middle_rebbes">רבותינו האמצעיים (1812-1866)</button>
+      <button class="era-tab" data-era="rashab_era">תקופת הרש"ב (1866-1920)</button>
+      <button class="era-tab" data-era="rayatz_soviet">ריי"צ - ברית המועצות (1920-1940)</button>
+      <button class="era-tab" data-era="rayatz_war">ריי"צ - מלחמה (1940-1950)</button>
+      <button class="era-tab" data-era="ramash_america">הרמש"צ - אמריקה (1950-1994)</button>
+      <button class="era-tab" data-era="modern_era">תקופה מודרנית (1994+)</button>
+    </div>
+  </div>
+</header>
+
+<div class="stats-bar">
+  <span id="stats-count">טוען...</span>
+  <span id="stats-years"></span>
+</div>
+
+<div class="main">
+  <div class="timeline" id="timeline"></div>
+  <div class="year-nav" id="year-nav"></div>
+</div>
+
+<script>
+const ERAS = {
+  early_chabad:   { label: 'חסידות מוקדמת', years: [1700, 1812], color: '#7b5ea7' },
+  middle_rebbes:  { label: 'רבותינו האמצעיים', years: [1812, 1866], color: '#5898c8' },
+  rashab_era:     { label: 'תקופת הרש"ב', years: [1866, 1920], color: '#5ba87e' },
+  rayatz_soviet:  { label: 'ריי"צ - ברית המועצות', years: [1920, 1940], color: '#a878c8' },
+  rayatz_war:     { label: 'ריי"צ - מלחמה', years: [1940, 1950], color: '#c85858' },
+  ramash_america: { label: 'הרמש"צ - אמריקה', years: [1950, 1994], color: '#c8963e' },
+  modern_era:     { label: 'תקופה מודרנית', years: [1994, 2030], color: '#78a8a8' },
+};
+
+const CAT_LABELS = {
+  rebbe: 'רבי', education: 'חינוך', publication: 'פרסום',
+  organization: 'ארגון', conflict: 'סכסוך', general: 'כללי',
+  calendar: 'לוח', location: 'מקום'
+};
+
+let allEvents = [];
+let activeCategory = 'all';
+let activeEra = 'all';
+let searchTerm = '';
+
+function getEraForYear(y) {
+  for (const [k, v] of Object.entries(ERAS)) {
+    if (y >= v.years[0] && y < v.years[1]) return k;
+  }
+  return 'modern_era';
+}
+
+function filterEvents() {
+  return allEvents.filter(e => {
+    if (activeCategory !== 'all' && e.c !== activeCategory) return false;
+    if (activeEra !== 'all' && getEraForYear(e.y) !== activeEra) return false;
+    if (searchTerm) {
+      const q = searchTerm.toLowerCase();
+      if (!e.t.toLowerCase().includes(q) && !e.d.toLowerCase().includes(q) && !e.s.toLowerCase().includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function renderTimeline(events) {
+  const timeline = document.getElementById('timeline');
+  const yearNav = document.getElementById('year-nav');
+
+  if (events.length === 0) {
+    timeline.innerHTML = '<div class="empty-state">לא נמצאו אירועים</div>';
+    yearNav.innerHTML = '';
+    return;
+  }
+
+  // Group by era then year
+  const byEra = {};
+  const byYear = {};
+
+  for (const e of events) {
+    const era = getEraForYear(e.y);
+    if (!byEra[era]) byEra[era] = {};
+    if (!byEra[era][e.y]) byEra[era][e.y] = [];
+    byEra[era][e.y].push(e);
+    if (!byYear[e.y]) byYear[e.y] = true;
+  }
+
+  let html = '';
+  let navHtml = '';
+  let eraFirst = true;
+
+  const eraOrder = Object.keys(ERAS);
+
+  for (const eraKey of eraOrder) {
+    if (!byEra[eraKey]) continue;
+    const era = ERAS[eraKey];
+    const years = Object.keys(byEra[eraKey]).map(Number).sort((a,b) => a-b);
+    const count = years.reduce((s, y) => s + byEra[eraKey][y].length, 0);
+
+    html += `<div class="era-header" id="era-${eraKey}">
+      <h2 style="color:${era.color}">${era.label}</h2>
+      <p>${years[0]}–${years[years.length-1]} • ${count} אירועים</p>
+    </div>`;
+
+    navHtml += `<div class="year-nav-item era-break" onclick="document.getElementById('era-${eraKey}').scrollIntoView({behavior:'smooth'})">${era.label.split('–')[0].trim().substring(0,8)}</div>`;
+
+    for (const year of years) {
+      const evts = byEra[eraKey][year];
+      html += `<div class="year-group">
+        <div class="year-label" id="year-${year}">${year}</div>`;
+
+      navHtml += `<div class="year-nav-item" onclick="scrollToYear(${year})">${year}</div>`;
+
+      for (const e of evts) {
+        const catLabel = CAT_LABELS[e.c] || e.c;
+        html += `<div class="event-card" onclick="this.classList.toggle('expanded')">
+          <div class="event-dot ${e.c}"></div>
+          <div class="event-title">
+            <span class="cat-badge ${e.c}">${catLabel}</span>
+            ${escHtml(e.t)}
+          </div>
+          ${e.d ? `<div class="event-desc">${escHtml(e.d)}</div>` : ''}
+          ${e.s && e.s !== e.t ? `<div class="event-meta">מקור: ${escHtml(e.s)}</div>` : ''}
+        </div>`;
+      }
+      html += `</div>`;
+    }
+  }
+
+  timeline.innerHTML = html;
+  yearNav.innerHTML = navHtml;
+}
+
+function scrollToYear(y) {
+  const el = document.getElementById('year-' + y);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function updateStats(events) {
+  const years = [...new Set(events.map(e => e.y))];
+  document.getElementById('stats-count').textContent = `${events.length.toLocaleString()} אירועים`;
+  if (years.length > 0) {
+    document.getElementById('stats-years').textContent = `${Math.min(...years)}–${Math.max(...years)} • ${years.length} שנים`;
+  }
+}
+
+function refresh() {
+  const events = filterEvents();
+  renderTimeline(events);
+  updateStats(events);
+}
+
+// Controls
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeCategory = btn.dataset.cat;
+    refresh();
+  });
+});
+
+document.querySelectorAll('.era-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.era-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    activeEra = tab.dataset.era;
+    refresh();
+  });
+});
+
+let searchTimer;
+document.getElementById('search').addEventListener('input', e => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    searchTerm = e.target.value.trim();
+    refresh();
+  }, 300);
+});
+
+// Load data
+fetch('events.json')
+  .then(r => r.json())
+  .then(data => {
+    allEvents = data.sort((a,b) => a.y - b.y);
+    document.getElementById('loading').style.display = 'none';
+    refresh();
+  })
+  .catch(err => {
+    document.getElementById('loading').textContent = 'שגיאה בטעינת הנתונים: ' + err.message;
+  });
+</script>
+</body>
+</html>
