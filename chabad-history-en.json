@@ -1,0 +1,895 @@
+{
+  "metadata": {
+    "total": 111,
+    "year_range": "1698–2024",
+    "language": "English",
+    "source": "Curated from Chabad history sources"
+  },
+  "eras": {
+    "pre_chabad": {
+      "label": "Pre-Chabad & Baal Shem Tov Era",
+      "years": [
+        1698,
+        1772
+      ],
+      "color": "#8b7355"
+    },
+    "alter_rebbe": {
+      "label": "The Alter Rebbe",
+      "years": [
+        1772,
+        1813
+      ],
+      "color": "#7b5ea7"
+    },
+    "mitteler_rebbe": {
+      "label": "The Mitteler Rebbe",
+      "years": [
+        1813,
+        1827
+      ],
+      "color": "#5898c8"
+    },
+    "tzemach_tzedek": {
+      "label": "The Tzemach Tzedek",
+      "years": [
+        1827,
+        1866
+      ],
+      "color": "#5ba87e"
+    },
+    "maharash": {
+      "label": "The Maharash",
+      "years": [
+        1866,
+        1882
+      ],
+      "color": "#78a878"
+    },
+    "rashab": {
+      "label": "The Rebbe Rashab",
+      "years": [
+        1882,
+        1920
+      ],
+      "color": "#c8963e"
+    },
+    "frierdiker_soviet": {
+      "label": "Frierdiker Rebbe — Soviet Russia",
+      "years": [
+        1920,
+        1939
+      ],
+      "color": "#c85858"
+    },
+    "frierdiker_war": {
+      "label": "Frierdiker Rebbe — World War & America",
+      "years": [
+        1939,
+        1951
+      ],
+      "color": "#a878c8"
+    },
+    "rebbe_early": {
+      "label": "The Rebbe — Early Years",
+      "years": [
+        1951,
+        1967
+      ],
+      "color": "#5898c8"
+    },
+    "rebbe_expansion": {
+      "label": "The Rebbe — Global Expansion",
+      "years": [
+        1967,
+        1988
+      ],
+      "color": "#5ba87e"
+    },
+    "rebbe_final": {
+      "label": "The Rebbe — Final Years",
+      "years": [
+        1988,
+        1994
+      ],
+      "color": "#c8963e"
+    },
+    "modern": {
+      "label": "Post-1994: Chabad Today",
+      "years": [
+        1994,
+        2030
+      ],
+      "color": "#78a8a8"
+    }
+  },
+  "events": [
+    {
+      "year": 1698,
+      "month": null,
+      "title": "Birth of the Baal Shem Tov",
+      "desc": "Rabbi Yisrael ben Eliezer, known as the Baal Shem Tov (BeShT), is born on 18 Elul in Okopy, Ukraine. He would go on to found the Chassidic movement and become the spiritual grandfather of Chabad.",
+      "cat": "birth",
+      "era": "pre_chabad"
+    },
+    {
+      "year": 1736,
+      "title": "Baal Shem Tov Reveals Himself",
+      "desc": "At age 36, the Baal Shem Tov publicly reveals himself as a spiritual master and begins teaching his new path in Divine service. He emphasizes joy, love of every Jew, and the omnipresence of God even in seemingly mundane matters.",
+      "cat": "milestone",
+      "era": "pre_chabad"
+    },
+    {
+      "year": 1745,
+      "title": "Birth of the Alter Rebbe",
+      "desc": "Rabbi Shneur Zalman of Liadi is born on 18 Elul (the same day as the Baal Shem Tov's birthday) in Liozna, Belarus. He will become the founder of Chabad Chassidus — the most intellectually rigorous school of Chassidic thought.",
+      "cat": "birth",
+      "era": "pre_chabad"
+    },
+    {
+      "year": 1760,
+      "title": "Passing of the Baal Shem Tov",
+      "desc": "The Baal Shem Tov passes away on 6 Sivan (Shavuot), 5520, in Medzhibozh. His senior disciple, Rabbi Dov Ber of Mezeritch (the Maggid), assumes leadership of the Chassidic movement.",
+      "cat": "passing",
+      "era": "pre_chabad"
+    },
+    {
+      "year": 1764,
+      "title": "Alter Rebbe Travels to Mezeritch",
+      "desc": "At age 18, Rabbi Shneur Zalman travels to Mezeritch to study under the Maggid of Mezeritch (Rabbi Dov Ber), the leading disciple of the Baal Shem Tov. He quickly becomes one of the Maggid's closest and most outstanding students.",
+      "cat": "milestone",
+      "era": "pre_chabad"
+    },
+    {
+      "year": 1770,
+      "title": "Alter Rebbe Composes Shulchan Aruch",
+      "desc": "The Alter Rebbe compiles his monumental halachic code, Shulchan Aruch HaRav, at the request of the Maggid. This work synthesizes all major halachic opinions and remains authoritative in Chabad communities to this day.",
+      "cat": "publication",
+      "era": "pre_chabad"
+    },
+    {
+      "year": 1772,
+      "title": "Passing of the Maggid of Mezeritch",
+      "desc": "Rabbi Dov Ber of Mezeritch passes away on 19 Kislev. Following his passing, the Alter Rebbe returns to Belarus and begins establishing Chabad as a distinct school of Chassidus, emphasizing intellectual understanding (Chochma, Bina, Da'at — ChaBaD) as the path to spiritual transformation.",
+      "cat": "passing",
+      "era": "alter_rebbe"
+    },
+    {
+      "year": 1773,
+      "title": "Birth of the Mitteler Rebbe",
+      "desc": "Rabbi Dovber Schneuri, the Mitteler (Middle) Rebbe, is born on 9 Kislev in Liozna to the Alter Rebbe. He will eventually succeed his father and deepen the intellectual elaboration of Chabad philosophy.",
+      "cat": "birth",
+      "era": "alter_rebbe"
+    },
+    {
+      "year": 1775,
+      "title": "Alter Rebbe Begins Writing the Tanya",
+      "desc": "The Alter Rebbe begins composing the Tanya (Likkutei Amarim), which will become the foundational text of Chabad philosophy. The work addresses the perennial spiritual struggles of the average person and offers a systematic guide to Divine service.",
+      "cat": "publication",
+      "era": "alter_rebbe"
+    },
+    {
+      "year": 1783,
+      "title": "Alter Rebbe Settles in Liadi",
+      "desc": "The Alter Rebbe relocates his court to Liadi, a town in Belarus where he would reside for decades. Liadi becomes the center of Chabad Chassidus and attracts thousands of disciples from across Russia and Poland.",
+      "cat": "milestone",
+      "era": "alter_rebbe"
+    },
+    {
+      "year": 1789,
+      "title": "Birth of the Tzemach Tzedek",
+      "desc": "Rabbi Menachem Mendel Schneersohn, the third Rebbe of Chabad (known as the Tzemach Tzedek after his halachic work of the same name), is born on 29 Elul 5549 in Liozna. He is the grandson of the Alter Rebbe through his mother.",
+      "cat": "birth",
+      "era": "tzemach_tzedek"
+    },
+    {
+      "year": 1796,
+      "title": "First Edition of the Tanya Published",
+      "desc": "The Tanya is published in Slavuta (first printed edition), 5556. It immediately becomes the 'Written Torah' of Chabad Chassidus. The work consists of five sections: Likkutei Amarim, Shaar HaYichud VeHaEmunah, Iggeret HaTeshuvah, Iggeret HaKodesh, and Kuntres Acharon.",
+      "cat": "publication",
+      "era": "alter_rebbe"
+    },
+    {
+      "year": 1798,
+      "month": "Kislev",
+      "title": "First Arrest of the Alter Rebbe (19 Kislev)",
+      "desc": "The Alter Rebbe is arrested in Liadi and transported to St. Petersburg on charges of sedition, at the instigation of Mitnagdim (opponents of Chassidus). He is held in the Peter and Paul Fortress for 53 days. His liberation on 19 Kislev 5559 (1798) becomes a major Chabad holiday, Yud-Tes Kislev — the 'Rosh Hashanah of Chassidus.'",
+      "cat": "liberation",
+      "era": "alter_rebbe"
+    },
+    {
+      "year": 1800,
+      "title": "Second Arrest of the Alter Rebbe",
+      "desc": "The Alter Rebbe is arrested a second time and brought to St. Petersburg. He is again released after a brief detention. These persecutions strengthen the resolve of his followers and spread awareness of Chabad teaching throughout Russia.",
+      "cat": "persecution",
+      "era": "alter_rebbe"
+    },
+    {
+      "year": 1804,
+      "title": "Alter Rebbe Publishes Torah Or",
+      "desc": "Torah Or, a collection of the Alter Rebbe's discourses on the Book of Bereshit and Shemot, is compiled (published posthumously in 1837 by the Tzemach Tzedek). It represents some of the deepest teachings of early Chabad Chassidus.",
+      "cat": "publication",
+      "era": "alter_rebbe"
+    },
+    {
+      "year": 1812,
+      "title": "Napoleon's Invasion — Alter Rebbe Takes a Position",
+      "desc": "When Napoleon invades Russia, the Alter Rebbe publicly supports the Tsar, fearing that French 'emancipation' would weaken Jewish religious life even as it improved material conditions. He flees eastward ahead of Napoleon's advance.",
+      "cat": "world",
+      "era": "alter_rebbe"
+    },
+    {
+      "year": 1812,
+      "month": "Tevet",
+      "title": "Passing of the Alter Rebbe (24 Tevet)",
+      "desc": "Rabbi Shneur Zalman of Liadi passes away on 24 Tevet 5573 (1812) in Pyena, while fleeing Napoleon's armies. He is buried in Haditch, Ukraine, which becomes a major pilgrimage site. His son, Rabbi Dovber, succeeds him.",
+      "cat": "passing",
+      "era": "alter_rebbe"
+    },
+    {
+      "year": 1813,
+      "title": "Lubavitch Becomes Chabad Headquarters",
+      "desc": "The Mitteler Rebbe relocates to Lubavitch, a small town in the Smolensk region of Russia. For the next 102 years (until 1915), Lubavitch will serve as the seat of Chabad leadership, lending the movement its popular name.",
+      "cat": "milestone",
+      "era": "mitteler_rebbe"
+    },
+    {
+      "year": 1813,
+      "title": "Mitteler Rebbe Assumes Leadership",
+      "desc": "Rabbi Dovber Schneuri, the Mitteler (Middle) Rebbe, assumes leadership of Chabad following his father's passing. He establishes his court in Lubavitch, the town that will give Chabad its alternate name 'Lubavitch' for the next century.",
+      "cat": "milestone",
+      "era": "mitteler_rebbe"
+    },
+    {
+      "year": 1820,
+      "title": "Hebron Chabad Community Founded",
+      "desc": "A group of Chabad Chassidim immigrate to Hebron in the Land of Israel and establish the first Chabad community in the Holy Land. This marks the beginning of Chabad's connection to the Land of Israel.",
+      "cat": "milestone",
+      "era": "mitteler_rebbe"
+    },
+    {
+      "year": 1826,
+      "title": "Passing of the Mitteler Rebbe (9 Kislev)",
+      "desc": "Rabbi Dovber Schneuri passes away on 9 Kislev 5587 (1826) — a full day before the anniversary of his father's liberation (19 Kislev). His passing and the Alter Rebbe's liberation are celebrated together on 19 Kislev each year.",
+      "cat": "passing",
+      "era": "mitteler_rebbe"
+    },
+    {
+      "year": 1827,
+      "title": "Tzemach Tzedek Becomes Rebbe",
+      "desc": "Rabbi Menachem Mendel Schneersohn is chosen as the third Rebbe of Chabad, following the passing of the Mitteler Rebbe. He leads Chabad for nearly four decades through a period of severe Russian government interference in Jewish religious life.",
+      "cat": "milestone",
+      "era": "tzemach_tzedek"
+    },
+    {
+      "year": 1834,
+      "title": "Birth of the Maharash",
+      "desc": "Rabbi Shmuel Schneersohn, the fourth Rebbe of Chabad (known as the MaHaRaSh), is born on 2 Iyar 5594 in Lubavitch. He is the seventh son of the Tzemach Tzedek.",
+      "cat": "birth",
+      "era": "maharash"
+    },
+    {
+      "year": 1837,
+      "title": "Torah Or Published",
+      "desc": "The Tzemach Tzedek edits and publishes Torah Or, the Alter Rebbe's collection of discourses on Bereshit and Shemot. He also publishes Likkutei Torah — discourses on Vayikra, Bamidbar, Devarim, Shir HaShirim, and the High Holidays — establishing the canonical Chabad literary corpus.",
+      "cat": "publication",
+      "era": "tzemach_tzedek"
+    },
+    {
+      "year": 1839,
+      "title": "Likkutei Torah Published",
+      "desc": "The Tzemach Tzedek publishes Likkutei Torah, another collection of the Alter Rebbe's Chassidic discourses. Together with Torah Or, these two works form the essential published teachings of the Alter Rebbe and are studied weekly in Chabad to this day.",
+      "cat": "publication",
+      "era": "tzemach_tzedek"
+    },
+    {
+      "year": 1843,
+      "title": "Russian Rabbinical Conference — Tzemach Tzedek Resists",
+      "desc": "The Russian government convenes a series of rabbinical assemblies in St. Petersburg to discuss reforming Jewish education. The Tzemach Tzedek attends but strongly resists all Haskalah (Enlightenment) reforms, arguing that Jewish religious education must remain traditional. He is briefly imprisoned for his refusal.",
+      "cat": "persecution",
+      "era": "tzemach_tzedek"
+    },
+    {
+      "year": 1860,
+      "title": "Birth of the Rebbe Rashab",
+      "desc": "Rabbi Shalom Dovber Schneersohn (known as the RaShAB) is born on 20 Cheshvan 5621 (1860) in Lubavitch. He is the fifth Rebbe of Chabad and one of the most prolific authors of Chassidic discourses in Chabad history.",
+      "cat": "birth",
+      "era": "rashab"
+    },
+    {
+      "year": 1866,
+      "title": "Maharash Becomes Rebbe",
+      "desc": "Rabbi Shmuel Schneersohn becomes the fourth Rebbe of Chabad following his father's passing. He is known for his aphorism: 'The world says — if you can't go under, go over. I say — l'chatchila ariber (begin by going over)' — meaning one should set one's standards high from the outset.",
+      "cat": "milestone",
+      "era": "maharash"
+    },
+    {
+      "year": 1866,
+      "title": "Passing of the Tzemach Tzedek (13 Nissan)",
+      "desc": "Rabbi Menachem Mendel Schneersohn passes away on 13 Nissan 5626 (1866) in Lubavitch. During his 39-year leadership, he authored hundreds of volumes of Chassidic and halachic writings. His son Rabbi Shmuel succeeds him.",
+      "cat": "passing",
+      "era": "tzemach_tzedek"
+    },
+    {
+      "year": 1880,
+      "title": "Birth of the Frierdiker Rebbe",
+      "desc": "Rabbi Yosef Yitzchak Schneersohn is born on 12 Tammuz 5640 (1880) in Lubavitch. From childhood he accompanies his father, the Rebbe Rashab, and is groomed for leadership. He will lead Chabad through the most dangerous period in its history.",
+      "cat": "birth",
+      "era": "frierdiker_soviet"
+    },
+    {
+      "year": 1882,
+      "title": "Passing of the Maharash (13 Tishrei)",
+      "desc": "Rabbi Shmuel Schneersohn passes away on 13 Tishrei 5643 (1882) in Lubavitch at age 48. Despite his relatively short tenure, he significantly expanded Chabad's influence and strengthened its institutions. His son Rabbi Shalom Dovber succeeds him.",
+      "cat": "passing",
+      "era": "maharash"
+    },
+    {
+      "year": 1882,
+      "title": "Rebbe Rashab Assumes Leadership",
+      "desc": "Following a dispute among the sons of the Maharash, Rabbi Shalom Dovber is recognized as the fifth Rebbe of Chabad. He will lead the movement for 38 years through the tumultuous period of pogroms, World War I, and the Russian Revolution.",
+      "cat": "milestone",
+      "era": "rashab"
+    },
+    {
+      "year": 1897,
+      "title": "Tomchei Temimim Yeshiva Founded",
+      "desc": "The Rebbe Rashab founds Yeshivas Tomchei Temimim in Lubavitch — the flagship Chabad yeshiva dedicated to the combined study of nigleh (revealed Torah) and Chassidus. This institution trains the core of Chabad leadership for generations and becomes the model for all subsequent Chabad yeshivos.",
+      "cat": "education",
+      "era": "rashab"
+    },
+    {
+      "year": 1900,
+      "title": "Rebbe Rashab's Hemshech Samech-Vov (5666)",
+      "desc": "The Rebbe Rashab delivers the Hemshech Samech-Vov, a continuous series of Chassidic discourses spanning years, considered one of the most profound works in all of Chabad literature. It addresses the nature of divine light, the purpose of creation, and the inner dimensions of Torah.",
+      "cat": "publication",
+      "era": "rashab"
+    },
+    {
+      "year": 1902,
+      "title": "Birth of the Lubavitcher Rebbe",
+      "desc": "Rabbi Menachem Mendel Schneerson is born on 11 Nissan 5662 (April 18, 1902) in Nikolaev, Ukraine, to Rabbi Levi Yitzchak Schneerson, a renowned kabbalist, and Rebbetzin Chana. He is a direct descendant of the Tzemach Tzedek.",
+      "cat": "birth",
+      "era": "rebbe_early"
+    },
+    {
+      "year": 1905,
+      "title": "Rebbe Rashab Responds to Pogroms",
+      "desc": "Following the Kishinev and other pogroms in Russia (1903-1906), the Rebbe Rashab is actively involved in relief efforts and in encouraging Jewish communities. He writes extensively on the need to maintain Jewish identity and religious life despite persecution.",
+      "cat": "world",
+      "era": "rashab"
+    },
+    {
+      "year": 1912,
+      "title": "Rebbe Rashab's Discourse on Zionism and Agudat Yisrael",
+      "desc": "The Rebbe Rashab issues a strong condemnation of Zionism, viewing it as a secular nationalist movement that undermines authentic Jewish values. He also expresses reservations about Agudat Yisrael, insisting that Chabad remain independent of all political movements.",
+      "cat": "milestone",
+      "era": "rashab"
+    },
+    {
+      "year": 1915,
+      "title": "Chabad Court Relocates from Lubavitch to Rostov",
+      "desc": "Due to World War I and the advancing German front, the Rebbe Rashab is forced to leave Lubavitch permanently and relocate to Rostov-on-Don, Russia. After 102 years, Lubavitch ceases to be the seat of Chabad leadership.",
+      "cat": "world",
+      "era": "rashab"
+    },
+    {
+      "year": 1920,
+      "title": "Frierdiker Rebbe Becomes Sixth Rebbe",
+      "desc": "Rabbi Yosef Yitzchak Schneersohn assumes the leadership of Chabad following the passing of his father, the Rebbe Rashab. He immediately faces the enormous challenge of sustaining Jewish life under the newly established Soviet regime.",
+      "cat": "milestone",
+      "era": "frierdiker_soviet"
+    },
+    {
+      "year": 1920,
+      "title": "Passing of the Rebbe Rashab (2 Nissan)",
+      "desc": "Rabbi Shalom Dovber Schneersohn passes away on 2 Nissan 5680 (1920) in Rostov-on-Don. He is buried there. His son, Rabbi Yosef Yitzchak, succeeds him as the sixth Rebbe. The Rashab left an enormous literary legacy — over 2,000 discourses (maamarim).",
+      "cat": "passing",
+      "era": "rashab"
+    },
+    {
+      "year": 1921,
+      "title": "Underground Network Established in Soviet Russia",
+      "desc": "The Frierdiker Rebbe organizes an extensive underground network of yeshivos, mikvaot, and synagogues throughout Soviet Russia — at great personal risk. As the Soviet government systematically destroys Jewish religious institutions, Chabad works covertly to maintain Jewish observance.",
+      "cat": "organization",
+      "era": "frierdiker_soviet"
+    },
+    {
+      "year": 1923,
+      "title": "Future Rebbe Meets the Frierdiker Rebbe",
+      "desc": "Rabbi Menachem Mendel meets Rabbi Yosef Yitzchak Schneersohn for the first time in Rostov, Russia. The encounter proves transformative and begins his close relationship with the Frierdiker Rebbe, whose daughter he will later marry.",
+      "cat": "milestone",
+      "era": "rebbe_early"
+    },
+    {
+      "year": 1924,
+      "title": "Chabad Headquarters Moves to Leningrad",
+      "desc": "The Frierdiker Rebbe relocates to Leningrad (St. Petersburg), which becomes the new center of Chabad operations. He continues his covert work supporting Jewish communities throughout the USSR from this new location.",
+      "cat": "milestone",
+      "era": "frierdiker_soviet"
+    },
+    {
+      "year": 1927,
+      "month": "Sivan",
+      "title": "Arrest of the Frierdiker Rebbe",
+      "desc": "The Frierdiker Rebbe is arrested by the Soviet secret police (OGPU) on charges of 'counter-revolutionary activity.' He is initially sentenced to death, later commuted to 10 years in Siberia, then to three years' exile in Kostroma.",
+      "cat": "persecution",
+      "era": "frierdiker_soviet"
+    },
+    {
+      "year": 1927,
+      "title": "Frierdiker Rebbe Leaves the Soviet Union",
+      "desc": "Following his release, the Frierdiker Rebbe is expelled from the Soviet Union. He travels first to Riga, Latvia, where he continues his work for Soviet Jewry from outside the USSR's borders.",
+      "cat": "milestone",
+      "era": "frierdiker_soviet"
+    },
+    {
+      "year": 1927,
+      "month": "Tammuz",
+      "title": "Liberation of the Frierdiker Rebbe (12-13 Tammuz)",
+      "desc": "Through intense diplomatic pressure from foreign governments and Jewish organizations, the Frierdiker Rebbe is released on 12-13 Tammuz 5687. This date, known as Yud-Beis/Yud-Gimmel Tammuz, is celebrated as a Chabad holiday marking his liberation and vindication of Torah observance in Communist Russia.",
+      "cat": "liberation",
+      "era": "frierdiker_soviet"
+    },
+    {
+      "year": 1928,
+      "title": "Marriage to Rebbetzin Chaya Mushka (14 Kislev)",
+      "desc": "Rabbi Menachem Mendel Schneerson marries Rebbetzin Chaya Mushka Schneersohn, daughter of the Frierdiker Rebbe, on 14 Kislev 5689 in Warsaw. The date is celebrated annually in Chabad communities worldwide.",
+      "cat": "milestone",
+      "era": "rebbe_early"
+    },
+    {
+      "year": 1928,
+      "title": "Rabbi Menachem Mendel Marries Rebbetzin Chaya Mushka",
+      "desc": "Rabbi Menachem Mendel Schneerson, son-in-law of the Frierdiker Rebbe, marries Rebbetzin Chaya Mushka Schneersohn (daughter of the Frierdiker Rebbe) on 14 Kislev 5689. This date is celebrated in Chabad each year.",
+      "cat": "milestone",
+      "era": "frierdiker_soviet"
+    },
+    {
+      "year": 1929,
+      "title": "Frierdiker Rebbe Visits the United States",
+      "desc": "The Frierdiker Rebbe makes his first visit to the United States, spending several months in New York. He is received with great fanfare and uses the visit to strengthen American Jewish observance and raise funds for his worldwide activities.",
+      "cat": "milestone",
+      "era": "frierdiker_soviet"
+    },
+    {
+      "year": 1933,
+      "title": "Frierdiker Rebbe Relocates to Warsaw",
+      "desc": "The Frierdiker Rebbe moves his court from Riga to Warsaw, Poland, which becomes the new center of Chabad activity. Warsaw has a large Chassidic community and better access to communication channels for his worldwide network.",
+      "cat": "milestone",
+      "era": "frierdiker_soviet"
+    },
+    {
+      "year": 1933,
+      "title": "The Rebbe Studies in Berlin and Paris",
+      "desc": "Rabbi Menachem Mendel studies at the University of Berlin and later the École Polytechnique in Paris, acquiring expertise in engineering and science — knowledge he would later deploy extensively in explaining the harmony between Torah and science.",
+      "cat": "milestone",
+      "era": "rebbe_early"
+    },
+    {
+      "year": 1934,
+      "title": "Chabad Sends Emissaries to the Holy Land",
+      "desc": "The Frierdiker Rebbe intensifies Chabad activity in the Land of Israel, sending dedicated emissaries (shluchim) to establish institutions there. Kfar Chabad will later be established as a dedicated Chabad village.",
+      "cat": "organization",
+      "era": "frierdiker_soviet"
+    },
+    {
+      "year": 1939,
+      "title": "Nazi Invasion of Poland — Frierdiker Rebbe Escapes Warsaw",
+      "desc": "When Germany invades Poland on September 1, 1939, the Frierdiker Rebbe is in Warsaw. Through heroic efforts by American diplomats (particularly the U.S. State Department under pressure from American Jewish organizations), the Rebbe and his immediate family are evacuated from Warsaw in October 1939, narrowly escaping the Holocaust.",
+      "cat": "world",
+      "era": "frierdiker_war"
+    },
+    {
+      "year": 1940,
+      "title": "Chabad Headquarters Established at 770 Eastern Parkway",
+      "desc": "The Frierdiker Rebbe establishes his headquarters at 770 Eastern Parkway in Crown Heights, Brooklyn — a building that will become the spiritual center of Chabad worldwide. Known universally as '770,' it houses the Rebbe's office, a synagogue, and yeshiva.",
+      "cat": "milestone",
+      "era": "frierdiker_war"
+    },
+    {
+      "year": 1940,
+      "title": "Frierdiker Rebbe Arrives in America (9 Adar Beis)",
+      "desc": "Rabbi Yosef Yitzchak Schneersohn arrives in New York on 9 Adar II 5700 (March 19, 1940). He immediately declares: 'America is not different' — meaning Jewish observance is fully possible and obligatory in America, contrary to the prevailing view that American life was incompatible with traditional Judaism.",
+      "cat": "milestone",
+      "era": "frierdiker_war"
+    },
+    {
+      "year": 1941,
+      "title": "Merkos L'Inyonei Chinuch Founded",
+      "desc": "The Frierdiker Rebbe founds Merkos L'Inyonei Chinuch (The Central Organization for Jewish Education), which will become the educational arm of the Chabad-Lubavitch movement, publishing Jewish educational materials and overseeing Chabad educational programs worldwide.",
+      "cat": "organization",
+      "era": "frierdiker_war"
+    },
+    {
+      "year": 1941,
+      "title": "The Rebbe Escapes Nazi Europe",
+      "desc": "Rabbi Menachem Mendel and Rebbetzin Chaya Mushka arrive in the United States on 28 Sivan 5701 (1941), having escaped Nazi-occupied Europe. The Rebbe begins working in Chabad's educational and publishing institutions.",
+      "cat": "world",
+      "era": "rebbe_early"
+    },
+    {
+      "year": 1941,
+      "title": "Tomchei Temimim Yeshiva Reestablished in America",
+      "desc": "The Frierdiker Rebbe reestablishes Tomchei Temimim Lubavitch in Brooklyn, reconstituting the flagship Chabad yeshiva on American soil. This institution, which had been destroyed in the Soviet Union and Europe, once again trains Chabad rabbis and leaders.",
+      "cat": "education",
+      "era": "frierdiker_war"
+    },
+    {
+      "year": 1942,
+      "title": "Kehos Publication Society Founded",
+      "desc": "Kehos Publication Society is established by the Frierdiker Rebbe as the publishing house of Chabad-Lubavitch. It will go on to publish thousands of titles in Chassidus, halacha, and Jewish education, becoming one of the world's largest publishers of Jewish books.",
+      "cat": "organization",
+      "era": "frierdiker_war"
+    },
+    {
+      "year": 1942,
+      "title": "Machne Israel Founded",
+      "desc": "The Frierdiker Rebbe founds Machne Israel, the social service arm of the Chabad movement, dedicated to strengthening Jewish observance and providing religious resources to Jews throughout the world.",
+      "cat": "organization",
+      "era": "frierdiker_war"
+    },
+    {
+      "year": 1943,
+      "title": "Kfar Chabad Established in Israel",
+      "desc": "Kfar Chabad (Chabad Village) is established near Tel Aviv in Israel, becoming the central Chabad community in the Holy Land. It serves as a model Chabad settlement and eventually hosts major Chabad institutions including a yeshiva and printing house.",
+      "cat": "milestone",
+      "era": "frierdiker_war"
+    },
+    {
+      "year": 1945,
+      "title": "Frierdiker Rebbe Leads Post-War Recovery Efforts",
+      "desc": "Following World War II, the Frierdiker Rebbe leads Chabad's efforts to rescue and rehabilitate Holocaust survivors, establishing yeshivos in the displaced persons (DP) camps in Germany and working to bring Jewish refugees to new lands.",
+      "cat": "world",
+      "era": "frierdiker_war"
+    },
+    {
+      "year": 1946,
+      "title": "Chabad Yeshivot Established in DP Camps",
+      "desc": "Chabad emissaries establish Tomchei Temimim yeshivos in the displaced persons camps in Germany, Austria, and France, providing religious education and community to tens of thousands of Holocaust survivors awaiting emigration.",
+      "cat": "education",
+      "era": "frierdiker_war"
+    },
+    {
+      "year": 1950,
+      "month": "Shevat",
+      "title": "Passing of the Frierdiker Rebbe (10 Shevat)",
+      "desc": "Rabbi Yosef Yitzchak Schneersohn passes away on 10 Shevat 5710 (January 28, 1950). He is buried at the Old Montefiore Cemetery in Queens, New York. His passing leaves the Chabad movement without an appointed successor for nearly a full year.",
+      "cat": "passing",
+      "era": "frierdiker_war"
+    },
+    {
+      "year": 1951,
+      "title": "First Kinus HaShluchim (Emissaries' Conference)",
+      "desc": "The Rebbe holds the first gathering of Chabad emissaries (shluchim), establishing the model of the annual Kinus HaShluchim that will grow to bring together thousands of rabbis from around the world each November at 770.",
+      "cat": "milestone",
+      "era": "rebbe_early"
+    },
+    {
+      "year": 1951,
+      "month": "Shevat",
+      "title": "Rabbi Menachem Mendel Accepts the Nesius (10 Shevat)",
+      "desc": "On 10 Shevat 5711 (1951), exactly one year after the passing of the Frierdiker Rebbe, Rabbi Menachem Mendel Schneerson formally accepts the leadership (nesius) of Chabad-Lubavitch. In his first maamer, Basi L'Gani, he outlines the mission of his generation: to draw down the Shechinah to the physical world.",
+      "cat": "milestone",
+      "era": "rebbe_early"
+    },
+    {
+      "year": 1953,
+      "title": "Rebbe Establishes Girls' Chassidic Schools",
+      "desc": "The Rebbe actively promotes the establishment of Bais Rivkah schools for girls throughout the Chabad world, insisting on the importance of Jewish education for girls as equal to that for boys — a somewhat revolutionary position for traditional Orthodox communities of the time.",
+      "cat": "education",
+      "era": "rebbe_early"
+    },
+    {
+      "year": 1955,
+      "title": "Rebbe Launches Campaign for Tefillin",
+      "desc": "The Rebbe begins emphasizing the daily wearing of tefillin as a central campaign, eventually leading to one of the most widespread mitzvah observance initiatives in Jewish history. By the 1967 Six Day War, the Tefillin campaign will become globally famous.",
+      "cat": "campaign",
+      "era": "rebbe_early"
+    },
+    {
+      "year": 1958,
+      "title": "Rebbe's Letter on Science and Torah",
+      "desc": "The Rebbe begins his famous correspondence on the compatibility of Torah and science, particularly addressing the age of the universe and evolution. These letters, spanning decades, establish a sophisticated framework for understanding apparent conflicts between modern science and traditional religious belief.",
+      "cat": "publication",
+      "era": "rebbe_early"
+    },
+    {
+      "year": 1960,
+      "title": "Shluchim Dispatched to Major Cities Worldwide",
+      "desc": "The Rebbe accelerates the dispatch of shluchim (emissaries) to cities across the United States and around the world. Each shliach is charged with building a Chabad House to serve as an open home for all Jews regardless of background or level of observance.",
+      "cat": "organization",
+      "era": "rebbe_early"
+    },
+    {
+      "year": 1961,
+      "title": "Campaign for Jewish Education in Public Schools",
+      "desc": "The Rebbe advocates for a 'Moment of Silence' in American public schools to allow children to pray or reflect. He also promotes released-time religious education programs. His approach eventually influences public policy discussions on religion in public schools.",
+      "cat": "campaign",
+      "era": "rebbe_early"
+    },
+    {
+      "year": 1962,
+      "title": "Machon Chana Women's Institute Founded",
+      "desc": "Machon Chana, an institute for women newly exploring Jewish observance, is established in Crown Heights. It becomes a model for Chabad outreach to women and is replicated in Chabad centers worldwide.",
+      "cat": "education",
+      "era": "rebbe_early"
+    },
+    {
+      "year": 1967,
+      "title": "Six Day War — Tefillin Campaign Explodes",
+      "desc": "In the days before and during the Six Day War, the Rebbe's Tefillin campaign reaches global proportions. Chabad volunteers set up tefillin stations near army bases and public spaces worldwide. Hundreds of thousands of Jewish men put on tefillin for the first time, connecting to their heritage at a moment of existential peril.",
+      "cat": "campaign",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1968,
+      "title": "Mivtza Neshek — Campaign for Jewish Mezuzot",
+      "desc": "The Rebbe launches a campaign to ensure that Jewish homes have kosher mezuzot on their doorposts. Thousands of mezuzot are checked and replaced as part of this initiative, which also serves as a gateway for broader Jewish engagement.",
+      "cat": "campaign",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1969,
+      "title": "Chabad House Movement Established",
+      "desc": "The first formal 'Chabad House' opens on the UCLA campus, pioneering a new model of outreach in which Chabad couples live in a community and provide a warm, non-judgmental home for all Jews. This model spreads to hundreds of universities and cities worldwide.",
+      "cat": "organization",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1972,
+      "title": "Mivtza Tefillin Permanently Formalized",
+      "desc": "The Rebbe formalizes the Tefillin Campaign as one of the ongoing 'Mivtzoyim' (campaigns) of Chabad. The campaign includes the famous 'Mitzvah Tanks' — mobile mitzvah vehicles that drive through city streets offering Jewish men the opportunity to put on tefillin.",
+      "cat": "campaign",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1974,
+      "title": "Mivtza Ahavat Yisrael — Love of Fellow Jews",
+      "desc": "The Rebbe declares love of all Jews (Ahavat Yisrael) a fundamental campaign of Chabad. He emphasizes that all programs, outreach, and activism must be rooted in genuine love and concern for every Jewish soul, regardless of background or affiliation.",
+      "cat": "campaign",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1974,
+      "title": "Mivtza Chinuch — Jewish Education Campaign",
+      "desc": "The Rebbe intensifies his longstanding emphasis on Jewish education with a formal campaign. He stresses that every Jewish child must receive a Jewish education, and pushes for the establishment of Jewish day schools in every community.",
+      "cat": "campaign",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1974,
+      "title": "Mivtza Kashrus Launched",
+      "desc": "The Rebbe launches the Kashrus (Kosher food) campaign, encouraging Jews to observe Jewish dietary laws. He stresses that kosher observance is intimately connected to spiritual sensitivity and holy character.",
+      "cat": "campaign",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1974,
+      "title": "Mivtza Shabbat Launched",
+      "desc": "The Rebbe launches the Shabbat Campaign, encouraging all Jews to observe Shabbat. He emphasizes that even lighting the Shabbat candles — a relatively simple act — constitutes meaningful Jewish observance and brings light to the world.",
+      "cat": "campaign",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1974,
+      "title": "Mivtza Taharat HaMishpacha Launched",
+      "desc": "The Rebbe launches a campaign encouraging married couples to observe the laws of family purity (Taharat HaMishpacha), viewing these laws as foundational to Jewish family life and to the health of the Jewish people.",
+      "cat": "campaign",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1974,
+      "title": "Mivtza Torah — Sefer Torah Campaign",
+      "desc": "The Rebbe launches a campaign to acquire Torah scrolls for synagogues and Jewish institutions. He also emphasizes the concept of each Jew having a share in a Sefer Torah through a letter in a communal Torah scroll.",
+      "cat": "campaign",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1975,
+      "title": "Tzivos Hashem — Children's Organization",
+      "desc": "The Rebbe establishes Tzivos Hashem ('Army of God'), a children's organization that frames Jewish observance as 'missions' for young soldiers in God's army. The program spreads to thousands of children worldwide and creates engaging frameworks for mitzvah observance.",
+      "cat": "organization",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1976,
+      "title": "Rebbe Urges Moment of Silence in Schools — Congressional Campaign",
+      "desc": "The Rebbe advocates for a constitutional amendment to permit voluntary prayer or a moment of silence in American public schools, generating significant political activity. He writes to multiple U.S. presidents on this issue.",
+      "cat": "campaign",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1978,
+      "title": "Chabad of the Former Soviet Union Goes Underground",
+      "desc": "Despite the Cold War, Chabad maintains extensive underground activity in the Soviet Union, smuggling in Jewish religious materials, organizing secret seders, and training covert teachers — all at enormous personal risk to the participants.",
+      "cat": "organization",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1980,
+      "title": "Children's Sefer Torah Campaign",
+      "desc": "The Rebbe launches a campaign to write special Torah scrolls with a letter for every Jewish child under Bar/Bat Mitzvah age. This campaign connects hundreds of thousands of children to the Torah and creates a profound sense of personal ownership over Jewish tradition.",
+      "cat": "campaign",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1980,
+      "title": "Seven Noahide Laws Campaign",
+      "desc": "The Rebbe launches a campaign to promote awareness of the Seven Noahide Laws among non-Jews, viewing this as part of the Jewish mission to bring moral and ethical monotheism to all of humanity. He lobbies the U.S. Congress to formally recognize these universal moral principles.",
+      "cat": "campaign",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1983,
+      "title": "Daily Rambam Study Program Established",
+      "desc": "The Rebbe institutes a daily study schedule for Maimonides' Mishneh Torah (the Rambam), organizing its 1,000+ chapters into three study tracks (daily chapter, three chapters daily, weekly portion). This program unifies Jews worldwide in simultaneous Torah study.",
+      "cat": "milestone",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1984,
+      "title": "Weekly Likkutei Sichot Publication",
+      "desc": "The Rebbe's weekly Shabbat discourses (sichos) are systematically published as Likkutei Sichot, an eventual 39-volume collection that becomes the most comprehensive work of Torah commentary and Chassidic thought produced in the 20th century.",
+      "cat": "publication",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1985,
+      "title": "Chabad Reaches Soviet Refuseniks",
+      "desc": "Chabad emissaries make contact with Soviet Jewish refuseniks — Jews denied exit visas — providing them with religious materials and moral support. The Rebbe encourages these efforts and publicly advocates for Soviet Jewry.",
+      "cat": "world",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1987,
+      "title": "Chabad Establishes 1,000th Center Worldwide",
+      "desc": "Chabad surpasses 1,000 centers and institutions worldwide, cementing its position as the largest Jewish outreach organization in the world. Centers are operating on every inhabited continent and in dozens of countries.",
+      "cat": "milestone",
+      "era": "rebbe_expansion"
+    },
+    {
+      "year": 1988,
+      "title": "Rebbe Begins Moshiach Awareness Campaign",
+      "desc": "The Rebbe begins intensifying his message about the imminence of the Messianic era, teaching that this generation is the 'last generation of exile and first of redemption.' He calls on Jews worldwide to increase in Torah and mitzvot to hasten Moshiach's coming.",
+      "cat": "campaign",
+      "era": "rebbe_final"
+    },
+    {
+      "year": 1989,
+      "title": "Fall of Soviet Union — Chabad Emerges Openly",
+      "desc": "As the Soviet Union begins to collapse, Chabad's underground network emerges openly. Decades of covert activity are revealed; hundreds of secret Jewish activists surface. Chabad is positioned to lead the Jewish renaissance in the Former Soviet Union better than any other organization.",
+      "cat": "world",
+      "era": "rebbe_final"
+    },
+    {
+      "year": 1990,
+      "title": "Massive Chabad Expansion in Former Soviet Union",
+      "desc": "With the fall of the Soviet Union, Chabad rapidly establishes synagogues, yeshivos, and schools throughout Russia, Ukraine, Belarus, and the other former Soviet republics. Within years, it will be operating hundreds of institutions serving millions of Jews.",
+      "cat": "organization",
+      "era": "rebbe_final"
+    },
+    {
+      "year": 1991,
+      "title": "Mivtza Chanukah — Global Public Menorah Campaign",
+      "desc": "Public Chanukah menorahs (chanukiot) erected by Chabad become a global phenomenon, appearing in city centers, government buildings, and public squares in hundreds of cities worldwide. The campaign is the largest public display of Jewish identity in history.",
+      "cat": "campaign",
+      "era": "rebbe_final"
+    },
+    {
+      "year": 1991,
+      "title": "Operation Desert Storm — Rebbe's Letter to Soldiers",
+      "desc": "During the Gulf War, the Rebbe assures the Jewish people that Israel is the safest place in the world and encourages Jews in Israel not to flee. His message, based on the divine promise of safety in the Land of Israel, provides comfort to millions.",
+      "cat": "world",
+      "era": "rebbe_final"
+    },
+    {
+      "year": 1992,
+      "month": "Adar",
+      "title": "The Rebbe Suffers a Stroke (27 Adar I)",
+      "desc": "On 27 Adar I 5752, the Rebbe suffers a severe stroke that leaves him unable to speak. Despite this, he continues to communicate through nods and hand gestures and remains a powerful presence for his followers. The stroke marks a profound turning point in Chabad's sense of its mission.",
+      "cat": "milestone",
+      "era": "rebbe_final"
+    },
+    {
+      "year": 1993,
+      "title": "U.S. Congress Recognizes Education and Sharing Day",
+      "desc": "For many years, the U.S. Congress designates the Rebbe's birthday, 11 Nissan, as 'Education and Sharing Day U.S.A.' — recognizing the Rebbe's lifelong commitment to education and humanitarian values. This recognition extends to multiple countries worldwide.",
+      "cat": "milestone",
+      "era": "rebbe_final"
+    },
+    {
+      "year": 1994,
+      "title": "Chabad Continues Without a New Rebbe",
+      "desc": "Following the Rebbe's passing, Chabad-Lubavitch continues to operate and expand without appointing a new Rebbe — an unprecedented situation in Chassidic history. The movement's infrastructure, built over decades, continues to grow driven by the Rebbe's vision and the dedication of his shluchim.",
+      "cat": "milestone",
+      "era": "modern"
+    },
+    {
+      "year": 1994,
+      "month": "Tammuz",
+      "title": "Passing of the Rebbe (3 Tammuz)",
+      "desc": "Rabbi Menachem Mendel Schneerson passes away on 3 Tammuz 5754 (June 12, 1994) at age 92. He is buried at the Ohel (the Frierdiker Rebbe's resting place) at Old Montefiore Cemetery in Queens, NY. The Ohel becomes one of the most visited Jewish sites in the world.",
+      "cat": "passing",
+      "era": "rebbe_final"
+    },
+    {
+      "year": 1995,
+      "title": "The Ohel Becomes Major Pilgrimage Site",
+      "desc": "The Rebbe's resting place, known as the Ohel, becomes one of the most visited Jewish sites in the world. Hundreds of thousands of visitors annually travel to Queens, NY to pray and leave written notes (kvitlach). The site is open 24 hours a day, 365 days a year.",
+      "cat": "milestone",
+      "era": "modern"
+    },
+    {
+      "year": 1997,
+      "title": "Rebbe Awarded Congressional Gold Medal (Posthumously)",
+      "desc": "The United States Congress awards the Rebbe the Congressional Gold Medal posthumously, recognizing his extraordinary lifetime contributions to moral leadership, education, and humanitarian causes. He becomes one of fewer than 200 individuals in American history to receive this honor.",
+      "cat": "milestone",
+      "era": "modern"
+    },
+    {
+      "year": 2000,
+      "title": "Chabad Reaches 2,600 Institutions Worldwide",
+      "desc": "Chabad-Lubavitch surpasses 2,600 institutions in over 100 countries worldwide. The growth accelerates each year as new shluchim are dispatched to previously unserved communities.",
+      "cat": "milestone",
+      "era": "modern"
+    },
+    {
+      "year": 2001,
+      "title": "Chabad Responds to September 11 Attacks",
+      "desc": "Following the September 11 attacks, Chabad is among the first Jewish organizations to provide chaplaincy services at Ground Zero. Chabad rabbis minister to rescue workers, victims' families, and first responders, and help coordinate memorial services.",
+      "cat": "world",
+      "era": "modern"
+    },
+    {
+      "year": 2006,
+      "title": "Mumbai Chabad House — Terror Attack",
+      "desc": "On November 26-28, 2008, terrorists attack the Chabad House in Mumbai, India, killing Rabbi Gavriel and Rebbetzin Rivka Holtzberg along with four other guests. The couple's two-year-old son Moshe is rescued by his nanny. The attack shocks the world and highlights the global reach of Chabad's mission.",
+      "cat": "world",
+      "era": "modern"
+    },
+    {
+      "year": 2008,
+      "month": "November",
+      "title": "Mumbai Attack — Chabad House Targeted by Terrorists",
+      "desc": "On Cheshvan 29, 5769 (November 26, 2008), Islamic terrorists attack multiple sites in Mumbai including the Chabad House (Nariman House). Rabbi Gavriel Noach Holtzberg (age 29) and Rebbetzin Rivka Holtzberg (age 28) are murdered along with four others. Their orphaned son Moshe becomes a symbol of Chabad's resilience.",
+      "cat": "world",
+      "era": "modern"
+    },
+    {
+      "year": 2010,
+      "title": "Chabad Reaches 3,500 Institutions Worldwide",
+      "desc": "Chabad operates over 3,500 institutions in more than 100 countries, serving an estimated 1 million Jews annually. Annual growth of approximately 100 new emissary families sent to new locations continues unabated.",
+      "cat": "milestone",
+      "era": "modern"
+    },
+    {
+      "year": 2016,
+      "title": "Annual Kinus HaShluchim Reaches 5,000 Rabbis",
+      "desc": "The annual International Conference of Chabad-Lubavitch Emissaries (Kinus HaShluchim) draws over 5,000 rabbis from around the world to Brooklyn. The event is the largest annual gathering of rabbis in history.",
+      "cat": "milestone",
+      "era": "modern"
+    },
+    {
+      "year": 2019,
+      "title": "Poway Chabad Synagogue Shooting",
+      "desc": "On the last day of Passover 5779 (April 27, 2019), a gunman opens fire at the Chabad of Poway synagogue in California, killing one woman (Lori Gilbert-Kaye) and wounding three others including the rabbi. The attack highlights the ongoing threat of antisemitism in America.",
+      "cat": "world",
+      "era": "modern"
+    },
+    {
+      "year": 2020,
+      "title": "Chabad Adapts to COVID-19 Pandemic",
+      "desc": "The COVID-19 pandemic forces Chabad centers worldwide to move activities online. Despite the challenge, thousands of Chabad Houses continue serving their communities through virtual classes, holiday packages, and welfare services, demonstrating the resilience of the shlichus model.",
+      "cat": "world",
+      "era": "modern"
+    },
+    {
+      "year": 2024,
+      "title": "Chabad Operates 5,000+ Centers in 100+ Countries",
+      "desc": "Chabad-Lubavitch now operates over 5,000 institutions in more than 100 countries, serving millions of Jews annually. In any major city in the world, a Jew can find a Chabad House within reach — fulfilling the Rebbe's vision of making every Jew feel at home wherever they are.",
+      "cat": "milestone",
+      "era": "modern"
+    }
+  ]
+}
