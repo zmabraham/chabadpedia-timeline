@@ -582,7 +582,7 @@ function renderLevel1(){
         <div class="rebbe-card-achievements"><div class="rebbe-card-ach-label">Key Milestones</div><ul class="rebbe-card-ach-list">${r.achievements.map(a=>`<li>${a}</li>`).join('')}</ul></div>
         <div style="display:flex;align-items:center;gap:0">
           <span class="rebbe-card-cta" style="color:${r.color};border-color:${r.color}">Explore this era →</span>
-          ${r.cp?`<a href="https://chabadpedia.co.il/wiki/${encodeURIComponent(r.cp)}" target="_blank" rel="noopener" class="rebbe-card-cp" onclick="event.stopPropagation()">ChabadPedia ↗</a>`:''}
+          ${r.cp?`<a href="https://chabadpedia.co.il/index.php/${encodeURIComponent(r.cp)}" target="_blank" rel="noopener" class="rebbe-card-cp" onclick="event.stopPropagation()">ChabadPedia ↗</a>`:''}
         </div>
       </div>
     </div>`).join('')+`</div>`;
@@ -682,7 +682,7 @@ function renderLevel3(){
         <div class="year-event-title">${ev.title}</div>
         ${ev.location?`<div class="year-event-location">📍 ${ev.location}</div>`:''}
         <div class="year-event-desc">${ev.desc}</div>
-        ${ev.cp?`<a href="https://chabadpedia.co.il/wiki/${encodeURIComponent(ev.cp)}" target="_blank" rel="noopener" class="year-event-cp" onclick="event.stopPropagation()">Read on ChabadPedia →</a>`:''}
+        ${ev.cp?`<a href="https://chabadpedia.co.il/index.php/${encodeURIComponent(ev.cp)}" target="_blank" rel="noopener" class="year-event-cp" onclick="event.stopPropagation()">Read on ChabadPedia →</a>`:''}
       </div>`;
     });
   }
@@ -703,7 +703,7 @@ function openDetail(evIdx,ec){
   const ev=EVENTS[evIdx];if(!ev)return;
   const era=ERAS.find(e=>e.id===ev.era);
   const col=CAT_C[ev.cat]||'#777';
-  const cpLink=ev.cp?`<a href="https://chabadpedia.co.il/wiki/${encodeURIComponent(ev.cp)}" target="_blank" rel="noopener" class="cp-link">↗ Read on ChabadPedia</a>`:'';
+  const cpLink=ev.cp?`<a href="https://chabadpedia.co.il/index.php/${encodeURIComponent(ev.cp)}" target="_blank" rel="noopener" class="cp-link">↗ Read on ChabadPedia</a>`:'';
   document.getElementById('detail-content').innerHTML=
     `<span class="detail-cat-badge" style="color:${col};border-color:${col}">${ev.cat}</span>`+
     `<div class="detail-year">${ev.year}${ev.hdate?' · '+ev.hdate:''}</div>`+
