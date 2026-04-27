@@ -3,221 +3,210 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chabad — 300 Years of History</title>
+<title>Chabad — Three Centuries of History</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Source Serif 4', Georgia, serif;
-  background: #06060e;
-  color: #ddd4c0;
-  min-height: 100vh;
-  overflow-x: hidden;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Source Serif 4',Georgia,serif;background:#06060e;color:#ddd4c0;min-height:100vh;overflow-x:hidden;}
+:root{
+  --gold:#c9a84c;--gold-dim:rgba(201,168,76,0.3);
+  --bg:#06060e;--bg-panel:#0b0b18;--bg-card:#0e0e1c;
+  --border:rgba(255,255,255,0.07);--border-bright:rgba(255,255,255,0.14);
+  --text-1:#e8dcc8;--text-2:#9a9080;--text-3:#5a5448;
+  --sidebar-w:270px;--detail-w:420px;
+  --c-bsht:#a07850;--c-ar:#8858b8;--c-mr:#5870c0;--c-tt:#40a880;
+  --c-msh:#70a858;--c-rb:#c07838;--c-fr:#c04040;--c-re:#3888c0;--c-mod:#30a870;
 }
-:root {
-  --gold: #c9a84c;
-  --gold-dim: rgba(201,168,76,0.3);
-  --bg: #06060e;
-  --bg-panel: #0b0b18;
-  --bg-card: #0e0e1c;
-  --border: rgba(255,255,255,0.07);
-  --border-bright: rgba(255,255,255,0.14);
-  --text-1: #e8dcc8;
-  --text-2: #9a9080;
-  --text-3: #5a5448;
-  --sidebar-w: 270px;
-  --detail-w: 420px;
-  --c-bsht:#a07850; --c-ar:#8858b8; --c-mr:#5870c0; --c-tt:#40a880;
-  --c-msh:#70a858; --c-rb:#c07838; --c-fr-s:#c04040; --c-fr-w:#c07030;
-  --c-re:#3888c0; --c-rx:#5050c8; --c-rf:#7830b8; --c-mod:#30a870;
-}
-#app { display: flex; min-height: 100vh; }
-#sidebar {
-  width: var(--sidebar-w); min-height: 100vh; background: var(--bg-panel);
-  border-right: 1px solid var(--border); position: sticky; top: 0;
-  height: 100vh; overflow-y: auto; flex-shrink: 0;
-  display: flex; flex-direction: column; z-index: 100;
-  scrollbar-width: thin; scrollbar-color: var(--border-bright) transparent;
-}
-#main { flex: 1; min-width: 0; transition: padding-right 0.35s ease; }
-#main.detail-open { padding-right: var(--detail-w); }
-#detail-panel {
-  width: var(--detail-w); position: fixed; top: 0; right: 0;
-  height: 100vh; background: var(--bg-panel);
-  border-left: 1px solid var(--border-bright); overflow-y: auto;
-  transform: translateX(100%);
-  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); z-index: 200;
-  scrollbar-width: thin; scrollbar-color: var(--border-bright) transparent;
-}
-#detail-panel.open { transform: translateX(0); }
+#app{display:flex;min-height:100vh;}
+#sidebar{width:var(--sidebar-w);min-height:100vh;background:var(--bg-panel);border-right:1px solid var(--border);position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0;display:flex;flex-direction:column;z-index:100;scrollbar-width:thin;scrollbar-color:var(--border-bright) transparent;}
+#main{flex:1;min-width:0;transition:padding-right .35s ease;}
+#main.detail-open{padding-right:var(--detail-w);}
+#detail-panel{width:var(--detail-w);position:fixed;top:0;right:0;height:100vh;background:var(--bg-panel);border-left:1px solid var(--border-bright);overflow-y:auto;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);z-index:200;scrollbar-width:thin;scrollbar-color:var(--border-bright) transparent;}
+#detail-panel.open{transform:translateX(0);}
 
-.sidebar-header { padding: 20px 16px 12px; border-bottom: 1px solid var(--border); }
-.sidebar-brand { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; }
-.sidebar-subtitle { font-size: 11px; color: var(--text-3); margin-top: 3px; }
-.search-wrap { padding: 12px 16px; border-bottom: 1px solid var(--border); }
-#search {
-  width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border-bright);
-  border-radius: 6px; padding: 7px 10px; color: var(--text-1);
-  font-family: inherit; font-size: 13px; outline: none; transition: border-color 0.2s;
-}
-#search:focus { border-color: var(--gold-dim); }
-#search::placeholder { color: var(--text-3); }
-.filter-section { padding: 10px 16px; border-bottom: 1px solid var(--border); }
-.filter-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-3); margin-bottom: 8px; }
-.cat-filters { display: flex; flex-wrap: wrap; gap: 5px; }
-.cat-chip {
-  font-size: 10px; padding: 3px 7px; border-radius: 3px; border: 1px solid;
-  cursor: pointer; opacity: 0.45; transition: opacity 0.15s; user-select: none;
-}
-.cat-chip.active { opacity: 1; }
-.cat-chip[data-cat="persecution"] { color: #c04848; border-color: #c04848; }
-.cat-chip[data-cat="liberation"]  { color: #50c878; border-color: #50c878; }
-.cat-chip[data-cat="milestone"]   { color: #c9a84c; border-color: #c9a84c; }
-.cat-chip[data-cat="passing"]     { color: #888;    border-color: #888; }
-.cat-chip[data-cat="birth"]       { color: #8888ff; border-color: #8888ff; }
-.cat-chip[data-cat="publication"] { color: #a070d8; border-color: #a070d8; }
-.cat-chip[data-cat="education"]   { color: #48a8c8; border-color: #48a8c8; }
-.cat-chip[data-cat="organization"]{ color: #60b8a0; border-color: #60b8a0; }
-.cat-chip[data-cat="campaign"]    { color: #e08040; border-color: #e08040; }
-.cat-chip[data-cat="teaching"]    { color: #b870a0; border-color: #b870a0; }
-.cat-chip[data-cat="personal"]    { color: #909090; border-color: #909090; }
-.world-toggle-wrap { padding: 10px 16px; border-bottom: 1px solid var(--border); }
-.toggle-row {
-  display: flex; align-items: center; justify-content: space-between;
-  font-size: 12px; color: var(--text-2); cursor: pointer; user-select: none;
-}
-.toggle-sw {
-  width: 28px; height: 16px; background: var(--border-bright); border-radius: 8px;
-  position: relative; transition: background 0.2s;
-}
-.toggle-sw::after {
-  content: ''; position: absolute; top: 2px; left: 2px;
-  width: 12px; height: 12px; border-radius: 50%; background: var(--text-3);
-  transition: left 0.2s, background 0.2s;
-}
-.toggle-row.on .toggle-sw { background: rgba(201,168,76,0.4); }
-.toggle-row.on .toggle-sw::after { left: 14px; background: var(--gold); }
-.era-nav { flex: 1; padding: 10px 0; overflow-y: auto; }
-.era-nav-item {
-  display: flex; align-items: center; gap: 8px; padding: 9px 16px;
-  cursor: pointer; transition: background 0.15s; border-left: 3px solid transparent;
-  font-size: 12px; color: var(--text-2);
-}
-.era-nav-item:hover { background: rgba(255,255,255,0.04); }
-.era-nav-item.active { color: var(--text-1); background: rgba(255,255,255,0.05); }
-.era-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.era-nav-name { font-weight: 600; }
-.era-nav-dates { font-size: 10px; color: var(--text-3); }
-.sidebar-stats { padding: 12px 16px; border-top: 1px solid var(--border); }
-.stat-row { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 11px; }
-.stat-label { color: var(--text-3); }
-.stat-val { color: var(--gold); font-family: 'JetBrains Mono', monospace; }
+/* Sidebar */
+.sidebar-header{padding:20px 16px 12px;border-bottom:1px solid var(--border);}
+.sidebar-brand{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;}
+.sidebar-subtitle{font-size:11px;color:var(--text-3);margin-top:3px;}
+.search-wrap{padding:12px 16px;border-bottom:1px solid var(--border);}
+#search{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--border-bright);border-radius:6px;padding:7px 10px;color:var(--text-1);font-family:inherit;font-size:13px;outline:none;transition:border-color .2s;}
+#search:focus{border-color:var(--gold-dim);}
+#search::placeholder{color:var(--text-3);}
+.filter-section{padding:10px 16px;border-bottom:1px solid var(--border);}
+.filter-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);margin-bottom:8px;}
+.cat-filters{display:flex;flex-wrap:wrap;gap:5px;}
+.cat-chip{font-size:10px;padding:3px 7px;border-radius:3px;border:1px solid;cursor:pointer;opacity:.45;transition:opacity .15s;user-select:none;}
+.cat-chip.active{opacity:1;}
+.cat-chip[data-cat="persecution"]{color:#c04848;border-color:#c04848;}
+.cat-chip[data-cat="liberation"]{color:#50c878;border-color:#50c878;}
+.cat-chip[data-cat="milestone"]{color:#c9a84c;border-color:#c9a84c;}
+.cat-chip[data-cat="passing"]{color:#888;border-color:#888;}
+.cat-chip[data-cat="birth"]{color:#8888ff;border-color:#8888ff;}
+.cat-chip[data-cat="publication"]{color:#a070d8;border-color:#a070d8;}
+.cat-chip[data-cat="education"]{color:#48a8c8;border-color:#48a8c8;}
+.cat-chip[data-cat="organization"]{color:#60b8a0;border-color:#60b8a0;}
+.cat-chip[data-cat="campaign"]{color:#e08040;border-color:#e08040;}
+.cat-chip[data-cat="teaching"]{color:#b870a0;border-color:#b870a0;}
+.cat-chip[data-cat="personal"]{color:#909090;border-color:#909090;}
+.world-toggle-wrap{padding:10px 16px;border-bottom:1px solid var(--border);}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--text-2);cursor:pointer;user-select:none;}
+.toggle-sw{width:28px;height:16px;background:var(--border-bright);border-radius:8px;position:relative;transition:background .2s;}
+.toggle-sw::after{content:'';position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--text-3);transition:left .2s,background .2s;}
+.toggle-row.on .toggle-sw{background:rgba(201,168,76,.4);}
+.toggle-row.on .toggle-sw::after{left:14px;background:var(--gold);}
+.era-nav{flex:1;padding:10px 0;overflow-y:auto;}
+.era-nav-item{display:flex;align-items:center;gap:8px;padding:9px 16px;cursor:pointer;transition:background .15s;border-left:3px solid transparent;font-size:12px;color:var(--text-2);}
+.era-nav-item:hover{background:rgba(255,255,255,.04);}
+.era-nav-item.active{color:var(--text-1);background:rgba(255,255,255,.05);}
+.era-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.era-nav-name{font-weight:600;}
+.era-nav-dates{font-size:10px;color:var(--text-3);}
+.sidebar-stats{padding:12px 16px;border-top:1px solid var(--border);}
+.stat-row{display:flex;justify-content:space-between;margin-bottom:6px;font-size:11px;}
+.stat-label{color:var(--text-3);}
+.stat-val{color:var(--gold);font-family:'JetBrains Mono',monospace;}
 
-#hero {
-  position: relative; padding: 80px 60px 60px; overflow: hidden;
-  background: linear-gradient(180deg, #0a0a18 0%, var(--bg) 100%);
-  border-bottom: 1px solid var(--border);
-}
-#hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 600px 300px at 30% 50%, rgba(201,168,76,0.04) 0%, transparent 70%),
-              radial-gradient(ellipse 400px 400px at 80% 20%, rgba(136,88,184,0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 16px; }
-.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 64px); font-weight: 700; line-height: 1.1; color: var(--text-1); margin-bottom: 10px; }
-.hero-subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(16px, 2vw, 22px); color: var(--text-2); margin-bottom: 32px; }
-.hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
-.hero-stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: var(--gold); line-height: 1; }
-.hero-stat-label { font-size: 12px; color: var(--text-3); margin-top: 4px; letter-spacing: 0.05em; }
-.hero-quote {
-  position: absolute; right: 60px; top: 50%; transform: translateY(-50%);
-  max-width: 240px; font-family: 'Playfair Display', serif; font-style: italic;
-  font-size: 14px; color: var(--text-2); border-left: 3px solid var(--gold-dim);
-  padding-left: 16px; line-height: 1.7;
-}
-@media (max-width: 900px) { .hero-quote { display: none; } #hero { padding: 50px 30px 40px; } }
-#result-count { padding: 8px 60px; font-size: 12px; color: var(--text-3); background: var(--bg-panel); border-bottom: 1px solid var(--border); display: none; }
+/* Hero */
+#hero{position:relative;padding:80px 60px 60px;overflow:hidden;background:linear-gradient(180deg,#0a0a18 0%,var(--bg) 100%);border-bottom:1px solid var(--border);}
+#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 300px at 30% 50%,rgba(201,168,76,.04) 0%,transparent 70%),radial-gradient(ellipse 400px 400px at 80% 20%,rgba(136,88,184,.06) 0%,transparent 70%);pointer-events:none;}
+.hero-tag{font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);margin-bottom:16px;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,64px);font-weight:700;line-height:1.1;color:var(--text-1);margin-bottom:10px;}
+.hero-subtitle{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(16px,2vw,22px);color:var(--text-2);margin-bottom:32px;}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--gold);line-height:1;}
+.hero-stat-label{font-size:12px;color:var(--text-3);margin-top:4px;letter-spacing:.05em;}
+.hero-quote{position:absolute;right:60px;top:50%;transform:translateY(-50%);max-width:240px;font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--text-2);border-left:3px solid var(--gold-dim);padding-left:16px;line-height:1.7;}
+@media(max-width:900px){.hero-quote{display:none;}#hero{padding:50px 30px 40px;}}
 
-.era-section { position: relative; }
-.era-divider {
-  position: relative; padding: 48px 60px 36px; overflow: hidden;
-  background: var(--bg-panel); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-}
-.era-divider::before {
-  content: ''; position: absolute; inset: 0; opacity: 0.06;
-  background: radial-gradient(ellipse 800px 300px at 0% 50%, var(--era-color) 0%, transparent 70%);
-  pointer-events: none;
-}
-.era-divider-inner { position: relative; max-width: 760px; }
-.era-number { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--era-color); margin-bottom: 8px; }
-.era-title { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 38px); font-weight: 700; color: var(--text-1); line-height: 1.2; margin-bottom: 6px; }
-.era-years { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-3); margin-bottom: 14px; }
-.era-tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: 15px; color: var(--text-2); border-left: 3px solid var(--era-color); padding-left: 14px; line-height: 1.7; margin-bottom: 14px; opacity: 0.85; }
-.era-desc { font-size: 14px; color: var(--text-2); line-height: 1.75; max-width: 620px; }
+/* Level navigation */
+#level-nav{background:var(--bg-panel);border-bottom:1px solid var(--border);padding:10px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:90;}
+#breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-3);}
+.bc-item{cursor:pointer;transition:color .15s;padding:2px 0;}
+.bc-item:hover{color:var(--text-1);}
+.bc-item.bc-home{color:var(--gold);font-weight:600;}
+.bc-item.bc-active{color:var(--text-1);cursor:default;}
+.bc-sep{color:var(--text-3);opacity:.4;}
+.bc-sep.hidden,.bc-item.hidden{display:none;}
+.level-tabs{display:flex;gap:6px;}
+.level-tab{padding:5px 12px;border:1px solid var(--border-bright);background:transparent;color:var(--text-2);font-family:inherit;font-size:11px;border-radius:4px;cursor:pointer;transition:all .15s;letter-spacing:.04em;}
+.level-tab:hover:not(:disabled){border-color:var(--gold-dim);color:var(--text-1);}
+.level-tab.active{background:rgba(201,168,76,.15);border-color:var(--gold-dim);color:var(--gold);}
+.level-tab:disabled{opacity:.3;cursor:not-allowed;}
+#result-count{padding:6px 32px;font-size:12px;color:var(--text-3);background:var(--bg-panel);border-bottom:1px solid var(--border);display:none;}
 
-.timeline-track { padding: 32px 0; position: relative; }
-.timeline-track::before {
-  content: ''; position: absolute; left: 199px; top: 0; bottom: 0; width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--border-bright) 5%, var(--border-bright) 95%, transparent);
-  pointer-events: none;
-}
-@media (max-width: 768px) { .timeline-track::before { left: 80px; } }
+/* Level 1: Rebbe generation cards */
+.rebbe-cards{padding:40px 60px;}
+.rebbe-card{display:flex;gap:0;margin-bottom:24px;border:1px solid var(--border);border-radius:4px;overflow:hidden;cursor:pointer;transition:border-color .2s,box-shadow .2s;background:var(--bg-card);}
+.rebbe-card:hover{border-color:var(--border-bright);box-shadow:0 4px 24px rgba(0,0,0,.3);}
+.rebbe-card-accent{width:6px;flex-shrink:0;}
+.rebbe-card-body{flex:1;padding:24px 28px;}
+.rebbe-card-gen{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px;}
+.rebbe-card-name{font-family:'Playfair Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:700;color:var(--text-1);margin-bottom:2px;}
+.rebbe-card-fullname{font-size:13px;color:var(--text-3);margin-bottom:4px;}
+.rebbe-card-years{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-3);margin-bottom:12px;}
+.rebbe-card-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--text-2);border-left:3px solid;padding-left:12px;line-height:1.7;margin-bottom:14px;}
+.rebbe-card-desc{font-size:13px;color:var(--text-2);line-height:1.75;max-width:640px;margin-bottom:16px;}
+.rebbe-card-achievements{margin-bottom:16px;}
+.rebbe-card-ach-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);margin-bottom:8px;}
+.rebbe-card-ach-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:4px 20px;}
+.rebbe-card-ach-list li{font-size:12px;color:var(--text-2);line-height:1.5;padding-left:14px;position:relative;}
+.rebbe-card-ach-list li::before{content:'·';position:absolute;left:0;color:var(--text-3);}
+.rebbe-card-cta{display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.04em;padding:7px 14px;border:1px solid;border-radius:3px;transition:background .15s;font-family:inherit;}
+.rebbe-card-cta:hover{background:rgba(255,255,255,.06);}
+.rebbe-card-cp{margin-left:10px;font-size:11px;color:var(--text-3);text-decoration:none;padding:7px 12px;border:1px solid var(--border);border-radius:3px;transition:color .15s,border-color .15s;}
+.rebbe-card-cp:hover{color:var(--gold);border-color:var(--gold-dim);}
 
-.event-card {
-  display: flex; padding: 8px 60px 8px 0; cursor: pointer;
-  transition: background 0.15s; position: relative;
-}
-.event-card:hover { background: rgba(255,255,255,0.025); }
-.event-card.hidden { display: none !important; }
-.event-year-col { width: 200px; flex-shrink: 0; padding: 14px 20px 14px 60px; text-align: right; }
-.event-year { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text-3); }
-.event-hdate { font-size: 11px; color: var(--text-3); opacity: 0.6; margin-top: 3px; }
-.event-dot-col { width: 20px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; padding-top: 18px; }
-.event-dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid; background: var(--bg); flex-shrink: 0; transition: transform 0.15s; }
-.event-card:hover .event-dot { transform: scale(1.4); }
-.event-card.key .event-dot { width: 14px; height: 14px; border-width: 3px; }
-.event-body { flex: 1; min-width: 0; padding: 12px 0 12px 20px; }
-.event-cat-badge { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 7px; border-radius: 2px; border: 1px solid; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; }
-.event-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--text-1); line-height: 1.4; margin-bottom: 6px; }
-.event-card.key .event-title { font-size: 20px; }
-.event-desc { font-size: 13px; color: var(--text-2); line-height: 1.7; max-width: 600px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.event-card.key .event-desc { -webkit-line-clamp: 3; }
-.event-location { font-size: 11px; color: var(--text-3); margin-top: 5px; }
-.event-card.key { margin: 16px 0; padding-top: 16px; padding-bottom: 16px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
-.event-card.key:hover { background: rgba(255,255,255,0.04); }
+/* Era section (Level 2) */
+.era-section{position:relative;}
+.era-divider{position:relative;padding:48px 60px 36px;overflow:hidden;background:var(--bg-panel);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.era-divider::before{content:'';position:absolute;inset:0;opacity:.06;background:radial-gradient(ellipse 800px 300px at 0% 50%,var(--era-color) 0%,transparent 70%);pointer-events:none;}
+.era-divider-inner{position:relative;max-width:760px;}
+.era-number{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--era-color);margin-bottom:8px;}
+.era-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,38px);font-weight:700;color:var(--text-1);line-height:1.2;margin-bottom:6px;}
+.era-years{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-3);margin-bottom:14px;}
+.era-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:var(--text-2);border-left:3px solid var(--era-color);padding-left:14px;line-height:1.7;margin-bottom:14px;opacity:.85;}
+.era-desc{font-size:14px;color:var(--text-2);line-height:1.75;max-width:620px;}
 
-.world-row { display: flex; padding: 5px 60px 5px 0; opacity: 0.5; }
-.world-row.hidden { display: none !important; }
-.world-year-col { width: 200px; flex-shrink: 0; padding: 6px 20px 6px 60px; text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-3); }
-.world-dot-col { width: 20px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-.world-dot { width: 6px; height: 6px; background: var(--text-3); border-radius: 1px; transform: rotate(45deg); }
-.world-text { flex: 1; padding: 6px 0 6px 20px; font-size: 12px; color: var(--text-3); font-style: italic; line-height: 1.5; }
+/* Timeline track (Level 2) */
+.timeline-track{padding:32px 0;position:relative;}
+.timeline-track::before{content:'';position:absolute;left:199px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--border-bright) 5%,var(--border-bright) 95%,transparent);pointer-events:none;}
+@media(max-width:768px){.timeline-track::before{left:80px;}}
 
-#detail-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; background: rgba(255,255,255,0.08); border: none; border-radius: 6px; color: var(--text-1); font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
-#detail-close:hover { background: rgba(255,255,255,0.14); }
-#detail-content { padding: 48px 28px 40px; }
-.detail-cat-badge { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 3px; border: 1px solid; margin-bottom: 16px; font-family: 'JetBrains Mono', monospace; }
-.detail-year { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text-3); margin-bottom: 8px; }
-.detail-title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--text-1); line-height: 1.3; margin-bottom: 20px; }
-.detail-desc { font-size: 14px; color: var(--text-1); line-height: 1.85; margin-bottom: 20px; }
-.detail-section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-3); margin-bottom: 8px; margin-top: 24px; }
-.detail-world { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px; font-size: 13px; color: var(--text-2); font-style: italic; line-height: 1.7; }
-.detail-location { font-size: 13px; color: var(--text-2); padding: 8px 0; }
-.detail-era-badge { display: inline-block; font-size: 11px; padding: 3px 9px; border-radius: 3px; background: rgba(255,255,255,0.06); color: var(--text-2); margin-top: 20px; }
-.detail-divider { height: 1px; background: var(--border); margin: 24px 0; }
-mark { background: rgba(201,168,76,0.25); color: inherit; border-radius: 2px; padding: 0 1px; }
-#empty-state { padding: 80px 60px; text-align: center; color: var(--text-3); font-style: italic; display: none; }
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
-@media (max-width: 768px) {
-  #sidebar { width: 220px; } :root { --sidebar-w: 220px; }
-  .era-divider, #hero { padding-left: 24px; padding-right: 24px; }
-  .event-card { padding-right: 16px; }
-  .event-year-col { width: 80px; padding-left: 16px; }
+.event-card{display:flex;padding:8px 60px 8px 0;cursor:pointer;transition:background .15s;position:relative;}
+.event-card:hover{background:rgba(255,255,255,.025);}
+.event-card.hidden{display:none!important;}
+.event-year-col{width:200px;flex-shrink:0;padding:14px 20px 14px 60px;text-align:right;}
+.event-year-link{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-3);text-decoration:none;cursor:pointer;transition:color .15s,text-decoration .15s;}
+.event-year-link:hover{color:var(--gold);text-decoration:underline;}
+.event-hdate{font-size:11px;color:var(--text-3);opacity:.6;margin-top:3px;}
+.event-dot-col{width:20px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding-top:18px;}
+.event-dot{width:10px;height:10px;border-radius:50%;border:2px solid;background:var(--bg);flex-shrink:0;transition:transform .15s;}
+.event-card:hover .event-dot{transform:scale(1.4);}
+.event-card.key .event-dot{width:14px;height:14px;border-width:3px;}
+.event-body{flex:1;min-width:0;padding:12px 0 12px 20px;}
+.event-cat-badge{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding:2px 7px;border-radius:2px;border:1px solid;margin-bottom:6px;font-family:'JetBrains Mono',monospace;}
+.event-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--text-1);line-height:1.4;margin-bottom:6px;}
+.event-card.key .event-title{font-size:20px;}
+.event-desc{font-size:13px;color:var(--text-2);line-height:1.7;max-width:600px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.event-card.key .event-desc{-webkit-line-clamp:3;}
+.event-location{font-size:11px;color:var(--text-3);margin-top:5px;}
+.event-card.key{margin:16px 0;padding-top:16px;padding-bottom:16px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,.02);}
+.event-card.key:hover{background:rgba(255,255,255,.04);}
+
+/* World rows */
+.world-row{display:flex;padding:5px 60px 5px 0;opacity:.5;}
+.world-row.hidden{display:none!important;}
+.world-year-col{width:200px;flex-shrink:0;padding:6px 20px 6px 60px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-3);}
+.world-dot-col{width:20px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.world-dot{width:6px;height:6px;background:var(--text-3);border-radius:1px;transform:rotate(45deg);}
+.world-text{flex:1;padding:6px 0 6px 20px;font-size:12px;color:var(--text-3);font-style:italic;line-height:1.5;}
+
+/* Level 3: Year detail view */
+.year-detail{padding:40px 60px;}
+.year-detail-header{margin-bottom:36px;padding-bottom:20px;border-bottom:2px solid var(--gold-dim);}
+.year-detail-num{font-family:'Playfair Display',serif;font-size:clamp(48px,6vw,80px);font-weight:700;color:var(--gold);line-height:1;}
+.year-detail-hdate{font-size:14px;color:var(--text-3);margin-top:6px;}
+.year-detail-era{font-size:12px;color:var(--text-2);margin-top:4px;}
+.year-event-card{background:var(--bg-card);border:1px solid var(--border);border-radius:4px;padding:24px 28px;margin-bottom:16px;cursor:pointer;transition:border-color .2s;}
+.year-event-card:hover{border-color:var(--border-bright);}
+.year-event-cat{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding:2px 7px;border-radius:2px;border:1px solid;margin-bottom:10px;font-family:'JetBrains Mono',monospace;}
+.year-event-hdate{font-size:12px;color:var(--text-3);margin-bottom:8px;font-family:'JetBrains Mono',monospace;}
+.year-event-title{font-family:'Playfair Display',serif;font-size:clamp(18px,2vw,22px);font-weight:700;color:var(--text-1);margin-bottom:12px;line-height:1.3;}
+.year-event-desc{font-size:14px;color:var(--text-1);line-height:1.85;margin-bottom:12px;}
+.year-event-location{font-size:12px;color:var(--text-3);margin-bottom:12px;}
+.year-event-cp{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--gold);text-decoration:none;padding:6px 12px;border:1px solid var(--gold-dim);border-radius:3px;transition:background .15s;}
+.year-event-cp:hover{background:rgba(201,168,76,.12);}
+.year-world-section{margin-top:32px;padding:20px 24px;background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:4px;}
+.year-world-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-3);margin-bottom:12px;}
+.year-world-item{font-size:13px;color:var(--text-2);font-style:italic;line-height:1.6;padding:6px 0;border-top:1px solid var(--border);}
+.year-world-item:first-of-type{border-top:none;}
+.year-no-events{padding:60px;text-align:center;color:var(--text-3);font-style:italic;}
+
+/* Detail panel */
+#detail-close{position:absolute;top:16px;right:16px;width:32px;height:32px;background:rgba(255,255,255,.08);border:none;border-radius:6px;color:var(--text-1);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#detail-close:hover{background:rgba(255,255,255,.14);}
+#detail-content{padding:48px 28px 40px;}
+.detail-cat-badge{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;padding:3px 8px;border-radius:3px;border:1px solid;margin-bottom:16px;font-family:'JetBrains Mono',monospace;}
+.detail-year{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-3);margin-bottom:8px;}
+.detail-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--text-1);line-height:1.3;margin-bottom:20px;}
+.detail-desc{font-size:14px;color:var(--text-1);line-height:1.85;margin-bottom:20px;}
+.detail-section-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-3);margin-bottom:8px;margin-top:24px;}
+.detail-world{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:12px 14px;font-size:13px;color:var(--text-2);font-style:italic;line-height:1.7;}
+.detail-location{font-size:13px;color:var(--text-2);padding:8px 0;}
+.detail-era-badge{display:inline-block;font-size:11px;padding:3px 9px;border-radius:3px;background:rgba(255,255,255,.06);color:var(--text-2);margin-top:20px;}
+.detail-divider{height:1px;background:var(--border);margin:24px 0;}
+.cp-link{display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:9px 16px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);color:var(--gold);text-decoration:none;border-radius:4px;font-size:13px;transition:background .2s;}
+.cp-link:hover{background:rgba(201,168,76,.2);}
+mark{background:rgba(201,168,76,.25);color:inherit;border-radius:2px;padding:0 1px;}
+#empty-state{padding:80px 60px;text-align:center;color:var(--text-3);font-style:italic;display:none;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--border-bright);border-radius:3px;}
+@media(max-width:768px){
+  #sidebar{width:220px;}:root{--sidebar-w:220px;}
+  .era-divider,#hero,.rebbe-cards,.year-detail{padding-left:24px;padding-right:24px;}
+  .event-card{padding-right:16px;}
+  .event-year-col{width:80px;padding-left:16px;}
 }
 </style>
 </head>
@@ -226,7 +215,7 @@ mark { background: rgba(201,168,76,0.25); color: inherit; border-radius: 2px; pa
 <aside id="sidebar">
   <div class="sidebar-header">
     <div class="sidebar-brand">Chabad History</div>
-    <div class="sidebar-subtitle">300 Years · 12 Eras · 350+ Events</div>
+    <div class="sidebar-subtitle" id="sidebar-subtitle">300 Years · 7 Generations</div>
   </div>
   <div class="search-wrap">
     <input type="search" id="search" placeholder="Search events, people, places…" autocomplete="off">
@@ -264,16 +253,31 @@ mark { background: rgba(201,168,76,0.25); color: inherit; border-radius: 2px; pa
 
 <div id="main">
   <section id="hero">
-    <div class="hero-tag">An Interactive Historical Chronicle</div>
-    <h1 class="hero-title">Three Centuries<br>of Chabad</h1>
+    <div class="hero-tag">An Interactive Historical Chronicle — Three Levels of Depth</div>
+    <h1 class="hero-title">Seven Generations<br>of Chabad</h1>
     <p class="hero-subtitle">From a small town in White Russia to every corner of the earth</p>
     <div class="hero-stats">
       <div><div class="hero-stat-num">1698</div><div class="hero-stat-label">Year founded</div></div>
       <div><div class="hero-stat-num">7</div><div class="hero-stat-label">Generations of Rebbes</div></div>
-      <div><div class="hero-stat-num">12</div><div class="hero-stat-label">Historical eras</div></div>
+      <div><div class="hero-stat-num">3</div><div class="hero-stat-label">Levels of detail</div></div>
     </div>
     <div class="hero-quote">"When will you come?" asked the Besht of the Messiah. "When your wellsprings spread outward." — The founding mission of Chabad.</div>
   </section>
+
+  <div id="level-nav">
+    <div id="breadcrumb">
+      <span class="bc-item bc-home" onclick="goLevel1()">All Generations</span>
+      <span class="bc-sep hidden" id="bc-sep2">›</span>
+      <span class="bc-item hidden" id="bc-rebbe"></span>
+      <span class="bc-sep hidden" id="bc-sep3">›</span>
+      <span class="bc-item bc-active hidden" id="bc-year"></span>
+    </div>
+    <div class="level-tabs">
+      <button class="level-tab active" id="tab-1" onclick="goLevel1()">Overview</button>
+      <button class="level-tab" id="tab-2" disabled>Era View</button>
+      <button class="level-tab" id="tab-3" disabled>Year Detail</button>
+    </div>
+  </div>
   <div id="result-count"></div>
   <div id="timeline"></div>
   <div id="empty-state">No events match your search.</div>
@@ -286,21 +290,42 @@ mark { background: rgba(201,168,76,0.25); color: inherit; border-radius: 2px; pa
 </div>
 
 <script>
-const ERAS=[
-  {id:'pre_chabad',color:'var(--c-bsht)',num:'Chapter I',label:'The Baal Shem Tov Era',rebbe:'Israel ben Eliezer (Besht)',years:[1698,1772],tagline:'A hidden mystic emerges from the forests of Podolia, and ignites a revolution of the soul.',desc:'In the isolated villages of 18th-century Eastern Europe, Rabbi Yisrael ben Eliezer — the Baal Shem Tov — introduces a radically accessible Jewish spirituality. His teaching: G-d is everywhere, joy is holy, every Jew has infinite worth. His disciples carry his fire across centuries.'},
-  {id:'alter_rebbe',color:'var(--c-ar)',num:'Chapter II',label:'The Alter Rebbe',rebbe:'Rabbi Schneur Zalman of Liadi',years:[1772,1813],tagline:'Chassidic thought is systematized into Chabad — where mysticism meets intellect.',desc:'Rabbi Schneur Zalman of Liadi founds Chabad — Chochma, Bina, Daat. He writes the Tanya, survives two Czarist arrests, and navigates the Napoleonic wars. His death while fleeing war-torn Russia in 1812 marks the end of the founding generation.'},
-  {id:'mitteler_rebbe',color:'var(--c-mr)',num:'Chapter III',label:'The Mitteler Rebbe',rebbe:'Rabbi Dovber Schneuri',years:[1813,1827],tagline:'An ecstatic teacher deepens Chassidic meditation and plants roots in the Holy Land.',desc:'Rabbi Dovber Schneuri leads from Lubavitch, develops Chabad contemplative practice, and establishes the first organized Chabad community in Hebron. His sudden death at 54 ends a promising era.'},
-  {id:'tzemach_tzedek',color:'var(--c-tt)',num:'Chapter IV',label:'The Tzemach Tzedek',rebbe:'Rabbi Menachem Mendel Schneersohn',years:[1827,1866],tagline:'A diplomatic master battles the Russian state\'s brutal assault on Jewish life.',desc:'The Tzemach Tzedek leads through the reign of Tsar Nicholas I — fighting the Cantonist decrees that forced Jewish children into 25-year military service. His halachic and Chassidic writings form a vast legacy.'},
-  {id:'maharash',color:'var(--c-msh)',num:'Chapter V',label:'The Maharash',rebbe:'Rabbi Shmuel Schneersohn',years:[1866,1882],tagline:'Short in years, long in impact — a Rebbe who leapt over obstacles.',desc:'Rabbi Shmuel leads for only 16 years, dying at 48. Famous for "Lekatchilah Ariber" — leap over obstacles from the start. He advocates for Jewish communities across Europe and sends emissaries into new territory.'},
-  {id:'rashab',color:'var(--c-rb)',num:'Chapter VI',label:'The Rebbe Rashab',rebbe:'Rabbi Shalom DovBer Schneersohn',years:[1882,1920],tagline:'A master builder who creates institutions that will outlast empires.',desc:'Rabbi Shalom DovBer founds Tomchei Temimim yeshiva in 1897 — the same year as the first Zionist Congress. He builds the infrastructure that will sustain Jewish life through Soviet persecution.'},
-  {id:'frierdiker_soviet',color:'var(--c-fr-s)',num:'Chapter VII',label:'Frierdiker Rebbe: Soviet Persecution',rebbe:'Rabbi Yosef Yitzchak Schneersohn',years:[1920,1940],tagline:'Underground, imprisoned, exiled — but the Torah network survives.',desc:'Under Communist rule, the Frierdiker Rebbe secretly maintains yeshivos, mikvaot, and Torah education across the USSR. Arrested and sentenced to death in 1927, he becomes a symbol of heroic defiance before finally leaving Soviet Russia.'},
-  {id:'frierdiker_war',color:'var(--c-fr-w)',num:'Chapter VIII',label:'Frierdiker Rebbe: American Rescue',rebbe:'Rabbi Yosef Yitzchak Schneersohn',years:[1940,1950],tagline:'Rescued from Nazi-occupied Warsaw, Chabad is transplanted to American soil.',desc:'A diplomatic rescue mission extracts the Frierdiker Rebbe from Nazi-occupied Warsaw in 1940. He settles at 770 Eastern Parkway, Brooklyn — which becomes Chabad world headquarters — and rebuilds everything lost in Europe.'},
-  {id:'rebbe_early',color:'var(--c-re)',num:'Chapter IX',label:'The Rebbe: Early Leadership',rebbe:'Rabbi Menachem Mendel Schneerson',years:[1950,1963],tagline:'A reluctant leader takes the reins and launches an unprecedented outreach movement.',desc:'Rabbi Menachem Mendel Schneerson — educated in Berlin and Paris, trained as a naval engineer — formally accepts leadership in 1951. He launches Merkos L\'Inyonei Chinuch, the Mitzvah Tanks, and sends the first permanent shluchim to distant communities.'},
-  {id:'rebbe_expansion',color:'var(--c-rx)',num:'Chapter X',label:'The Rebbe: Global Expansion',rebbe:'Rabbi Menachem Mendel Schneerson',years:[1963,1985],tagline:'A quiet leader transforms Judaism worldwide through campaigns and emissaries.',desc:'The Rebbe\'s most productive decades. Global tefillin campaign (1967), Shabbat candles, Rambam study. Chabad Houses open on every continent. The shluchim network becomes the largest Jewish educational infrastructure ever built.'},
-  {id:'rebbe_final',color:'var(--c-rf)',num:'Chapter XI',label:'The Rebbe: Final Years',rebbe:'Rabbi Menachem Mendel Schneerson',years:[1985,1994],tagline:'The movement crescendos — and then faces its most agonizing moment.',desc:'The fall of the Soviet Union allows Chabad\'s miraculous return to Russia. A stroke in 1992 silences the Rebbe\'s public teaching. He passes on 3 Tammuz 5754 — leaving 10,000 emissary families in his wake.'},
-  {id:'modern',color:'var(--c-mod)',num:'Chapter XII',label:'Modern Era',rebbe:'Global Movement',years:[1994,2025],tagline:'Leaderless yet vibrant — Chabad expands as a permanent global presence.',desc:'After the Rebbe\'s passing, the movement continues growing exponentially. Chabad Houses open in India, Nepal, Thailand, Cuba, and beyond. The network of shluchim becomes the largest Jewish outreach infrastructure in history.'},
+// ═══════════════════════════════════════════════════════
+// DATA: REBBES (Level 1 overview)
+// ═══════════════════════════════════════════════════════
+const REBBES=[
+  {id:'besht',eras:['pre_chabad'],color:'var(--c-bsht)',gen:'Pre-Chabad',name:'The Baal Shem Tov',fullName:'Rabbi Yisrael ben Eliezer',years:[1698,1760],tagline:'A hidden mystic emerges from the forests of Podolia and ignites a revolution of the soul.',desc:'Israel ben Eliezer — the Baal Shem Tov (Master of the Good Name) — founded the Chassidic movement by teaching that G-d is present in every blade of grass, that joy is a divine obligation, and that the simplest Jew has infinite spiritual worth. His inner circle became the founders of all major Chassidic dynasties. Chabad begins with him.',achievements:['~1734 — Publicly reveals himself as teacher and healer in Medzhybizh','1746 — Inner circle includes the Maggid of Mezeritch, future Chabad link','1759 — "When your wellsprings spread outward" — the founding Chabad mission','1760 — Passes on Shavuot; teaching preserved through disciples'],cp:'ישראל_בעל_שם_טוב'},
+  {id:'alter_rebbe',eras:['alter_rebbe'],color:'var(--c-ar)',gen:'Rebbe 1',name:'The Alter Rebbe',fullName:'Rabbi Schneur Zalman of Liadi',years:[1772,1813],tagline:'Chassidic thought is systematized into Chabad — where mysticism meets intellect.',desc:'Founder of Chabad-Lubavitch, Rabbi Schneur Zalman created a unique synthesis: the Chassidic revolution of the Besht expressed through rigorous intellectual philosophy (Chochma-Bina-Daat). His Tanya (1796) remains the defining Chabad text. He survived two Czarist arrests and fled Napoleon\'s invasion before passing in exile.',achievements:['1772 — Founds Chabad as a distinct Chassidic school','1796 — Publishes the Tanya (Likkutei Amarim)','1798 — Arrested; freed on 19 Kislev — "New Year of Chassidus"','1800 — Publishes Shulchan Aruch HaRav (halachic code)','1812 — Sides with Russia vs. Napoleon; passes fleeing the war'],cp:'שניאור_זלמן_מלאדי'},
+  {id:'mitteler',eras:['mitteler_rebbe'],color:'var(--c-mr)',gen:'Rebbe 2',name:'The Mitteler Rebbe',fullName:'Rabbi Dovber Schneuri',years:[1813,1827],tagline:'An ecstatic teacher deepens Chassidic meditation and plants roots in the Holy Land.',desc:'Known for extraordinary meditative absorption, Rabbi Dovber Schneuri led from Lubavitch — giving Chabad its geographic identity. He developed systematic contemplative practice and established the first organized Chabad community in Hebron. He passed suddenly on his own birthday, 9 Kislev.',achievements:['1813 — Establishes leadership in Lubavitch','1817 — Sends Chassidim to settle in Hebron, Eretz Yisrael','1823 — Formalizes the Lubavitch yeshiva curriculum','Writes definitive Chabad texts on meditation (hisbonenus)','1827 — Passes on 9 Kislev — his own birthday'],cp:'דובער_שניאורי'},
+  {id:'tzemach',eras:['tzemach_tzedek'],color:'var(--c-tt)',gen:'Rebbe 3',name:'The Tzemach Tzedek',fullName:'Rabbi Menachem Mendel Schneersohn',years:[1827,1866],tagline:'A diplomatic master battles the Russian state\'s brutal assault on Jewish life.',desc:'Leading for nearly 40 years through the reign of Tsar Nicholas I, the Tzemach Tzedek fought the devastating Cantonist decrees forcing Jewish boys into 25-year military service. His vast halachic writings gave him his name. His seven sons spread Chabad across Russia. He is remembered as the statesman of Chabad Rebbes.',achievements:['1827 — Assumes leadership; immediately fights Cantonist conscription','1843 — Stands firm before Tsar Nicholas I on Jewish education','1846 — Publishes the monumental Tzemach Tzedek responsa','1855 — Wins: death of Nicholas I, Cantonist decrees abolished','1860 — Systematically expands Chabad network across Russia'],cp:'מנחם_מנדל_שניאורסון_(הצמח_צדק)'},
+  {id:'maharash',eras:['maharash'],color:'var(--c-msh)',gen:'Rebbe 4',name:'The Maharash',fullName:'Rabbi Shmuel Schneersohn',years:[1866,1882],tagline:'Short in years, long in impact — "leap over obstacles from the start."',desc:'Rabbi Shmuel Schneersohn led Chabad for just 16 years before dying at 48. Famous for "Lekatchilah Ariber" — confront obstacles directly from the start rather than going around them. He traveled widely, advocated for Jewish communities across Europe and Russia, and left a profound mark despite his brief leadership.',achievements:['1866 — Becomes Rebbe at age 25','Teaches "Lekatchilah Ariber" — leap over obstacles from the start','1868 — Travels through Western Europe for health and advocacy','1877 — Advocates for Balkan Jews during Russo-Turkish War','1882 — Passes at 48; mourned as a leader cut short'],cp:'שמואל_שניאורסון'},
+  {id:'rashab',eras:['rashab'],color:'var(--c-rb)',gen:'Rebbe 5',name:'The Rebbe Rashab',fullName:'Rabbi Shalom DovBer Schneersohn',years:[1882,1920],tagline:'A master builder who creates institutions that will outlast empires.',desc:'Rabbi Shalom DovBer Schneersohn is regarded as one of Chabad\'s greatest philosophers and institution-builders. He founded Tomchei Temimim yeshiva in 1897 — the same year as the First Zionist Congress. He built the infrastructure to survive Soviet persecution. He led through WWI and the Bolshevik Revolution.',achievements:['1897 — Founds Tomchei Temimim yeshiva in Lubavitch','1898 — Publishes Kuntres HaAvodah and Kuntres HaTefillah','1907 — Issues definitive Chabad position on Zionism','1914 — Evacuates Lubavitch as WWI devastates the Pale','1917 — Leads through Bolshevik Revolution; dies 1920'],cp:'שלום_דובער_שניאורסון'},
+  {id:'frierdiker',eras:['frierdiker_soviet','frierdiker_war'],color:'var(--c-fr)',gen:'Rebbe 6',name:'The Frierdiker Rebbe',fullName:'Rabbi Yosef Yitzchak Schneersohn',years:[1920,1950],tagline:'Underground, imprisoned, exiled — from Soviet Russia to American rescue.',desc:'Rabbi Yosef Yitzchak Schneersohn led Chabad through its most dangerous decades — Soviet persecution, Nazi occupation, and the Holocaust. He maintained an underground Torah network across the USSR, survived a death sentence, was rescued from Nazi Warsaw in 1940, and transplanted Chabad to American soil at 770 Eastern Parkway.',achievements:['1920s — Builds underground Torah network across the USSR at mortal risk','1927 — Arrested by NKVD, sentenced to death; freed on 12 Tammuz after international pressure','1929 — First visit to America; plants seeds of American Chabad','1940 — Rescued from Nazi Warsaw; arrives at 770 Eastern Parkway, Brooklyn','1941 — Establishes Merkos, Kehot, Machne Israel'],cp:'יוסף_יצחק_שניאורסון'},
+  {id:'rebbe',eras:['rebbe_early','rebbe_expansion','rebbe_final'],color:'var(--c-re)',gen:'Rebbe 7',name:'The Rebbe',fullName:'Rabbi Menachem Mendel Schneerson',years:[1951,1994],tagline:'The reluctant leader who transformed Judaism — sending emissaries to every corner of earth.',desc:'The seventh and last Lubavitcher Rebbe — engineer, philosopher, visionary — transformed Chabad into the world\'s most pervasive Jewish outreach network. His global tefillin campaign (1967), Mitzvah Tanks, and shliach system reached millions. He left 10,000 emissary families in 100+ countries. He is simply called "The Rebbe."',achievements:['1951 — Accepts leadership; "Basi L\'Gani" discourse charts 43-year course','1965 — Launches Mitzvah Tanks on New York streets','1967 — Global tefillin campaign coincides with Six-Day War miracle','1983 — First International Conference of Shluchim (today 6,000+ attend)','1989 — Soviet collapse; Chabad returns to Russia after 70 years','1994 — Passes on 3 Tammuz; leaves 10,000 shliach families worldwide'],cp:'מנחם_מנדל_שניאורסון'},
+  {id:'modern',eras:['modern'],color:'var(--c-mod)',gen:'Post-1994',name:'The Modern Era',fullName:'Global Movement',years:[1994,2024],tagline:'Leaderless yet vibrant — Chabad expands as a permanent global presence.',desc:'Without a Rebbe, Chabad continues to grow exponentially. The infrastructure built over seven generations functions independently. New shluchim continue to be sent, new Chabad Houses open worldwide. Today the movement operates over 5,000 centers in 100+ countries, serving millions of Jews and non-Jews.',achievements:['1995 — Chabad.org launches; becomes most-visited Jewish website','2003 — Russia and post-Soviet republics become major Chabad centers','2008 — Mumbai Chabad House attack; 6 murdered, movement doubles down','2013 — 5,000th institution opens worldwide','2024 — ~10,000 shliach families, 100+ countries, 5,000+ centers'],cp:'חב"ד'}
 ];
 
+// ═══════════════════════════════════════════════════════
+// DATA: ERAS (for Level 2 section headers)
+// ═══════════════════════════════════════════════════════
+const ERAS=[
+  {id:'pre_chabad',color:'var(--c-bsht)',num:'Pre-Chabad',label:'The Baal Shem Tov Era',rebbe:'Israel ben Eliezer (Besht)',years:[1698,1772],tagline:'A hidden mystic emerges from the forests of Podolia, and ignites a revolution of the soul.',desc:'In the isolated villages of 18th-century Eastern Europe, Rabbi Yisrael ben Eliezer — the Baal Shem Tov — introduces a radically accessible Jewish spirituality. His teaching: G-d is everywhere, joy is holy, every Jew has infinite worth. His disciples carry his fire across centuries.'},
+  {id:'alter_rebbe',color:'var(--c-ar)',num:'Chapter I',label:'The Alter Rebbe',rebbe:'Rabbi Schneur Zalman of Liadi',years:[1772,1813],tagline:'Chassidic thought is systematized into Chabad — where mysticism meets intellect.',desc:'Rabbi Schneur Zalman of Liadi founds Chabad — Chochma, Bina, Daat. He writes the Tanya, survives two Czarist arrests, and navigates the Napoleonic wars. His death while fleeing war-torn Russia in 1812 marks the end of the founding generation.'},
+  {id:'mitteler_rebbe',color:'var(--c-mr)',num:'Chapter II',label:'The Mitteler Rebbe',rebbe:'Rabbi Dovber Schneuri',years:[1813,1827],tagline:'An ecstatic teacher deepens Chassidic meditation and plants roots in the Holy Land.',desc:'Rabbi Dovber Schneuri leads from Lubavitch, develops Chabad contemplative practice, and establishes the first organized Chabad community in Hebron. His sudden death at 54 ends a promising era.'},
+  {id:'tzemach_tzedek',color:'var(--c-tt)',num:'Chapter III',label:'The Tzemach Tzedek',rebbe:'Rabbi Menachem Mendel Schneersohn',years:[1827,1866],tagline:'A diplomatic master battles the Russian state\'s brutal assault on Jewish life.',desc:'The Tzemach Tzedek leads through the reign of Tsar Nicholas I — fighting the Cantonist decrees that forced Jewish children into 25-year military service. His halachic and Chassidic writings form a vast legacy.'},
+  {id:'maharash',color:'var(--c-msh)',num:'Chapter IV',label:'The Maharash',rebbe:'Rabbi Shmuel Schneersohn',years:[1866,1882],tagline:'Short in years, long in impact — a Rebbe who leapt over obstacles.',desc:'Rabbi Shmuel leads for only 16 years, dying at 48. Famous for "Lekatchilah Ariber" — leap over obstacles from the start. He advocates for Jewish communities across Europe and sends emissaries into new territory.'},
+  {id:'rashab',color:'var(--c-rb)',num:'Chapter V',label:'The Rebbe Rashab',rebbe:'Rabbi Shalom DovBer Schneersohn',years:[1882,1920],tagline:'A master builder who creates institutions that will outlast empires.',desc:'Rabbi Shalom DovBer founds Tomchei Temimim yeshiva in 1897 — the same year as the first Zionist Congress. He builds the infrastructure that will sustain Jewish life through Soviet persecution.'},
+  {id:'frierdiker_soviet',color:'var(--c-fr)',num:'Chapter VI',label:'Frierdiker Rebbe: Soviet Persecution',rebbe:'Rabbi Yosef Yitzchak Schneersohn',years:[1920,1940],tagline:'Underground, imprisoned, exiled — but the Torah network survives.',desc:'Under Communist rule, the Frierdiker Rebbe secretly maintains yeshivos, mikvaot, and Torah education across the USSR. Arrested and sentenced to death in 1927, he becomes a symbol of heroic defiance before finally leaving Soviet Russia.'},
+  {id:'frierdiker_war',color:'#c07030',num:'Chapter VII',label:'Frierdiker Rebbe: American Rescue',rebbe:'Rabbi Yosef Yitzchak Schneersohn',years:[1940,1950],tagline:'Rescued from Nazi-occupied Warsaw, Chabad is transplanted to American soil.',desc:'A diplomatic rescue mission extracts the Frierdiker Rebbe from Nazi-occupied Warsaw in 1940. He settles at 770 Eastern Parkway, Brooklyn — which becomes Chabad world headquarters — and rebuilds everything lost in Europe.'},
+  {id:'rebbe_early',color:'var(--c-re)',num:'Chapter VIII',label:'The Rebbe: Early Leadership',rebbe:'Rabbi Menachem Mendel Schneerson',years:[1951,1963],tagline:'A reluctant leader takes the reins and launches an unprecedented outreach movement.',desc:'Rabbi Menachem Mendel Schneerson — educated in Berlin and Paris, trained as a naval engineer — formally accepts leadership in 1951. He launches Merkos L\'Inyonei Chinuch, the Mitzvah Tanks, and sends the first permanent shluchim to distant communities.'},
+  {id:'rebbe_expansion',color:'var(--c-rx,#5050c8)',num:'Chapter IX',label:'The Rebbe: Global Expansion',rebbe:'Rabbi Menachem Mendel Schneerson',years:[1963,1985],tagline:'A quiet leader transforms Judaism worldwide through campaigns and emissaries.',desc:'The Rebbe\'s most productive decades. Global tefillin campaign (1967), Shabbat candles, Rambam study. Chabad Houses open on every continent. The shluchim network becomes the largest Jewish educational infrastructure ever built.'},
+  {id:'rebbe_final',color:'var(--c-rf,#7830b8)',num:'Chapter X',label:'The Rebbe: Final Years',rebbe:'Rabbi Menachem Mendel Schneerson',years:[1985,1994],tagline:'The movement crescendos — and then faces its most agonizing moment.',desc:'The fall of the Soviet Union allows Chabad\'s miraculous return to Russia. A stroke in 1992 silences the Rebbe\'s public teaching. He passes on 3 Tammuz 5754 — leaving 10,000 emissary families in his wake.'},
+  {id:'modern',color:'var(--c-mod)',num:'Chapter XI',label:'Modern Era',rebbe:'Global Movement',years:[1994,2025],tagline:'Leaderless yet vibrant — Chabad expands as a permanent global presence.',desc:'After the Rebbe\'s passing, the movement continues growing exponentially. Chabad Houses open in India, Nepal, Thailand, Cuba, and beyond. The network of shluchim becomes the largest Jewish outreach infrastructure in history.'},
+];
+
+// ═══════════════════════════════════════════════════════
+// DATA: WORLD CONTEXT
+// ═══════════════════════════════════════════════════════
 const WORLD=[
   {year:1789,text:'French Revolution begins — European political order upended'},
   {year:1799,text:'Napoleon Bonaparte seizes power in France'},
@@ -324,229 +349,371 @@ const WORLD=[
   {year:1933,text:'Hitler appointed Chancellor of Germany; Jewish persecution begins immediately'},
   {year:1938,text:'Kristallnacht — organized pogrom across Germany and Austria'},
   {year:1939,text:'WWII begins — Germany invades Poland (Sept. 1)'},
-  {year:1941,text:'Operation Barbarossa; Holocaust enters its killing phase'},
-  {year:1945,text:'WWII ends — Holocaust death toll: ~6 million Jews'},
-  {year:1948,text:'State of Israel proclaimed (May 14)'},
-  {year:1953,text:'Stalin dies — partial Soviet thaw begins'},
-  {year:1967,text:'Six-Day War — Israel captures Jerusalem, West Bank, Gaza, Sinai in 6 days'},
-  {year:1973,text:'Yom Kippur War — surprise Egyptian/Syrian attack on Israel'},
-  {year:1985,text:'Gorbachev becomes Soviet leader; glasnost and perestroika begin'},
-  {year:1989,text:'Berlin Wall falls; Soviet bloc collapses'},
-  {year:1991,text:'Soviet Union dissolves — 15 new republics; 1.5 million Jews suddenly accessible'},
-  {year:2001,text:'9/11 attacks; Chabad Houses near Ground Zero'},
-  {year:2008,text:'Global financial crisis; Mumbai terror attacks target Chabad House'},
-  {year:2020,text:'COVID-19 pandemic — global Chabad network adapts online'},
-  {year:2023,text:'Hamas October 7 massacre — 1,200 Israelis killed; largest antisemitic attack since Holocaust'},
+  {year:1941,text:'Operation Barbarossa; Nazi invasion of USSR begins extermination of Soviet Jews'},
+  {year:1944,text:'D-Day; liberation of Paris; Holocaust killing phase still ongoing'},
+  {year:1945,text:'WWII ends; 6 million Jews murdered; displaced persons crisis'},
+  {year:1947,text:'UN Partition Plan for Palestine'},
+  {year:1948,text:'State of Israel declared; War of Independence'},
+  {year:1950,text:'Korean War; Cold War intensifies; Joseph McCarthy era begins'},
+  {year:1956,text:'Suez Crisis; Hungarian Revolution crushed by Soviet tanks'},
+  {year:1962,text:'Cuban Missile Crisis — closest the Cold War comes to nuclear exchange'},
+  {year:1967,text:'Six-Day War — Israel captures Jerusalem, West Bank, Gaza, Sinai, Golan'},
+  {year:1969,text:'Moon landing; Woodstock; Vietnam War at its height'},
+  {year:1973,text:'Yom Kippur War — Egypt and Syria launch surprise attack on Israel'},
+  {year:1977,text:'Anwar Sadat visits Jerusalem; peace process begins'},
+  {year:1979,text:'Iranian Revolution; Soviet invasion of Afghanistan'},
+  {year:1989,text:'Berlin Wall falls; Communist regimes collapse across Eastern Europe'},
+  {year:1991,text:'Soviet Union dissolves; Gulf War; Oslo Accords framework'},
+  {year:1994,text:'Nelson Mandela elected; peace in Northern Ireland; Cold War era ends'},
+  {year:2001,text:'September 11 attacks; War on Terror begins'},
+  {year:2008,text:'Global financial crisis; Obama elected US president'},
 ];
 
+// ═══════════════════════════════════════════════════════
+// DATA: EVENTS (with cp = ChabadPedia article title)
+// ═══════════════════════════════════════════════════════
 const EVENTS=[
   // PRE-CHABAD
-  {year:1698,title:'Birth of the Baal Shem Tov',cat:'birth',era:'pre_chabad',hdate:'18 Elul 5458',location:'Okopy, Podolia (Ukraine)',key:true,desc:'Rabbi Yisrael ben Eliezer is born in the tiny Podolian village of Okopy. Orphaned young, he grows up in poverty amid the forests of Ukraine. According to tradition, his soul descended with a specific mission: to revive Jewish joy and closeness to G-d across Eastern Europe.',world:'Eastern European Jews live under the devastating aftermath of the 1648 Chmelnitzky massacres, which killed hundreds of thousands and destroyed entire communities.'},
-  {year:1720,title:'The Besht Begins His Hidden Work',cat:'personal',era:'pre_chabad',desc:'For nearly two decades before his public emergence, the Besht works as a clay digger, innkeeper, and hidden healer — teaching a small inner circle. His core insights crystallize: G-d is in every stone and blade of grass; joy is the highway to the Divine; the most "simple" Jew has boundless sacred worth.'},
-  {year:1734,title:'The Besht Reveals Himself Publicly',cat:'milestone',era:'pre_chabad',hdate:'c. 5494',location:'Medzhybizh, Ukraine',key:true,desc:'At age 36 — as directed by his heavenly teacher Achiyah HaShiloni — Rabbi Yisrael ben Eliezer emerges as a public teacher and healer. He settles in Medzhybizh, Podolia. Thousands flock to hear his teachings. His circle of disciples includes some of the greatest Torah scholars of the generation.',world:'Polish-Lithuanian Commonwealth in decline; Jewish kehilot under pressure from without and within (Sabbatean and Frankist heresies rising).'},
-  {year:1746,title:'The Besht\'s Inner Circle Forms',cat:'organization',era:'pre_chabad',desc:'The Besht\'s inner circle of disciples takes shape — including Rabbi Pinchas of Koretz, Rabbi Yaakov Yosef of Polnoye, and the Maggid of Mezeritch. The Maggid — the intellectual giant of the group — will succeed him as leader of the entire Chassidic movement and become the teacher of Chabad\'s founder.'},
-  {year:1750,title:'The Besht Teaches: Every Jew Is a World Entire',cat:'teaching',era:'pre_chabad',desc:'The Besht\'s most revolutionary teaching: every single Jewish soul contains an entire world. The "simple" Jew who cannot study but prays with sincerity is not inferior — his connection to G-d may be deeper than the scholar. This democratization of Jewish spirituality overturns centuries of elite-dominated religious culture.'},
-  {year:1759,title:'The Besht\'s Letter to the Messiah (Iggeret HaKodesh)',cat:'publication',era:'pre_chabad',key:true,desc:'The Baal Shem Tov\'s famous letter to his brother-in-law describes his ascent of soul to the Messianic realm: "I asked the Messiah: when will you come? And he answered: when your wellsprings spread outward." This statement — the founding mission of Chabad — drives the entire project of spreading Chassidic teachings globally as preparation for redemption.',world:'Lisbon earthquake (1755) killed 30,000–40,000 and shook European religious confidence in providence.'},
-  {year:1760,title:'Passing of the Baal Shem Tov',cat:'passing',era:'pre_chabad',hdate:'1 Shavuot 5520',location:'Medzhybizh, Ukraine',key:true,desc:'On the first day of Shavuot — the Festival of the Giving of the Torah — the Baal Shem Tov passes from this world. His last words are recorded in detail by disciples. He leaves no written works; his teachings will be transmitted through students, most famously by Rabbi Yaakov Yosef\'s "Toldos Yaakov Yosef" (1780) — the first Chassidic book in print.',world:'Enlightenment philosophy spreading across Europe; Rousseau, Voltaire challenging traditional religion.'},
+  {year:1698,title:'Birth of the Baal Shem Tov',cat:'birth',era:'pre_chabad',hdate:'18 Elul 5458',location:'Okopy, Podolia (Ukraine)',key:true,desc:'Rabbi Yisrael ben Eliezer is born in the tiny Podolian village of Okopy. Orphaned young, he grows up in poverty amid the forests of Ukraine. According to tradition, his soul descended with a specific mission: to revive Jewish joy and closeness to G-d across Eastern Europe.',world:'Eastern European Jews live under the devastating aftermath of the 1648 Chmelnitzky massacres, which killed hundreds of thousands and destroyed entire communities.',cp:'ישראל_בעל_שם_טוב'},
+  {year:1720,title:'The Besht Begins His Hidden Work',cat:'personal',era:'pre_chabad',desc:'For nearly two decades before his public emergence, the Besht works as a clay digger, innkeeper, and hidden healer — teaching a small inner circle. His core insights crystallize: G-d is in every stone and blade of grass; joy is the highway to the Divine; the most "simple" Jew has boundless sacred worth.',cp:'ישראל_בעל_שם_טוב'},
+  {year:1734,title:'The Besht Reveals Himself Publicly',cat:'milestone',era:'pre_chabad',hdate:'c. 5494',location:'Medzhybizh, Ukraine',key:true,desc:'At age 36 — as directed by his heavenly teacher Achiyah HaShiloni — Rabbi Yisrael ben Eliezer emerges as a public teacher and healer. He settles in Medzhybizh, Podolia. Thousands flock to hear his teachings. His circle of disciples includes some of the greatest Torah scholars of the generation.',world:'Polish-Lithuanian Commonwealth in decline; Jewish kehilot under pressure from without and within (Sabbatean and Frankist heresies rising).',cp:'ישראל_בעל_שם_טוב'},
+  {year:1746,title:'The Besht\'s Inner Circle Forms',cat:'organization',era:'pre_chabad',desc:'The Besht\'s inner circle of disciples takes shape — including Rabbi Pinchas of Koretz, Rabbi Yaakov Yosef of Polnoye, and the Maggid of Mezeritch. The Maggid — the intellectual giant of the group — will succeed him as leader of the entire Chassidic movement and become the teacher of Chabad\'s founder.',cp:'ישראל_בעל_שם_טוב'},
+  {year:1750,title:'The Besht Teaches: Every Jew Is a World Entire',cat:'teaching',era:'pre_chabad',desc:'The Besht\'s most revolutionary teaching: every single Jewish soul contains an entire world. The "simple" Jew who cannot study but prays with sincerity is not inferior — his connection to G-d may be deeper than the scholar. This democratization of Jewish spirituality overturns centuries of elite-dominated religious culture.',cp:'ישראל_בעל_שם_טוב'},
+  {year:1759,title:'The Besht\'s Letter — "When Your Wellsprings Spread Outward"',cat:'publication',era:'pre_chabad',key:true,desc:'The Baal Shem Tov\'s famous letter to his brother-in-law describes his ascent of soul to the Messianic realm: "I asked the Messiah: when will you come? And he answered: when your wellsprings spread outward." This statement — the founding mission of Chabad — drives the entire project of spreading Chassidic teachings globally as preparation for redemption.',world:'Lisbon earthquake (1755) killed 30,000–40,000 and shook European religious confidence in providence.',cp:'ישראל_בעל_שם_טוב'},
+  {year:1760,title:'Passing of the Baal Shem Tov',cat:'passing',era:'pre_chabad',hdate:'1 Shavuot 5520',location:'Medzhybizh, Ukraine',key:true,desc:'On the first day of Shavuot — the Festival of the Giving of the Torah — the Baal Shem Tov passes from this world. His last words are recorded in detail by disciples. He leaves no written works; his teachings will be transmitted through students, most famously by Rabbi Yaakov Yosef\'s "Toldos Yaakov Yosef" (1780) — the first Chassidic book in print.',world:'Enlightenment philosophy spreading across Europe; Rousseau, Voltaire challenging traditional religion.',cp:'ישראל_בעל_שם_טוב'},
   {year:1760,title:'Rabbi Dovber of Mezeritch Leads All of Chassidus',cat:'milestone',era:'pre_chabad',desc:'The Maggid of Mezeritch — one of the greatest Torah scholars of the generation — becomes the leader of all Chassidus. Under his guidance the movement spreads to Poland, Ukraine, Lithuania, and Belorussia. His most brilliant student: Rabbi Schneur Zalman of Liadi, future founder of Chabad.'},
-  {year:1767,title:'Rabbi Schneur Zalman Travels to Mezeritch',cat:'personal',era:'pre_chabad',location:'Mezeritch, Ukraine',desc:'A 22-year-old scholar from Liozna — already a master of all conventional Torah learning — travels to the Maggid of Mezeritch. He had already mastered Talmud; he came, he later said, "to learn how to pray." His years under the Maggid will reshape his entire intellectual and spiritual framework and lead to the creation of Chabad.'},
-  {year:1772,title:'Maggid Passes; Rabbi Schneur Zalman Founds Chabad',cat:'milestone',era:'pre_chabad',key:true,desc:'Upon the Maggid\'s passing, disciples disperse to different regions. Rabbi Schneur Zalman returns to Belorussia and begins teaching his unique synthesis: Chabad — an acronym for Chochma (wisdom), Bina (understanding), Daat (knowledge). Chassidus is no longer only about emotion — it becomes a rigorous intellectual system for understanding G-d, the world, and the human soul.',world:'First partition of Poland (1772) — Russia, Prussia, and Austria divide Polish territory; Jewish communities find themselves under new, harsher rulers.'},
+  {year:1767,title:'Rabbi Schneur Zalman Travels to Mezeritch',cat:'personal',era:'pre_chabad',location:'Mezeritch, Ukraine',desc:'A 22-year-old scholar from Liozna — already a master of all conventional Torah learning — travels to the Maggid of Mezeritch. He had already mastered Talmud; he came, he later said, "to learn how to pray." His years under the Maggid will reshape his entire intellectual and spiritual framework and lead to the creation of Chabad.',cp:'שניאור_זלמן_מלאדי'},
+  {year:1772,title:'Maggid Passes; Rabbi Schneur Zalman Founds Chabad',cat:'milestone',era:'pre_chabad',key:true,desc:'Upon the Maggid\'s passing, disciples disperse to different regions. Rabbi Schneur Zalman returns to Belorussia and begins teaching his unique synthesis: Chabad — an acronym for Chochma (wisdom), Bina (understanding), Daat (knowledge). Chassidus is no longer only about emotion — it becomes a rigorous intellectual system for understanding G-d, the world, and the human soul.',world:'First partition of Poland (1772) — Russia, Prussia, and Austria divide Polish territory; Jewish communities find themselves under new, harsher rulers.',cp:'חב"ד'},
 
   // ALTER REBBE
-  {year:1775,title:'Rabbi Schneur Zalman Established in Liozna',cat:'milestone',era:'alter_rebbe',desc:'Rabbi Schneur Zalman builds a growing court in Liozna (near Vitebsk). His Chassidus spreads through Belorussia and Lithuania — remarkably penetrating the strongholds of the Mitnagdim (opponents of Chassidus), who view the movement with deep suspicion.'},
-  {year:1781,title:'Tanya — First Draft Composed',cat:'publication',era:'alter_rebbe',hdate:'c. 5541',desc:'Rabbi Schneur Zalman begins composing the Tanya in response to thousands of Chassidim who cannot receive personal guidance. The book addresses the struggles of the ordinary Jewish soul: how to serve G-d when you are not naturally righteous, when foreign thoughts intrude, when the spirit is low. Its solutions are entirely original — based on Kabbalistic psychology but accessible to any reader.'},
-  {year:1796,title:'Tanya First Published',cat:'publication',era:'alter_rebbe',hdate:'5556',location:'Slavuta',key:true,desc:'The Tanya — Likkutei Amarim — is published for the first time. It will become the most influential Chabad text, studied daily for the next two centuries. Its central insight: every Jew contains a Divine soul; the "animal soul" and "divine soul" are in perpetual tension; and the "beinoni" (intermediate person) — not a saint, but not evil either — is the realistic model for Jewish life. 53 chapters for 53 portions of the Torah.',world:'Napoleon\'s early campaigns; France in political turmoil under the Directory.'},
-  {year:1798,title:'First Arrest of the Alter Rebbe',cat:'persecution',era:'alter_rebbe',hdate:'15 Tishrei 5559',location:'St. Petersburg, Russia',key:true,desc:'Czarist agents arrest the Alter Rebbe on the basis of Mitnagdim denunciations. He is held in the Peter and Paul Fortress — the same prison where Peter the Great killed his own son. Interrogated by government officials who suspect Chassidism of harboring ties to the Turkish sultan and subversive intentions, he is held for 53 days before being fully exonerated.',world:'French Revolution at its peak; European monarchies deeply suspicious of any popular movement with cross-border networks.'},
-  {year:1798,title:'19 Kislev: Liberation and the New Year of Chassidus',cat:'liberation',era:'alter_rebbe',hdate:'19 Kislev 5559',key:true,desc:'Released from prison on 19 Kislev, the Alter Rebbe declares this the liberation not merely of his body but of Chassidus itself. He teaches that the Baal Shem Tov appeared to him in prison. On this day he received a new dimension of permission to teach Chassidus openly. 19 Kislev becomes the annual Chabad "Rosh Hashana of Chassidus" — celebrated worldwide to this day.'},
-  {year:1800,title:'Alter Rebbe Moves to Liadi',cat:'personal',era:'alter_rebbe',location:'Liadi, Belarus',desc:'After his release, the Alter Rebbe moves from Liozna to the larger town of Liadi — giving him one of his lasting titles. His court grows, drawing Chassidim from across Belorussia and Lithuania. He also continues to develop Chabad\'s unique approach to halacha.'},
-  {year:1800,title:'Shulchan Aruch HaRav Published',cat:'publication',era:'alter_rebbe',hdate:'c. 5560',desc:'The Alter Rebbe\'s monumental halachic code begins publication. Unlike earlier codes, it explains the reasoning behind each ruling. It is accepted across broad segments of Jewry and remains the primary halachic authority in Chabad communities.'},
-  {year:1803,title:'Second Arrest — Released More Quickly',cat:'persecution',era:'alter_rebbe',hdate:'5563',location:'St. Petersburg',desc:'A second arrest follows renewed accusations. This time the investigation is brief and the Alter Rebbe is released quickly. The Czarist government, initially suspicious, increasingly recognizes Chassidus as a legitimate religious movement with no political agenda.'},
-  {year:1806,title:'Alter Rebbe Completes Siddur with Chassidic Kabbalistic Intentions',cat:'publication',era:'alter_rebbe',desc:'The Alter Rebbe compiles a siddur (prayer book) according to the nusach (rite) of the Baal Shem Tov, incorporating Kabbalistic kavanos (intentions) that reflect the Chabad approach to prayer. This siddur — called "Siddur Torah Or" — is used by Chabad Chassidim to this day.'},
-  {year:1812,title:'Napoleon Invades Russia — The Alter Rebbe\'s Fateful Choice',cat:'world',era:'alter_rebbe',hdate:'5572',key:true,desc:'Napoleon crosses into Russia in June 1812. The Alter Rebbe publicly sides with Russia — a decision with deep spiritual significance. He teaches: Napoleon would bring Jews physical freedom, but at the cost of spiritual distinctiveness. Better oppression under Russia, which will leave Jewish spirituality intact, than Napoleonic emancipation, which will assimilate Jews into French culture. He flees east ahead of the French advance.',world:'Napoleon enters Moscow in September — finding it abandoned and burning. The Grande Armée\'s destruction in the Russian winter marks the beginning of his end.'},
-  {year:1812,title:'Passing of the Alter Rebbe (24 Tevet)',cat:'passing',era:'alter_rebbe',hdate:'24 Tevet 5573',location:'Piyena, Ukraine',key:true,desc:'Fleeing the chaos of the French invasion in a wagon during the brutal Russian winter, the Alter Rebbe falls gravely ill. He passes away in the village of Piyena — buried in Haditch, Ukraine. His legacy: the Tanya (the Chabad "bible"), the Shulchan Aruch HaRav, and a movement that will outlast empires. His son Rabbi Dovber succeeds him.',world:'Napoleon\'s retreat from Moscow: 400,000 French soldiers dead. The Russian campaign marks the beginning of his final downfall.'},
+  {year:1775,title:'Rabbi Schneur Zalman Established in Liozna',cat:'milestone',era:'alter_rebbe',desc:'Rabbi Schneur Zalman builds a growing court in Liozna (near Vitebsk). His Chassidus spreads through Belorussia and Lithuania — remarkably penetrating the strongholds of the Mitnagdim (opponents of Chassidus), who view the movement with deep suspicion.',cp:'שניאור_זלמן_מלאדי'},
+  {year:1781,title:'Tanya — First Draft Composed',cat:'publication',era:'alter_rebbe',hdate:'c. 5541',desc:'Rabbi Schneur Zalman begins composing the Tanya in response to thousands of Chassidim who cannot receive personal guidance. The book addresses the struggles of the ordinary Jewish soul: how to serve G-d when you are not naturally righteous, when foreign thoughts intrude, when the spirit is low. Its solutions are entirely original — based on Kabbalistic psychology but accessible to any reader.',cp:'תניא'},
+  {year:1796,title:'Tanya First Published',cat:'publication',era:'alter_rebbe',hdate:'5556',location:'Slavuta',key:true,desc:'The Tanya — Likkutei Amarim — is published for the first time. It will become the most influential Chabad text, studied daily for the next two centuries. Its central insight: every Jew contains a Divine soul; the "animal soul" and "divine soul" are in perpetual tension; and the "beinoni" (intermediate person) — not a saint, but not evil either — is the realistic model for Jewish life. 53 chapters for 53 portions of the Torah.',world:'Napoleon\'s early campaigns; France in political turmoil under the Directory.',cp:'תניא'},
+  {year:1798,title:'First Arrest of the Alter Rebbe',cat:'persecution',era:'alter_rebbe',hdate:'15 Tishrei 5559',location:'St. Petersburg, Russia',key:true,desc:'Czarist agents arrest the Alter Rebbe on the basis of Mitnagdim denunciations. He is held in the Peter and Paul Fortress — the same prison where Peter the Great killed his own son. Interrogated by government officials who suspect Chassidism of harboring ties to the Turkish sultan and subversive intentions, he is held for 53 days before being fully exonerated.',world:'French Revolution at its peak; European monarchies deeply suspicious of any popular movement with cross-border networks.',cp:'שניאור_זלמן_מלאדי'},
+  {year:1798,title:'19 Kislev: Liberation and the New Year of Chassidus',cat:'liberation',era:'alter_rebbe',hdate:'19 Kislev 5559',key:true,desc:'Released from prison on 19 Kislev, the Alter Rebbe declares this the liberation not merely of his body but of Chassidus itself. He teaches that the Baal Shem Tov appeared to him in prison. On this day he received a new dimension of permission to teach Chassidus openly. 19 Kislev becomes the annual Chabad "Rosh Hashana of Chassidus" — celebrated worldwide to this day.',cp:'י"ט_כסלו'},
+  {year:1800,title:'Alter Rebbe Moves to Liadi',cat:'personal',era:'alter_rebbe',location:'Liadi, Belarus',desc:'After his release, the Alter Rebbe moves from Liozna to the larger town of Liadi — giving him one of his lasting titles. His court grows, drawing Chassidim from across Belorussia and Lithuania. He also continues to develop Chabad\'s unique approach to halacha.',cp:'שניאור_זלמן_מלאדי'},
+  {year:1800,title:'Shulchan Aruch HaRav Published',cat:'publication',era:'alter_rebbe',hdate:'c. 5560',desc:'The Alter Rebbe\'s monumental halachic code begins publication. Unlike earlier codes, it explains the reasoning behind each ruling. It is accepted across broad segments of Jewry and remains the primary halachic authority in Chabad communities.',cp:'שולחן_ערוך_הרב'},
+  {year:1803,title:'Second Arrest — Released More Quickly',cat:'persecution',era:'alter_rebbe',hdate:'5563',location:'St. Petersburg',desc:'A second arrest follows renewed accusations. This time the investigation is brief and the Alter Rebbe is released quickly. The Czarist government, initially suspicious, increasingly recognizes Chassidus as a legitimate religious movement with no political agenda.',cp:'שניאור_זלמן_מלאדי'},
+  {year:1806,title:'Alter Rebbe Compiles the Chabad Siddur',cat:'publication',era:'alter_rebbe',desc:'The Alter Rebbe compiles a siddur (prayer book) according to the nusach of the Baal Shem Tov, incorporating Kabbalistic intentions that reflect the Chabad approach to prayer. This siddur — called "Siddur Torah Or" — is used by Chabad Chassidim to this day.',cp:'סידור_תורה_אור'},
+  {year:1812,title:'Napoleon Invades Russia — The Alter Rebbe\'s Fateful Choice',cat:'milestone',era:'alter_rebbe',hdate:'5572',key:true,desc:'Napoleon crosses into Russia in June 1812. The Alter Rebbe publicly sides with Russia — a decision with deep spiritual significance. He teaches: Napoleon would bring Jews physical freedom, but at the cost of spiritual distinctiveness. Better oppression under Russia, which will leave Jewish spirituality intact, than Napoleonic emancipation, which will assimilate Jews into French culture. He flees east ahead of the French advance.',world:'Napoleon enters Moscow in September — finding it abandoned and burning. The Grande Armée\'s destruction in the Russian winter marks the beginning of his end.',cp:'שניאור_זלמן_מלאדי'},
+  {year:1812,title:'Passing of the Alter Rebbe (24 Tevet)',cat:'passing',era:'alter_rebbe',hdate:'24 Tevet 5573',location:'Piyena, Ukraine',key:true,desc:'Fleeing the chaos of the French invasion in a wagon during the brutal Russian winter, the Alter Rebbe falls gravely ill. He passes away in the village of Piyena — buried in Haditch, Ukraine. His legacy: the Tanya (the Chabad "bible"), the Shulchan Aruch HaRav, and a movement that will outlast empires. His son Rabbi Dovber succeeds him.',world:'Napoleon\'s retreat from Moscow: 400,000 French soldiers dead. The Russian campaign marks the beginning of his final downfall.',cp:'שניאור_זלמן_מלאדי'},
 
   // MITTELER REBBE
-  {year:1813,title:'Rabbi Dovber Schneuri Becomes Second Rebbe',cat:'milestone',era:'mitteler_rebbe',hdate:'5573',location:'Lubavitch',key:true,desc:'Rabbi Dovber Schneuri assumes leadership from Lubavitch — the town that will give Chabad its other name. Known for his ecstatic prayer style (he could lose himself in meditation for hours), he writes prolifically on contemplative practice and creates systematic maps of the inner spiritual terrain.',world:'Congress of Vienna (1815) redraws European borders; Romantic era begins.'},
-  {year:1817,title:'Chabad Colony Established in Hebron',cat:'organization',era:'mitteler_rebbe',location:'Hebron, Ottoman Palestine',desc:'The Mitteler Rebbe arranges for Chabad Chassidim to settle in Hebron — city of the Patriarchs — establishing the first organized Chabad community in Eretz Yisrael. This community will maintain a continuous presence through the 20th century.'},
-  {year:1820,title:'Mitteler Rebbe Briefly Arrested',cat:'persecution',era:'mitteler_rebbe',location:'Lubavitch',desc:'Following accusations similar to those faced by his father, Rabbi Dovber is briefly arrested. He is released more quickly — demonstrating how Chabad\'s reputation has improved in Czarist eyes over two decades.'},
-  {year:1823,title:'First Formal Chabad Yeshiva',cat:'education',era:'mitteler_rebbe',location:'Lubavitch',desc:'The Mitteler Rebbe formalizes the Chabad learning institution in Lubavitch — structured curriculum, full-time students, combination of Talmud and Chassidus. This prototype will evolve into the Tomchei Temimim yeshiva network three generations later.'},
-  {year:1827,title:'Passing of the Mitteler Rebbe (9 Kislev)',cat:'passing',era:'mitteler_rebbe',hdate:'9 Kislev 5588',location:'Niezhin, Ukraine',key:true,desc:'Rabbi Dovber passes suddenly on 9 Kislev — the anniversary of his birth. He dies mid-composition of a Chassidic discourse. The day becomes paired with 10 Kislev and together with 19 Kislev forms "Yomei DePagra" — the Kislev Days of Liberation celebrated annually. His nephew and son-in-law Rabbi Menachem Mendel succeeds him.',world:'Greece declares independence from Ottoman Empire; Romantic nationalism reshaping European politics.'},
+  {year:1813,title:'Rabbi Dovber Schneuri Becomes Second Rebbe',cat:'milestone',era:'mitteler_rebbe',hdate:'5573',location:'Lubavitch',key:true,desc:'Rabbi Dovber Schneuri assumes leadership from Lubavitch — the town that will give Chabad its other name. Known for his ecstatic prayer style (he could lose himself in meditation for hours), he writes prolifically on contemplative practice and creates systematic maps of the inner spiritual terrain.',world:'Congress of Vienna (1815) redraws European borders; Romantic era begins.',cp:'דובער_שניאורי'},
+  {year:1817,title:'Chabad Colony Established in Hebron',cat:'organization',era:'mitteler_rebbe',location:'Hebron, Ottoman Palestine',desc:'The Mitteler Rebbe arranges for Chabad Chassidim to settle in Hebron — city of the Patriarchs — establishing the first organized Chabad community in Eretz Yisrael. This community will maintain a continuous presence through the 20th century.',cp:'חברון'},
+  {year:1820,title:'Mitteler Rebbe Briefly Arrested',cat:'persecution',era:'mitteler_rebbe',location:'Lubavitch',desc:'Following accusations similar to those faced by his father, Rabbi Dovber is briefly arrested. He is released more quickly — demonstrating how Chabad\'s reputation has improved in Czarist eyes over two decades.',cp:'דובער_שניאורי'},
+  {year:1823,title:'First Formal Chabad Yeshiva',cat:'education',era:'mitteler_rebbe',location:'Lubavitch',desc:'The Mitteler Rebbe formalizes the Chabad learning institution in Lubavitch — structured curriculum, full-time students, combination of Talmud and Chassidus. This prototype will evolve into the Tomchei Temimim yeshiva network three generations later.',cp:'דובער_שניאורי'},
+  {year:1827,title:'Passing of the Mitteler Rebbe (9 Kislev)',cat:'passing',era:'mitteler_rebbe',hdate:'9 Kislev 5588',location:'Niezhin, Ukraine',key:true,desc:'Rabbi Dovber passes suddenly on 9 Kislev — the anniversary of his birth. He dies mid-composition of a Chassidic discourse. The day becomes paired with 10 Kislev and together with 19 Kislev forms "Yomei DePagra" — the Kislev Days of Liberation celebrated annually. His nephew and son-in-law Rabbi Menachem Mendel succeeds him.',world:'Greece declares independence from Ottoman Empire; Romantic nationalism reshaping European politics.',cp:'דובער_שניאורי'},
 
   // TZEMACH TZEDEK
-  {year:1827,title:'Rabbi Menachem Mendel Schneersohn Becomes Third Rebbe',cat:'milestone',era:'tzemach_tzedek',hdate:'5588',location:'Lubavitch',key:true,desc:'Rabbi Menachem Mendel Schneersohn — grandson of the Alter Rebbe, nephew and son-in-law of the Mitteler Rebbe — assumes leadership. The Tzemach Tzedek (named for his monumental halachic work) will lead through the darkest period of Czarist anti-Jewish legislation.'},
-  {year:1827,title:'Cantonist Decrees — Jewish Boys Forcibly Drafted',cat:'persecution',era:'tzemach_tzedek',hdate:'5588',location:'Russian Empire',key:true,desc:'Tsar Nicholas I extends the military draft to Jews: 25-year service beginning at age 12. Quota collectors kidnap Jewish boys to fill quotas. The boys are systematically pressured to convert to Christianity. An estimated 70,000 Jewish boys are drafted over 30 years — separated from their families forever. The Tzemach Tzedek fights these decrees for decades.',world:'Nicholas I reigns 1825-1855: intense nationalism, systematic suppression of minorities, fierce opposition to any form of Jewish autonomy.'},
-  {year:1843,title:'Tzemach Tzedek Summoned to St. Petersburg',cat:'persecution',era:'tzemach_tzedek',location:'St. Petersburg, Russia',desc:'The Tsar summons leading rabbis to discuss "reforming" Jewish education — a government project to Russify and secularize Jews. The Tzemach Tzedek attends but firmly resists. He returns to Lubavitch having preserved the integrity of Jewish education against enormous pressure.'},
-  {year:1846,title:'Tzemach Tzedek Published — Responsa',cat:'publication',era:'tzemach_tzedek',desc:'Rabbi Menachem Mendel publishes his major halachic responsa under the title "Tzemach Tzedek" — which becomes so associated with him that it becomes his personal title. His writings reveal encyclopedic mastery of all areas of Jewish law combined with deep Chassidic insight.'},
-  {year:1855,title:'Death of Nicholas I — Partial Relief for Jews',cat:'liberation',era:'tzemach_tzedek',desc:'The death of Tsar Nicholas I and accession of Alexander II brings relief: the Cantonist decrees are abolished. Some restrictions on Jewish movement are relaxed. For the Tzemach Tzedek, who fought these decrees for nearly three decades, the news is a hard-won victory.',world:'Crimean War ends; Russia humiliated. Alexander II begins a cautious liberalization.'},
-  {year:1860,title:'Tzemach Tzedek Sends Emissaries Throughout the Russian Empire',cat:'organization',era:'tzemach_tzedek',desc:'The Tzemach Tzedek systematically expands Chabad\'s geographic footprint — sending emissaries and students to cities and towns across the Russian Empire where Jewish communities exist but Chabad presence is weak. The groundwork for a national network is laid.'},
-  {year:1866,title:'Passing of the Tzemach Tzedek (13 Nissan)',cat:'passing',era:'tzemach_tzedek',hdate:'13 Nissan 5626',location:'Lubavitch',key:true,desc:'Rabbi Menachem Mendel Schneersohn passes on the eve of Passover — 13 Nissan 5626. Mourned across the Jewish world as one of its greatest minds. He leaves seven sons — each becomes a Rebbe of a different community. His youngest son Rabbi Shmuel remains in Lubavitch and succeeds him as Chabad Rebbe.',world:'American Civil War has ended (1865); German unification imminent. Industrial revolution transforming the world.'},
+  {year:1827,title:'Rabbi Menachem Mendel Schneersohn Becomes Third Rebbe',cat:'milestone',era:'tzemach_tzedek',hdate:'5588',location:'Lubavitch',key:true,desc:'Rabbi Menachem Mendel Schneersohn — grandson of the Alter Rebbe, nephew and son-in-law of the Mitteler Rebbe — assumes leadership. The Tzemach Tzedek (named for his monumental halachic work) will lead through the darkest period of Czarist anti-Jewish legislation.',cp:'מנחם_מנדל_שניאורסון_(הצמח_צדק)'},
+  {year:1827,title:'Cantonist Decrees — Jewish Boys Forcibly Drafted',cat:'persecution',era:'tzemach_tzedek',hdate:'5588',location:'Russian Empire',key:true,desc:'Tsar Nicholas I extends the military draft to Jews: 25-year service beginning at age 12. Quota collectors kidnap Jewish boys to fill quotas. The boys are systematically pressured to convert to Christianity. An estimated 70,000 Jewish boys are drafted over 30 years — separated from their families forever. The Tzemach Tzedek fights these decrees for decades.',world:'Nicholas I reigns 1825-1855: intense nationalism, systematic suppression of minorities, fierce opposition to any form of Jewish autonomy.',cp:'חיילים_קנטוניסטים'},
+  {year:1843,title:'Tzemach Tzedek Summoned to St. Petersburg',cat:'persecution',era:'tzemach_tzedek',location:'St. Petersburg, Russia',desc:'The Tsar summons leading rabbis to discuss "reforming" Jewish education — a government project to Russify and secularize Jews. The Tzemach Tzedek attends but firmly resists. He returns to Lubavitch having preserved the integrity of Jewish education against enormous pressure.',cp:'מנחם_מנדל_שניאורסון_(הצמח_צדק)'},
+  {year:1846,title:'Tzemach Tzedek Published — Major Halachic Responsa',cat:'publication',era:'tzemach_tzedek',desc:'Rabbi Menachem Mendel publishes his major halachic responsa under the title "Tzemach Tzedek" — which becomes so associated with him that it becomes his personal title. His writings reveal encyclopedic mastery of all areas of Jewish law combined with deep Chassidic insight.',cp:'מנחם_מנדל_שניאורסון_(הצמח_צדק)'},
+  {year:1855,title:'Death of Nicholas I — Partial Relief for Jews',cat:'liberation',era:'tzemach_tzedek',desc:'The death of Tsar Nicholas I and accession of Alexander II brings relief: the Cantonist decrees are abolished. Some restrictions on Jewish movement are relaxed. For the Tzemach Tzedek, who fought these decrees for nearly three decades, the news is a hard-won victory.',world:'Crimean War ends; Russia humiliated. Alexander II begins a cautious liberalization.',cp:'חיילים_קנטוניסטים'},
+  {year:1860,title:'Tzemach Tzedek Expands Chabad Network',cat:'organization',era:'tzemach_tzedek',desc:'The Tzemach Tzedek systematically expands Chabad\'s geographic footprint — sending emissaries and students to cities and towns across the Russian Empire where Jewish communities exist but Chabad presence is weak. The groundwork for a national network is laid.',cp:'מנחם_מנדל_שניאורסון_(הצמח_צדק)'},
+  {year:1866,title:'Passing of the Tzemach Tzedek (13 Nissan)',cat:'passing',era:'tzemach_tzedek',hdate:'13 Nissan 5626',location:'Lubavitch',key:true,desc:'Rabbi Menachem Mendel Schneersohn passes on the eve of Passover — 13 Nissan 5626. Mourned across the Jewish world as one of its greatest minds. He leaves seven sons — each becomes a Rebbe of a different community. His youngest son Rabbi Shmuel remains in Lubavitch and succeeds him as Chabad Rebbe.',world:'American Civil War has ended (1865); German unification imminent. Industrial revolution transforming the world.',cp:'מנחם_מנדל_שניאורסון_(הצמח_צדק)'},
 
   // MAHARASH
-  {year:1866,title:'Rabbi Shmuel Schneersohn Becomes Fourth Rebbe',cat:'milestone',era:'maharash',hdate:'5626',location:'Lubavitch',desc:'Rabbi Shmuel Schneersohn — youngest son of the Tzemach Tzedek — assumes leadership at just 25 years old. Known for his boldness and vitality, he introduces the famous teaching "Lekatchilah Ariber" — leap over obstacles from the start rather than going around them.'},
-  {year:1868,title:'Maharash Travels Through Western Europe',cat:'personal',era:'maharash',location:'Germany, France, Austria',desc:'The Maharash makes several trips to Western Europe — unusual for a Chassidic Rebbe of the time. He combines health treatments with advocacy for Russian Jewish communities, meeting political leaders and prominent Jews. His cosmopolitan presence challenges stereotypes of Chassidic insularity.'},
-  {year:1875,title:'Maharash Writes Kuntres UMaayan',cat:'publication',era:'maharash',desc:'The Maharash\'s deep Chassidic writings — particularly Kuntres UMaayan — explore the relationship between the infinite and finite. His writings are fewer in number than his predecessors but considered among the most profound.'},
-  {year:1877,title:'Maharash Advocates for Balkan Jews During War',cat:'campaign',era:'maharash',location:'St. Petersburg, Russia',desc:'During the 1877-78 Russo-Turkish War, the Maharash travels to St. Petersburg to advocate for Jewish communities in the Balkans. His political access and diplomatic skill demonstrate Chabad\'s reach beyond purely religious concerns.'},
-  {year:1882,title:'Passing of the Maharash (13 Tishrei)',cat:'passing',era:'maharash',hdate:'13 Tishrei 5643',location:'Lubavitch',key:true,desc:'Rabbi Shmuel Schneersohn passes at only 48 years old — a death felt as a profound tragedy. Despite his short tenure, he expanded Chabad\'s reach and left an indelible spiritual legacy. His son Rabbi Shalom DovBer succeeds him. The brevity of his leadership gives his legacy a poignant quality — so much accomplished, so much more cut short.',world:'Russian pogroms (1881-82) following Alexander II\'s assassination trigger mass Jewish emigration. 2 million Jews will leave for America over the next three decades.'},
+  {year:1866,title:'Rabbi Shmuel Schneersohn Becomes Fourth Rebbe',cat:'milestone',era:'maharash',hdate:'5626',location:'Lubavitch',desc:'Rabbi Shmuel Schneersohn — youngest son of the Tzemach Tzedek — assumes leadership at just 25 years old. Known for his boldness and vitality, he introduces the famous teaching "Lekatchilah Ariber" — leap over obstacles from the start rather than going around them.',cp:'שמואל_שניאורסון'},
+  {year:1868,title:'Maharash Travels Through Western Europe',cat:'personal',era:'maharash',location:'Germany, France, Austria',desc:'The Maharash makes several trips to Western Europe — unusual for a Chassidic Rebbe of the time. He combines health treatments with advocacy for Russian Jewish communities, meeting political leaders and prominent Jews. His cosmopolitan presence challenges stereotypes of Chassidic insularity.',cp:'שמואל_שניאורסון'},
+  {year:1875,title:'Maharash Writes Kuntres UMaayan',cat:'publication',era:'maharash',desc:'The Maharash\'s deep Chassidic writings — particularly Kuntres UMaayan — explore the relationship between the infinite and finite. His writings are fewer in number than his predecessors but considered among the most profound.',cp:'שמואל_שניאורסון'},
+  {year:1877,title:'Maharash Advocates for Balkan Jews During War',cat:'campaign',era:'maharash',location:'St. Petersburg, Russia',desc:'During the 1877-78 Russo-Turkish War, the Maharash travels to St. Petersburg to advocate for Jewish communities in the Balkans. His political access and diplomatic skill demonstrate Chabad\'s reach beyond purely religious concerns.',cp:'שמואל_שניאורסון'},
+  {year:1882,title:'Passing of the Maharash (13 Tishrei)',cat:'passing',era:'maharash',hdate:'13 Tishrei 5643',location:'Lubavitch',key:true,desc:'Rabbi Shmuel Schneersohn passes at only 48 years old — a death felt as a profound tragedy. Despite his short tenure, he expanded Chabad\'s reach and left an indelible spiritual legacy. His son Rabbi Shalom DovBer succeeds him. The brevity of his leadership gives his legacy a poignant quality — so much accomplished, so much more cut short.',world:'Russian pogroms (1881-82) following Alexander II\'s assassination trigger mass Jewish emigration. 2 million Jews will leave for America over the next three decades.',cp:'שמואל_שניאורסון'},
 
   // RASHAB
-  {year:1882,title:'Rabbi Shalom DovBer Schneersohn Becomes Fifth Rebbe',cat:'milestone',era:'rashab',hdate:'5643',location:'Lubavitch',key:true,desc:'Rabbi Shalom DovBer Schneersohn — Rashab — assumes leadership at 21. He will prove to be one of the movement\'s great builders and theoreticians. His Chassidic discourses (maamarim) fill volumes and are legendary for their philosophical depth.'},
-  {year:1892,title:'Rashab Opposes Haskalah and Secular Zionism',cat:'teaching',era:'rashab',desc:'The Rashab writes sharply against the Haskalah (Jewish Enlightenment) and early Zionism — arguing that Jewish identity cannot be reduced to nationality and that the secular solution to antisemitism will ultimately accelerate assimilation. His critics are sharp; his arguments remain relevant for generations.'},
-  {year:1897,title:'Tomchei Temimim Yeshiva Founded — Same Year as First Zionist Congress',cat:'education',era:'rashab',hdate:'Elul 5657',location:'Lubavitch',key:true,desc:'In the same year that Herzl convenes the first Zionist Congress, the Rashab founds Tomchei Temimim — "supporters of the wholehearted." This revolutionary yeshiva combines rigorous Talmud study with daily Chassidic learning, meditation, and prayer. It trains students as simultaneously scholars and spiritual warriors. Graduates will become the backbone of the Soviet underground network. The yeshiva will survive revolutions, wars, and exile.',world:'1897: Zionism\'s political birth. The Rashab sees it as fundamentally misunderstanding what Judaism is.'},
-  {year:1898,title:'Kuntres HaAvodah and Kuntres HaTefillah Published',cat:'publication',era:'rashab',desc:'"Treatise on Divine Service" and "Treatise on Prayer" — the most systematic exposition of Chabad inner practice. How to meditate; how to pray with kavanah; how to achieve genuine spiritual transformation. These texts become essential study for every Chabad student.'},
-  {year:1907,title:'Rashab Issues Public Declaration on Zionism',cat:'milestone',era:'rashab',desc:'The Rashab issues a sharp public response to both political Zionism and Agudah Israel. He argues that building a Jewish state through political means compromises the messianic nature of Jewish return to the Land of Israel. His position defines Chabad\'s complex relationship with Zionism for generations.'},
-  {year:1914,title:'WWI — Lubavitch Evacuated',cat:'persecution',era:'rashab',hdate:'5675',location:'Lubavitch → Rostov',key:true,desc:'WWI devastates Jewish communities in the Pale of Settlement. Lubavitch — near the Eastern Front — must be evacuated. The Rashab relocates to Rostov-on-Don in southern Russia. The Tomchei Temimim yeshiva moves with him. Lubavitch, the ancestral home of the movement for over a century, will never again serve as Chabad headquarters.',world:'The Eastern Front runs directly through heavily Jewish-populated areas of Poland and Ukraine. Millions of Jews are displaced.'},
-  {year:1917,title:'Bolshevik Revolution — Chabad Faces Communist Takeover',cat:'persecution',era:'rashab',hdate:'5678',location:'Russia',key:true,desc:'The October Revolution seizes power. Within months, a systematic anti-religion campaign begins. Jewish religious life is criminalized: Torah study, Shabbat observance, religious education — all forbidden. The Yevsektsia (Jewish section of the Communist Party) is particularly vicious in persecuting Jewish religious institutions. The Rashab leads Chabad through the first terrible years of Communist rule.',world:'Tsar Nicholas II and his family murdered (July 1918). Red Terror begins. Millions die in the ensuing Civil War.'},
-  {year:1920,title:'Passing of the Rebbe Rashab (2 Nissan)',cat:'passing',era:'rashab',hdate:'2 Nissan 5680',location:'Rostov-on-Don, Russia',key:true,desc:'Rabbi Shalom DovBer passes in Rostov on 2 Nissan 5680 — just as Communist power is being fully consolidated. His last years are spent desperately fighting to maintain Jewish life under Bolshevik rule. He entrusts his son and disciple, Rabbi Yosef Yitzchak, with the impossible mission of leading Chabad through Communist persecution.',world:'Russian Civil War ending. Red Army victorious. Communist power now total.'},
+  {year:1882,title:'Rabbi Shalom DovBer Schneersohn Becomes Fifth Rebbe',cat:'milestone',era:'rashab',hdate:'5643',location:'Lubavitch',key:true,desc:'Rabbi Shalom DovBer Schneersohn — Rashab — assumes leadership at 21. He will prove to be one of the movement\'s great builders and theoreticians. His Chassidic discourses (maamarim) fill volumes and are legendary for their philosophical depth.',cp:'שלום_דובער_שניאורסון'},
+  {year:1892,title:'Rashab Writes Against Haskalah and Secular Zionism',cat:'teaching',era:'rashab',desc:'The Rashab writes sharply against the Haskalah (Jewish Enlightenment) and early Zionism — arguing that Jewish identity cannot be reduced to nationality and that the secular solution to antisemitism will ultimately accelerate assimilation. His critics are sharp; his arguments remain relevant for generations.',cp:'שלום_דובער_שניאורסון'},
+  {year:1897,title:'Tomchei Temimim Yeshiva Founded',cat:'education',era:'rashab',hdate:'Elul 5657',location:'Lubavitch',key:true,desc:'In the same year that Herzl convenes the first Zionist Congress, the Rashab founds Tomchei Temimim — "supporters of the wholehearted." This revolutionary yeshiva combines rigorous Talmud study with daily Chassidic learning, meditation, and prayer. It trains students as simultaneously scholars and spiritual warriors. Graduates will become the backbone of the Soviet underground network.',world:'1897: Zionism\'s political birth. The Rashab sees it as fundamentally misunderstanding what Judaism is.',cp:'תומכי_תמימים'},
+  {year:1898,title:'Kuntres HaAvodah and Kuntres HaTefillah Published',cat:'publication',era:'rashab',desc:'"Treatise on Divine Service" and "Treatise on Prayer" — the most systematic exposition of Chabad inner practice. How to meditate; how to pray with kavanah; how to achieve genuine spiritual transformation. These texts become essential study for every Chabad student.',cp:'שלום_דובער_שניאורסון'},
+  {year:1907,title:'Rashab Issues Public Declaration on Zionism',cat:'milestone',era:'rashab',desc:'The Rashab issues a sharp public response to both political Zionism and Agudah Israel. He argues that building a Jewish state through political means compromises the messianic nature of Jewish return to the Land of Israel. His position defines Chabad\'s complex relationship with Zionism for generations.',cp:'שלום_דובער_שניאורסון'},
+  {year:1910,title:'Hemshech Ayin Beis — The Great Discourse',cat:'teaching',era:'rashab',hdate:'5672-5676',desc:'The Rashab begins delivering the "Hemshech Ayin Beis" — a continuous Chassidic discourse spanning four years, considered the most profound and comprehensive exposition of Chabad Chassidus ever given. It covers the entire framework of divine emanation, the nature of the soul, and the mechanics of spiritual rectification.',cp:'המשך_עת"ר'},
+  {year:1914,title:'WWI — Lubavitch Evacuated',cat:'persecution',era:'rashab',hdate:'5675',location:'Lubavitch → Rostov',key:true,desc:'WWI devastates Jewish communities in the Pale of Settlement. Lubavitch — near the Eastern Front — must be evacuated. The Rashab relocates to Rostov-on-Don in southern Russia. The Tomchei Temimim yeshiva moves with him. Lubavitch, the ancestral home of the movement for over a century, will never again serve as Chabad headquarters.',world:'The Eastern Front runs directly through heavily Jewish-populated areas of Poland and Ukraine. Millions of Jews are displaced.',cp:'שלום_דובער_שניאורסון'},
+  {year:1917,title:'Bolshevik Revolution — Chabad Faces Communist Takeover',cat:'persecution',era:'rashab',hdate:'5678',location:'Russia',key:true,desc:'The October Revolution seizes power. Within months, a systematic anti-religion campaign begins. Jewish religious life is criminalized: Torah study, Shabbat observance, religious education — all forbidden. The Yevsektsia (Jewish section of the Communist Party) is particularly vicious in persecuting Jewish religious institutions. The Rashab leads Chabad through the first terrible years of Communist rule.',world:'Tsar Nicholas II and his family murdered (July 1918). Red Terror begins. Millions die in the ensuing Civil War.',cp:'שלום_דובער_שניאורסון'},
+  {year:1920,title:'Passing of the Rebbe Rashab (2 Nissan)',cat:'passing',era:'rashab',hdate:'2 Nissan 5680',location:'Rostov-on-Don, Russia',key:true,desc:'Rabbi Shalom DovBer passes in Rostov on 2 Nissan 5680 — just as Communist power is being fully consolidated. His last years are spent desperately fighting to maintain Jewish life under Bolshevik rule. He entrusts his son and disciple, Rabbi Yosef Yitzchak, with the impossible mission of leading Chabad through Communist persecution.',world:'Russian Civil War ending. Red Army victorious. Communist power now total.',cp:'שלום_דובער_שניאורסון'},
 
   // FRIERDIKER - SOVIET
-  {year:1920,title:'Rabbi Yosef Yitzchak Schneersohn Becomes Sixth Rebbe',cat:'milestone',era:'frierdiker_soviet',hdate:'2 Nissan 5680',location:'Rostov-on-Don, Russia',key:true,desc:'Rabbi Yosef Yitzchak Schneersohn inherits leadership in perhaps the most dangerous moment in Chabad history. The Bolsheviks have declared war on religion. He immediately organizes a clandestine network to sustain Torah education, mikvaot, and observance throughout the Soviet Union at mortal risk.'},
-  {year:1921,title:'Underground Torah Network Established Across USSR',cat:'organization',era:'frierdiker_soviet',key:true,desc:'The Frierdiker Rebbe creates an elaborate underground network throughout the USSR — secret yeshivos, hidden mikvaot, clandestine shochetim, covert Torah teachers. This network operates for decades under the NKVD\'s noses. Thousands of Jews maintain their practice at mortal risk. The network uses code words, safe houses, and dead drops. Hundreds of Chabad Chassidim will be imprisoned or killed over the next two decades.',world:'Lenin\'s New Economic Policy brings brief economic liberalization, but religious persecution intensifies.'},
-  {year:1924,title:'Frierdiker Rebbe Moves to Leningrad',cat:'personal',era:'frierdiker_soviet',location:'Leningrad (St. Petersburg), Russia',desc:'The Frierdiker Rebbe moves Chabad headquarters to Leningrad — the Soviet Union\'s second city and cultural capital. From there he coordinates Jewish religious life across the entire USSR while under increasing NKVD surveillance.'},
-  {year:1927,title:'NKVD Arrests the Frierdiker Rebbe',cat:'persecution',era:'frierdiker_soviet',hdate:'15 Sivan 5687',location:'Leningrad, Russia',key:true,desc:'On 15 Sivan 5687, NKVD agents arrive at the Frierdiker Rebbe\'s home in Leningrad. He is arrested and taken to prison — accused of counterrevolutionary activity. At one point a gun is placed on the interrogation table to intimidate him. His response becomes legendary: "This toy frightens only one who has many worlds but one G-d. I have one world and many G-ds — it does not frighten me." He is sentenced to death, later commuted to exile.',world:'Stalin consolidating power; Trotsky marginalized. Soviet anti-religious campaign reaching new intensity.'},
-  {year:1927,title:'Death Sentence Commuted — 12-13 Tammuz Liberation',cat:'liberation',era:'frierdiker_soviet',hdate:'12-13 Tammuz 5687',key:true,desc:'International Jewish organizations, foreign diplomats, and public pressure lead to the commutation of the death sentence — first to three years Siberian exile, then to exile in Kostroma, then to full release. On 12-13 Tammuz 5687, he is freed. The date becomes the second major Chabad liberation holiday — "Yud Beis Tammuz" — celebrated annually worldwide alongside 19 Kislev.',world:'International outcry from Jewish organizations in the US, UK, and Germany proves decisive.'},
-  {year:1927,title:'Frierdiker Rebbe Leaves the Soviet Union',cat:'liberation',era:'frierdiker_soviet',hdate:'5688',location:'Riga, Latvia',desc:'After his release, the Frierdiker Rebbe leaves the Soviet Union — first to Riga, Latvia. From outside Soviet borders, he works more openly for Soviet Jews: writing, publishing, and organizing support for the underground network he left behind. He is one of the last major Torah leaders to escape Communist Russia.'},
-  {year:1929,title:'Frierdiker Rebbe Tours the United States',cat:'campaign',era:'frierdiker_soviet',location:'United States',key:true,desc:'The Frierdiker Rebbe makes his first visit to the United States — a landmark trip. He tours Jewish communities, speaks to massive audiences, and plants the seed of what will become Chabad of America. He is struck by both the vastness of American Jewry and the depth of their disconnection from tradition. He returns to Europe but the vision of an American Chabad stays with him.',world:'Stock market crash (Oct 1929) begins the Great Depression.'},
-  {year:1934,title:'Frierdiker Rebbe Moves to Warsaw',cat:'personal',era:'frierdiker_soviet',location:'Otwock/Warsaw, Poland',desc:'The Frierdiker Rebbe moves from Riga to Otwock (near Warsaw) — establishing a new center for Chabad operations. Warsaw becomes a hub of Jewish life and Torah scholarship. Dark clouds are gathering over Europe, but few yet appreciate their full darkness.'},
-  {year:1939,title:'Nazi Germany Invades Poland — The Rebbe Is Trapped in Warsaw',cat:'persecution',era:'frierdiker_soviet',hdate:'1 Elul 5699',location:'Warsaw, Poland',key:true,desc:'On September 1, 1939, Germany invades Poland. The Frierdiker Rebbe is trapped in Warsaw as Nazi bombs fall on the city. The city falls within weeks. Jewish residents face immediate persecution, deportation orders, and violence. The Rebbe and his family are in mortal danger.',world:'WWII begins. Germany and USSR divide Poland between them via the Molotov-Ribbentrop Pact.'},
-  {year:1940,title:'Dramatic Rescue: The Rebbe Escapes Nazi Warsaw',cat:'liberation',era:'frierdiker_soviet',hdate:'Adar 5700',location:'Warsaw → Berlin → Stockholm → New York',key:true,desc:'A remarkable diplomatic rescue mission — coordinated by Rabbi Yechezkel Besser, American Chabad leaders, and U.S. State Department intermediaries — secures the Frierdiker Rebbe\'s exit from Nazi-occupied Warsaw. Traveling via Berlin (!), Stockholm, and onward to New York, the Rebbe arrives on 9 Adar 5700 (March 19, 1940). He is among the last major Torah leaders to escape Nazi Europe alive.',world:'The "Phoney War" has ended; Germany is about to launch its Western offensive against France. The Holocaust\'s killing phase is still two years away.'},
+  {year:1920,title:'Rabbi Yosef Yitzchak Schneersohn Becomes Sixth Rebbe',cat:'milestone',era:'frierdiker_soviet',hdate:'2 Nissan 5680',location:'Rostov-on-Don, Russia',key:true,desc:'Rabbi Yosef Yitzchak Schneersohn inherits leadership in perhaps the most dangerous moment in Chabad history. The Bolsheviks have declared war on religion. He immediately organizes a clandestine network to sustain Torah education, mikvaot, and observance throughout the Soviet Union at mortal risk.',cp:'יוסף_יצחק_שניאורסון'},
+  {year:1921,title:'Underground Torah Network Established Across USSR',cat:'organization',era:'frierdiker_soviet',key:true,desc:'The Frierdiker Rebbe creates an elaborate underground network throughout the USSR — secret yeshivos, hidden mikvaot, clandestine shochetim, covert Torah teachers. This network operates for decades under the NKVD\'s noses. Thousands of Jews maintain their practice at mortal risk. The network uses code words, safe houses, and dead drops. Hundreds of Chabad Chassidim will be imprisoned or killed over the next two decades.',world:'Lenin\'s New Economic Policy brings brief economic liberalization, but religious persecution intensifies.',cp:'יוסף_יצחק_שניאורסון'},
+  {year:1924,title:'Frierdiker Rebbe Moves to Leningrad',cat:'personal',era:'frierdiker_soviet',location:'Leningrad (St. Petersburg), Russia',desc:'The Frierdiker Rebbe moves Chabad headquarters to Leningrad — the Soviet Union\'s second city and cultural capital. From there he coordinates Jewish religious life across the entire USSR while under increasing NKVD surveillance.',cp:'יוסף_יצחק_שניאורסון'},
+  {year:1927,title:'NKVD Arrests the Frierdiker Rebbe',cat:'persecution',era:'frierdiker_soviet',hdate:'15 Sivan 5687',location:'Leningrad, Russia',key:true,desc:'On 15 Sivan 5687, NKVD agents arrive at the Frierdiker Rebbe\'s home in Leningrad. He is arrested and taken to prison — accused of counterrevolutionary activity. At one point a gun is placed on the interrogation table to intimidate him. His response becomes legendary: "This toy frightens only one who has many worlds but one G-d. I have one world and many G-ds — it does not frighten me." He is sentenced to death, later commuted to exile.',world:'Stalin consolidating power; Trotsky marginalized. Soviet anti-religious campaign reaching new intensity.',cp:'יוסף_יצחק_שניאורסון'},
+  {year:1927,title:'Liberation — 12-13 Tammuz',cat:'liberation',era:'frierdiker_soviet',hdate:'12-13 Tammuz 5687',key:true,desc:'International Jewish organizations, foreign diplomats, and public pressure lead to the commutation of the death sentence — first to three years Siberian exile, then to exile in Kostroma, then to full release. On 12-13 Tammuz 5687, he is freed. The date becomes the second major Chabad liberation holiday — "Yud Beis Tammuz" — celebrated annually worldwide alongside 19 Kislev.',world:'International outcry from Jewish organizations in the US, UK, and Germany proves decisive.',cp:'י"ב_תמוז'},
+  {year:1927,title:'Frierdiker Rebbe Leaves the Soviet Union for Riga',cat:'liberation',era:'frierdiker_soviet',hdate:'5688',location:'Riga, Latvia',desc:'After his release, the Frierdiker Rebbe leaves the Soviet Union — first to Riga, Latvia. From outside Soviet borders, he works more openly for Soviet Jews: writing, publishing, and organizing support for the underground network he left behind.',cp:'יוסף_יצחק_שניאורסון'},
+  {year:1929,title:'Frierdiker Rebbe Tours the United States',cat:'campaign',era:'frierdiker_soviet',location:'United States',key:true,desc:'The Frierdiker Rebbe makes his first visit to the United States — a landmark trip. He tours Jewish communities, speaks to massive audiences, and plants the seed of what will become Chabad of America. He is struck by both the vastness of American Jewry and the depth of their disconnection from tradition.',world:'Stock market crash (Oct 1929) begins the Great Depression.',cp:'יוסף_יצחק_שניאורסון'},
+  {year:1934,title:'Frierdiker Rebbe Moves to Warsaw',cat:'personal',era:'frierdiker_soviet',location:'Otwock/Warsaw, Poland',desc:'The Frierdiker Rebbe moves from Riga to Otwock (near Warsaw) — establishing a new center for Chabad operations. Warsaw becomes a hub of Jewish life and Torah scholarship. Dark clouds are gathering over Europe.',cp:'יוסף_יצחק_שניאורסון'},
+  {year:1939,title:'Nazi Germany Invades Poland — The Rebbe Is Trapped in Warsaw',cat:'persecution',era:'frierdiker_soviet',hdate:'1 Elul 5699',location:'Warsaw, Poland',key:true,desc:'On September 1, 1939, Germany invades Poland. The Frierdiker Rebbe is trapped in Warsaw as Nazi bombs fall on the city. The city falls within weeks. Jewish residents face immediate persecution, deportation orders, and violence. The Rebbe and his family are in mortal danger.',world:'WWII begins. Germany and USSR divide Poland between them via the Molotov-Ribbentrop Pact.',cp:'יוסף_יצחק_שניאורסון'},
+  {year:1940,title:'Dramatic Rescue: The Rebbe Escapes Nazi Warsaw',cat:'liberation',era:'frierdiker_soviet',hdate:'Adar 5700',location:'Warsaw → Berlin → Stockholm → New York',key:true,desc:'A remarkable diplomatic rescue mission — coordinated by Rabbi Yechezkel Besser, American Chabad leaders, and U.S. State Department intermediaries — secures the Frierdiker Rebbe\'s exit from Nazi-occupied Warsaw. Traveling via Berlin, Stockholm, and onward to New York, the Rebbe arrives on 9 Adar 5700 (March 19, 1940). He is among the last major Torah leaders to escape Nazi Europe alive.',world:'The "Phoney War" has ended; Germany is about to launch its Western offensive against France.',cp:'יוסף_יצחק_שניאורסון'},
 
   // FRIERDIKER - AMERICA
-  {year:1940,title:'770 Eastern Parkway Becomes World Headquarters',cat:'organization',era:'frierdiker_war',hdate:'Adar 5700',location:'Crown Heights, Brooklyn, New York',key:true,desc:'The Frierdiker Rebbe establishes his new headquarters at 770 Eastern Parkway in Crown Heights, Brooklyn. The building — initially a brownstone in a middle-class Jewish neighborhood — becomes the center of Chabad worldwide. Simply known as "770," replica buildings will later be built in Melbourne, Tel Aviv, and elsewhere as signs of spiritual connection.',world:'Europe is falling to Nazi Germany. The Battle of Britain underway. America not yet in the war.'},
-  {year:1941,title:'Merkos L\'Inyonei Chinuch Founded',cat:'organization',era:'frierdiker_war',location:'Brooklyn, New York',desc:'The Frierdiker Rebbe establishes Merkos L\'Inyonei Chinuch (Central Organization for Jewish Education) — the educational arm of American Chabad. It publishes educational material, organizes summer camps and school visits, and becomes the infrastructure backbone for Chabad\'s American outreach program.'},
-  {year:1942,title:'Kehot Publication Society Founded',cat:'organization',era:'frierdiker_war',hdate:'5702',location:'Brooklyn, New York',desc:'Kehot Publication Society is established to publish Chassidic texts and educational materials. Over the next 80 years, Kehot will become the world\'s largest publisher of Chassidic literature — printing millions of books in dozens of languages, from the Tanya to children\'s picture books.'},
-  {year:1944,title:'Frierdiker Rebbe Calls for American Jewish Outreach',cat:'campaign',era:'frierdiker_war',key:true,desc:'The Frierdiker Rebbe publishes a passionate call: American-born Chabad Chassidim must reach out to their fellow Americans. "America is not different (fun a velt)!" he declares — meaning American Jews are not less reachable than European ones. This call plants the seed for Chabad\'s American outreach revolution, executed on a massive scale by his successor.',world:'WWII turning in the Allies\' favor — D-Day (June 1944), liberation of Paris (August 1944).'},
-  {year:1947,title:'Rabbi Menachem Mendel Schneerson Arrives in Brooklyn',cat:'personal',era:'frierdiker_war',location:'Brooklyn, New York',desc:'Rabbi Menachem Mendel Schneerson — son-in-law of the Frierdiker Rebbe — arrives in Brooklyn from Paris. Educated in Berlin and Paris (engineering degree from the Sorbonne), he brings a unique combination of secular erudition and deep Torah scholarship that will enable him to engage the modern world in unprecedented ways.'},
-  {year:1950,title:'Passing of the Frierdiker Rebbe (10 Shevat)',cat:'passing',era:'frierdiker_war',hdate:'10 Shevat 5710',location:'Brooklyn, New York',key:true,desc:'Rabbi Yosef Yitzchak Schneersohn passes on 10 Shevat 5710 (January 28, 1950). He had survived death threats, Soviet prison, exile, Nazi occupation, and made it to America where he rebuilt everything from nothing. He leaves 770 Eastern Parkway and a global network of Chassidim awaiting his successor.',world:'Soviet Union just detonated its first atomic bomb (Aug 1949). Cold War fully underway.'},
+  {year:1940,title:'770 Eastern Parkway Becomes World Headquarters',cat:'organization',era:'frierdiker_war',hdate:'Adar 5700',location:'Crown Heights, Brooklyn, New York',key:true,desc:'The Frierdiker Rebbe establishes his new headquarters at 770 Eastern Parkway in Crown Heights, Brooklyn. The building — initially a brownstone in a middle-class Jewish neighborhood — becomes the center of Chabad worldwide. Simply known as "770," replica buildings will later be built in Melbourne, Tel Aviv, and elsewhere as signs of spiritual connection.',world:'Europe is falling to Nazi Germany. The Battle of Britain underway. America not yet in the war.',cp:'770_איסטרן_פארקוויי'},
+  {year:1941,title:'Merkos L\'Inyonei Chinuch Founded',cat:'organization',era:'frierdiker_war',location:'Brooklyn, New York',desc:'The Frierdiker Rebbe establishes Merkos L\'Inyonei Chinuch (Central Organization for Jewish Education) — the educational arm of American Chabad. It publishes educational material, organizes summer camps and school visits, and becomes the infrastructure backbone for Chabad\'s American outreach program.',cp:'מרכז_לעניני_חינוך'},
+  {year:1942,title:'Kehot Publication Society Founded',cat:'organization',era:'frierdiker_war',hdate:'5702',location:'Brooklyn, New York',desc:'Kehot Publication Society is established to publish Chassidic texts and educational materials. Over the next 80 years, Kehot will become the world\'s largest publisher of Chassidic literature — printing millions of books in dozens of languages, from the Tanya to children\'s picture books.',cp:'קה"ת'},
+  {year:1944,title:'Frierdiker Rebbe Calls for American Jewish Outreach',cat:'campaign',era:'frierdiker_war',key:true,desc:'The Frierdiker Rebbe publishes a passionate call: American-born Chabad Chassidim must reach out to their fellow Americans. "America iz nisht anderesh (America is not different)!" he declares — meaning American Jews are not less reachable than European ones. This call plants the seed for Chabad\'s American outreach revolution, executed on a massive scale by his successor.',world:'WWII turning in the Allies\' favor — D-Day (June 1944), liberation of Paris (August 1944).',cp:'יוסף_יצחק_שניאורסון'},
+  {year:1947,title:'Rabbi Menachem Mendel Schneerson Arrives in Brooklyn',cat:'personal',era:'frierdiker_war',location:'Brooklyn, New York',desc:'Rabbi Menachem Mendel Schneerson — son-in-law of the Frierdiker Rebbe — arrives in Brooklyn from Paris. Educated in Berlin and Paris (engineering degree from the Sorbonne), he brings a unique combination of secular erudition and deep Torah scholarship that will enable him to engage the modern world in unprecedented ways.',cp:'מנחם_מנדל_שניאורסון'},
+  {year:1950,title:'Passing of the Frierdiker Rebbe (10 Shevat)',cat:'passing',era:'frierdiker_war',hdate:'10 Shevat 5710',location:'Brooklyn, New York',key:true,desc:'Rabbi Yosef Yitzchak Schneersohn passes on 10 Shevat 5710 (January 28, 1950). He had survived death threats, Soviet prison, exile, Nazi occupation, and made it to America where he rebuilt everything from nothing. He leaves 770 Eastern Parkway and a global network of Chassidim awaiting his successor.',world:'Soviet Union just detonated its first atomic bomb (Aug 1949). Cold War fully underway.',cp:'יוסף_יצחק_שניאורסון'},
 
   // REBBE EARLY
-  {year:1951,title:'Rabbi Menachem Mendel Schneerson Accepts Leadership',cat:'milestone',era:'rebbe_early',hdate:'10 Shevat 5711',location:'770 Eastern Parkway, Brooklyn',key:true,desc:'Exactly one year after his father-in-law\'s passing, Rabbi Menachem Mendel Schneerson accepts the leadership of Chabad. He is 48 years old. His acceptance discourse — "Basi L\'Gani" — based on the Frierdiker Rebbe\'s last maamar — charts the entire course of his leadership: returning the Divine presence to this world through Torah and mitzvot. He will serve for 43 years.',world:'Korean War underway. Stalin alive. McCarthy hearings beginning. Cold War at its hottest.'},
-  {year:1951,title:'Merkos Shlichus — Traveling Emissaries Program',cat:'campaign',era:'rebbe_early',desc:'The Rebbe initiates the practice of sending yeshiva students to remote Jewish communities during summer vacations — the first iteration of what becomes "Merkos Shlichus." Students visit hundreds of cities annually to provide Jewish education, lead services, and connect isolated Jews to their heritage.'},
-  {year:1953,title:'Gan Yisrael Camps and Children\'s Jewish Education',cat:'education',era:'rebbe_early',desc:'The Rebbe launches "Gan Yisrael" summer camps as a framework for joyful Jewish childhood. He will later create "Tzivos Hashem" (Army of G-d) — a children\'s organization based on ranks earned through mitzvot. By century\'s end, hundreds of Chabad preschools operate worldwide.'},
-  {year:1955,title:'Rebbe Writes Prolifically on Science and Faith',cat:'teaching',era:'rebbe_early',desc:'The Rebbe — an engineer by training — engages extensively with modern science, writing letters to scientists, doctors, and academics. He argues that true science and Torah are not in conflict; that the age of the universe as conventionally calculated need not contradict the Torah account. His letters on these topics (published in "Igros Kodesh") reach thousands.',world:'Watson and Crick\'s discovery of DNA structure (1953) transforms biology. Sputnik launches (1957). Science and religion face new questions.'},
-  {year:1956,title:'First Shluchim Sent to Australia and South Africa',cat:'organization',era:'rebbe_early',location:'Melbourne / Johannesburg',key:true,desc:'The Rebbe sends the first permanent Chabad emissaries: Rabbi Yitzchok Groner to Melbourne and Rabbi Mendel Lipskar to South Africa. These pioneers build institutions from scratch. Melbourne will become one of the world\'s most vibrant Chabad communities. This marks the formal beginning of the global shluchim system.',world:'Suez Crisis (1956). Hungarian Revolution crushed by Soviet tanks. Cold War divides the world.'},
-  {year:1958,title:'Chabad House Model Emerges',cat:'organization',era:'rebbe_early',desc:'The Rebbe encourages shluchim to open their homes: the "Chabad House" concept — where the shliach\'s home is literally open to any Jew seeking connection. No appointment, no membership, no fee, no questions asked. This radically welcoming model will scale to thousands of locations over the next six decades.'},
-  {year:1962,title:'Rebbe Launches Tefillin Campaign in Soviet Union',cat:'campaign',era:'rebbe_early',location:'Soviet Union',desc:'The Rebbe coordinates the smuggling of tefillin into the Soviet Union — where Jewish religious articles are banned. Networks of Chabad Chassidim bring tefillin at tremendous personal risk. Thousands of Soviet Jews lay tefillin — sometimes for the first time in decades — through these clandestine networks.',world:'Cuba Missile Crisis (1962) — closest the Cold War comes to nuclear exchange.'},
+  {year:1951,title:'Rabbi Menachem Mendel Schneerson Accepts Leadership',cat:'milestone',era:'rebbe_early',hdate:'10 Shevat 5711',location:'770 Eastern Parkway, Brooklyn',key:true,desc:'Exactly one year after his father-in-law\'s passing, Rabbi Menachem Mendel Schneerson accepts the leadership of Chabad. He is 48 years old. His acceptance discourse — "Basi L\'Gani" — based on the Frierdiker Rebbe\'s last maamar — charts the entire course of his leadership: returning the Divine presence to this world through Torah and mitzvot. He will serve for 43 years.',world:'Korean War underway. Stalin alive. McCarthy hearings beginning. Cold War at its hottest.',cp:'מנחם_מנדל_שניאורסון'},
+  {year:1951,title:'Merkos Shlichus — Traveling Emissaries Program',cat:'campaign',era:'rebbe_early',desc:'The Rebbe initiates the practice of sending yeshiva students to remote Jewish communities during summer vacations — the first iteration of what becomes "Merkos Shlichus." Students visit hundreds of cities annually to provide Jewish education, lead services, and connect isolated Jews to their heritage.',cp:'מרכז_לעניני_חינוך'},
+  {year:1953,title:'Gan Yisrael Camps and Children\'s Jewish Education',cat:'education',era:'rebbe_early',desc:'The Rebbe launches "Gan Yisrael" summer camps as a framework for joyful Jewish childhood. He will later create "Tzivos Hashem" (Army of G-d) — a children\'s organization based on ranks earned through mitzvot. By century\'s end, hundreds of Chabad preschools operate worldwide.',cp:'צבאות_ה\''},
+  {year:1955,title:'Rebbe Engages Science and Faith',cat:'teaching',era:'rebbe_early',desc:'The Rebbe — an engineer by training — engages extensively with modern science, writing letters to scientists, doctors, and academics. He argues that true science and Torah are not in conflict; that the age of the universe as conventionally calculated need not contradict the Torah account. His letters on these topics (published in "Igros Kodesh") reach thousands.',world:'Watson and Crick\'s discovery of DNA structure (1953) transforms biology. Sputnik launches (1957). Science and religion face new questions.',cp:'מנחם_מנדל_שניאורסון'},
+  {year:1956,title:'First Permanent Shluchim Sent to Australia and South Africa',cat:'organization',era:'rebbe_early',location:'Melbourne / Johannesburg',key:true,desc:'The Rebbe sends the first permanent Chabad emissaries: Rabbi Yitzchok Groner to Melbourne and Rabbi Mendel Lipskar to South Africa. These pioneers build institutions from scratch. Melbourne will become one of the world\'s most vibrant Chabad communities. This marks the formal beginning of the global shluchim system.',world:'Suez Crisis (1956). Hungarian Revolution crushed by Soviet tanks. Cold War divides the world.',cp:'שליח_(חב"ד)'},
+  {year:1958,title:'Chabad House Model Emerges',cat:'organization',era:'rebbe_early',desc:'The Rebbe encourages shluchim to open their homes: the "Chabad House" concept — where the shliach\'s home is literally open to any Jew seeking connection. No appointment, no membership, no fee, no questions asked. This radically welcoming model will scale to thousands of locations over the next six decades.',cp:'בית_חב"ד'},
+  {year:1962,title:'Tefillin Smuggled Into the Soviet Union',cat:'campaign',era:'rebbe_early',location:'Soviet Union',desc:'The Rebbe coordinates the smuggling of tefillin into the Soviet Union — where Jewish religious articles are banned. Networks of Chabad Chassidim bring tefillin at tremendous personal risk. Thousands of Soviet Jews lay tefillin — sometimes for the first time in decades — through these clandestine networks.',world:'Cuba Missile Crisis (1962) — closest the Cold War comes to nuclear exchange.',cp:'מבצע_תפילין'},
 
   // REBBE EXPANSION
-  {year:1963,title:'Chabad Expands Seriously in Israel',cat:'organization',era:'rebbe_expansion',location:'Israel',desc:'Chabad begins serious expansion in Israel — sending shluchim to development towns and establishing educational institutions. The Rebbe\'s relationship with Israel is complex: profound love for the Land, deep concern for Jewish security, but principled distance from secular Zionism. He never visits Israel — but engages more deeply with its politics than almost any other Diaspora leader.'},
-  {year:1965,title:'"Mitzvah Tanks" Launched on New York Streets',cat:'campaign',era:'rebbe_expansion',location:'New York City',key:true,desc:'The Rebbe dispatches converted recreational vehicles — "Mitzvah Tanks" — onto Manhattan streets. Young Chabad students approach Jewish men and offer to help them put on tefillin right there on the sidewalk. The image of a tank rolling through Midtown Manhattan becomes iconic. The campaign reaches hundreds of thousands of Jews who had not put on tefillin in years or decades.',world:'Civil rights movement at its peak; Vietnam War protests beginning.'},
-  {year:1967,title:'Six-Day War: Global Tefillin Campaign',cat:'campaign',era:'rebbe_expansion',hdate:'28 Iyar 5727',key:true,desc:'Before the Six-Day War, the Rebbe launches an unprecedented global tefillin campaign. The campaign coincides with Israel\'s miraculous victory. Israeli paratroopers photographed laying tefillin at the newly-liberated Western Wall become one of the iconic images of the 20th century. The Rebbe declares a permanent global tefillin campaign — continuing to this day.',world:'Israel captures Jerusalem, West Bank, Gaza, Sinai, and Golan Heights in 6 days. The Jewish world is electrified.'},
-  {year:1969,title:'First Campus Chabad House — Berkeley, California',cat:'organization',era:'rebbe_expansion',location:'Berkeley, California',key:true,desc:'Rabbi Shlomo Cunin opens the first American college-focused Chabad House near UC Berkeley — epicenter of the counterculture. The Rebbe specifically instructs shluchim to go to university campuses, where young Jews are most spiritually vulnerable and most hungry for authentic connection. The campus Chabad model is born and replicated across every major university worldwide.',world:'Moon landing (July 1969). Woodstock. Vietnam War at its height. Cultural revolution in American youth.'},
-  {year:1971,title:'Soviet Jewry Campaign',cat:'campaign',era:'rebbe_expansion',key:true,desc:'The Rebbe becomes one of the most prominent voices calling for Soviet Jewish freedom. He coordinates campaigns, sends materials into the USSR, trains Soviet emigres, and advocates publicly for Jewish emigration. His shluchim in Israel and America provide critical support for "refuseniks" — Jews denied exit visas.',world:'Jackson-Vanik Amendment (1974) links US-Soviet trade to Jewish emigration rights.'},
-  {year:1973,title:'Yom Kippur War: Rebbe Encourages Nation',cat:'campaign',era:'rebbe_expansion',hdate:'10 Tishrei 5734',desc:'During the Yom Kippur War surprise attack, the Rebbe intensifies the tefillin campaign and sends messages to Israeli soldiers. His response: Jewish identity and mitzvah observance are the Jewish people\'s true protection — more than military hardware.',world:'Egypt and Syria launch surprise attack on Yom Kippur. Initial Israeli setbacks; US emergency airlift saves Israel.'},
-  {year:1975,title:'Shabbat Candles Campaign for Women and Girls',cat:'campaign',era:'rebbe_expansion',location:'Worldwide',desc:'The Rebbe launches a global campaign encouraging Jewish women and girls to light Shabbat candles — emphasizing that even one-year-old girls should begin this practice. The campaign transforms Shabbat candle-lighting from a private family practice into a global movement. Millions of Shabbat candle sets are distributed.'},
-  {year:1978,title:'Daily Rambam Study — Global Torah Curriculum',cat:'education',era:'rebbe_expansion',desc:'The Rebbe initiates programs uniting Jews worldwide in simultaneous daily study: the entire Mishneh Torah (completing Rambam\'s 14-volume halachic code each year), "Halacha Yomis" (daily halacha), and "Chitas" — daily portions of Chumash, Tehillim, and Tanya. These programs create a shared daily curriculum connecting Jews on every continent.',world:'Camp David Accords — Israel and Egypt sign peace framework (1978).'},
-  {year:1980,title:'N\'shei Chabad — Women\'s Organization Formalized',cat:'organization',era:'rebbe_expansion',desc:'The Rebbe expands the formal role of Chabad women — not only as partners to shliach husbands but as independent educators, counselors, and community builders. N\'shei Chabad chapters establish frameworks for women\'s Jewish education and engagement worldwide.'},
-  {year:1983,title:'First Annual International Conference of Shluchim',cat:'organization',era:'rebbe_expansion',location:'New York',key:true,desc:'The first annual Kinus HaShluchim takes place — shluchim from around the world converge on Brooklyn. It becomes the largest annual gathering of rabbis in history, with thousands attending from every corner of the world. The Rebbe meets with them personally and (for those unable to attend) via telephone. The gathering demonstrates the movement\'s extraordinary global reach.',world:'Cold War tensions high; Reagan\'s "Evil Empire" speech. Intermediate-Range Nuclear Forces negotiations.'},
-  {year:1984,title:'Chabad Reaches 1,000 Institutions Worldwide',cat:'milestone',era:'rebbe_expansion',desc:'Chabad operates over 1,000 institutions in 40 countries — a milestone that seemed unimaginable just decades earlier. The pace of expansion continues to accelerate. The Rebbe personally approves each shliach appointment and maintains correspondence with each.'},
+  {year:1963,title:'Chabad Expands Seriously in Israel',cat:'organization',era:'rebbe_expansion',location:'Israel',desc:'Chabad begins serious expansion in Israel — sending shluchim to development towns and establishing educational institutions. The Rebbe\'s relationship with Israel is complex: profound love for the Land, deep concern for Jewish security, but principled distance from secular Zionism. He never visits Israel — but engages more deeply with its politics than almost any other Diaspora leader.',cp:'חב"ד_בישראל'},
+  {year:1965,title:'"Mitzvah Tanks" Launched on New York Streets',cat:'campaign',era:'rebbe_expansion',location:'New York City',key:true,desc:'The Rebbe dispatches converted recreational vehicles — "Mitzvah Tanks" — onto Manhattan streets. Young Chabad students approach Jewish men and offer to help them put on tefillin right there on the sidewalk. The image of a tank rolling through Midtown Manhattan becomes iconic. The campaign reaches hundreds of thousands of Jews who had not put on tefillin in years or decades.',world:'Civil rights movement at its peak; Vietnam War protests beginning.',cp:'מבצע_תפילין'},
+  {year:1967,title:'Six-Day War: Global Tefillin Campaign',cat:'campaign',era:'rebbe_expansion',hdate:'28 Iyar 5727',key:true,desc:'Before the Six-Day War, the Rebbe launches an unprecedented global tefillin campaign. The campaign coincides with Israel\'s miraculous victory. Israeli paratroopers photographed laying tefillin at the newly-liberated Western Wall become one of the iconic images of the 20th century. The Rebbe declares a permanent global tefillin campaign — continuing to this day.',world:'Israel captures Jerusalem, West Bank, Gaza, Sinai, and Golan Heights in 6 days. The Jewish world is electrified.',cp:'מבצע_תפילין'},
+  {year:1969,title:'First Campus Chabad House — Berkeley, California',cat:'organization',era:'rebbe_expansion',location:'Berkeley, California',key:true,desc:'Rabbi Shlomo Cunin opens the first American college-focused Chabad House near UC Berkeley — epicenter of the counterculture. The Rebbe specifically instructs shluchim to go to university campuses, where young Jews are most spiritually vulnerable and most hungry for authentic connection. The campus Chabad model is born.',world:'Moon landing (July 1969). Woodstock. Vietnam War at its height. Cultural revolution in American youth.',cp:'בית_חב"ד'},
+  {year:1971,title:'Soviet Jewry Campaign',cat:'campaign',era:'rebbe_expansion',key:true,desc:'The Rebbe becomes one of the most prominent voices calling for Soviet Jewish freedom. He coordinates campaigns, sends materials into the USSR, trains Soviet emigres, and advocates publicly for Jewish emigration. His shluchim in Israel and America provide critical support for "refuseniks" — Jews denied exit visas.',world:'Jackson-Vanik Amendment (1974) links US-Soviet trade to Jewish emigration rights.',cp:'מנחם_מנדל_שניאורסון'},
+  {year:1973,title:'Yom Kippur War: Rebbe Encourages Nation',cat:'campaign',era:'rebbe_expansion',hdate:'10 Tishrei 5734',desc:'During the Yom Kippur War surprise attack, the Rebbe intensifies the tefillin campaign and sends messages to Israeli soldiers. His response: Jewish identity and mitzvah observance are the Jewish people\'s true protection — more than military hardware.',world:'Egypt and Syria launch surprise attack on Yom Kippur. Initial Israeli setbacks; US emergency airlift saves Israel.',cp:'מנחם_מנדל_שניאורסון'},
+  {year:1975,title:'Shabbat Candles Campaign for Women and Girls',cat:'campaign',era:'rebbe_expansion',location:'Worldwide',desc:'The Rebbe launches a global campaign encouraging Jewish women and girls to light Shabbat candles — emphasizing that even one-year-old girls should begin this practice. The campaign transforms Shabbat candle-lighting from a private family practice into a global movement. Millions of Shabbat candle sets are distributed.',cp:'מבצע_נרות_שבת_קודש'},
+  {year:1978,title:'Daily Rambam Study — Global Torah Curriculum',cat:'education',era:'rebbe_expansion',desc:'The Rebbe initiates programs uniting Jews worldwide in simultaneous daily study: the entire Mishneh Torah (completing Rambam\'s 14-volume halachic code each year), "Halacha Yomis" (daily halacha), and "Chitas" — daily portions of Chumash, Tehillim, and Tanya. These programs create a shared daily curriculum connecting Jews on every continent.',world:'Camp David Accords — Israel and Egypt sign peace framework (1978).',cp:'לימוד_הרמב"ם_היומי'},
+  {year:1980,title:'N\'shei Chabad — Women\'s Organization Formalized',cat:'organization',era:'rebbe_expansion',desc:'The Rebbe expands the formal role of Chabad women — not only as partners to shliach husbands but as independent educators, counselors, and community builders. N\'shei Chabad chapters establish frameworks for women\'s Jewish education and engagement worldwide.',cp:'נשי_חב"ד'},
+  {year:1983,title:'First Annual International Conference of Shluchim',cat:'organization',era:'rebbe_expansion',location:'New York',key:true,desc:'The first annual Kinus HaShluchim takes place — shluchim from around the world converge on Brooklyn. It becomes the largest annual gathering of rabbis in history, with thousands attending from every corner of the world. The Rebbe meets with them personally and (for those unable to attend) via telephone. The gathering demonstrates the movement\'s extraordinary global reach.',world:'Cold War tensions high; Reagan\'s "Evil Empire" speech.',cp:'כינוס_השלוחים_הבינלאומי'},
+  {year:1984,title:'Chabad Reaches 1,000 Institutions Worldwide',cat:'milestone',era:'rebbe_expansion',desc:'Chabad operates over 1,000 institutions in 40 countries — a milestone that seemed unimaginable just decades earlier. The pace of expansion continues to accelerate. The Rebbe personally approves each shliach appointment and maintains correspondence with each.',cp:'שליח_(חב"ד)'},
 
   // REBBE FINAL
-  {year:1985,title:'Chabad Active in 75+ Countries',cat:'milestone',era:'rebbe_final',desc:'By the mid-1980s, Chabad operates in over 75 countries. The growth continues exponentially. Some shluchim serve in exotic locations — Kathmandu, Nepal (serving Israeli trekkers), Phuket, Thailand, Lagos, Nigeria. No Jewish community is too small, no location too remote.'},
-  {year:1987,title:'"Ten Mitzvah Campaigns" Formally Systematized',cat:'campaign',era:'rebbe_final',desc:'The Rebbe formalizes his decade-long campaigns into an official list of ten: Tefillin, Mezuzah, Shabbat candles, Torah study, Tzedaka, Kosher, Family purity, Jewish education for children, Jewish books in the home, Love of fellow Jews. Each campaign has worldwide infrastructure, distribution networks, and volunteers.'},
-  {year:1989,title:'Fall of Soviet Union — Chabad Returns to Russia',cat:'liberation',era:'rebbe_final',hdate:'5750',key:true,desc:'As the Soviet Union collapses, Chabad can openly return to the USSR for the first time since the 1920s. Shluchim flood into Moscow, Leningrad, Minsk, Kiev, and dozens of other cities. They discover Jews who maintained their identity through 70 years of Communist rule — some secretly practicing, some entirely disconnected. The underground network the Frierdiker Rebbe built has somehow survived.',world:'Berlin Wall falls November 9, 1989. Communist regimes collapse across Eastern Europe. History accelerates.'},
-  {year:1991,title:'Gulf War: "Israel Is the Safest Place in the World"',cat:'teaching',era:'rebbe_final',hdate:'5751',location:'Israel',desc:'During the Gulf War with Iraqi Scuds falling on Israel, the Rebbe — controversially — tells Israelis not to flee. "Israel is the safest place in the world," he declares. Despite 39 Scud attacks, Israeli casualties from direct hits are remarkably few. His critics are confounded.',world:'Iraq invades Kuwait (Aug 1990); US-led coalition launches Operation Desert Storm (Jan 1991). 39 Scud missiles hit Israel.'},
-  {year:1991,title:'Soviet Union Dissolves — 1.5 Million Jews Suddenly Accessible',cat:'liberation',era:'rebbe_final',key:true,desc:'The Soviet Union formally dissolves on December 25, 1991. Fifteen new republics emerge with substantial Jewish populations — including Russia, Ukraine, Belarus, Georgia, and Kazakhstan. For the first time since 1917, Jewish religious life can be practiced openly. Chabad shluchim flood into these newly accessible territories. Synagogues reopen, yeshivos are reestablished, mikvaot are built.',world:'Cold War over. 1.5 million Soviet Jews begin emigrating — mostly to Israel, some to America and Germany.'},
-  {year:1992,title:'Rebbe Suffers Stroke (27 Adar)',cat:'personal',era:'rebbe_final',hdate:'27 Adar 5752',location:'Brooklyn, New York',key:true,desc:'On 27 Adar 5752 (March 2, 1992), the Rebbe suffers a major stroke. It silences his public speech — he can no longer deliver farbrengens or written discourses. Yet he continues to appear at 770, nodding and gesturing in response to his Chassidim\'s tears. For two years, the Chabad world holds its breath.',world:'Oslo Accords (1993) — Israel and PLO begin peace process.'},
-  {year:1994,title:'Passing of the Rebbe — 3 Tammuz 5754',cat:'passing',era:'rebbe_final',hdate:'3 Tammuz 5754',location:'Brooklyn, New York',key:true,desc:'Rabbi Menachem Mendel Schneerson passes on 3 Tammuz 5754 (June 12, 1994), at age 92. He leaves no children and no appointed successor. The global movement of 10,000 emissary families in 100+ countries faces an unprecedented moment. Many Chassidim believe he will return. The movement does not collapse — it continues to grow.',world:'Nelson Mandela elected South Africa\'s first Black president (May 1994). Peace in Northern Ireland. End of the Cold War era.'},
+  {year:1985,title:'Chabad Active in 75+ Countries',cat:'milestone',era:'rebbe_final',desc:'By the mid-1980s, Chabad operates in over 75 countries. The growth continues exponentially. Some shluchim serve in exotic locations — Kathmandu, Nepal (serving Israeli trekkers), Phuket, Thailand, Lagos, Nigeria. No Jewish community is too small, no location too remote.',cp:'שליח_(חב"ד)'},
+  {year:1987,title:'"Ten Mitzvah Campaigns" Formally Systematized',cat:'campaign',era:'rebbe_final',desc:'The Rebbe formalizes his decade-long campaigns into an official list of ten: Tefillin, Mezuzah, Shabbat candles, Torah study, Tzedaka, Kosher, Family purity, Jewish education for children, Jewish books in the home, Love of fellow Jews. Each campaign has worldwide infrastructure, distribution networks, and volunteers.',cp:'מבצעים'},
+  {year:1989,title:'Fall of Soviet Union — Chabad Returns to Russia',cat:'liberation',era:'rebbe_final',hdate:'5750',key:true,desc:'As the Soviet Union collapses, Chabad can openly return to the USSR for the first time since the 1920s. Shluchim flood into Moscow, Leningrad, Minsk, Kiev, and dozens of other cities. They discover Jews who maintained their identity through 70 years of Communist rule — some secretly practicing, some entirely disconnected. The underground network the Frierdiker Rebbe built has somehow survived.',world:'Berlin Wall falls November 9, 1989. Communist regimes collapse across Eastern Europe. History accelerates.',cp:'חב"ד_ברוסיה'},
+  {year:1991,title:'Gulf War: "Israel Is the Safest Place in the World"',cat:'teaching',era:'rebbe_final',hdate:'5751',location:'Israel',desc:'During the Gulf War with Iraqi Scuds falling on Israel, the Rebbe — controversially — tells Israelis not to flee. "Israel is the safest place in the world," he declares. Despite 39 Scud attacks, Israeli casualties from direct hits are remarkably few.',world:'Iraq invades Kuwait (Aug 1990); US-led coalition launches Operation Desert Storm (Jan 1991). 39 Scud missiles hit Israel.',cp:'מנחם_מנדל_שניאורסון'},
+  {year:1991,title:'Soviet Union Dissolves — 1.5 Million Jews Suddenly Accessible',cat:'liberation',era:'rebbe_final',key:true,desc:'The Soviet Union formally dissolves on December 25, 1991. Fifteen new republics emerge with substantial Jewish populations — including Russia, Ukraine, Belarus, Georgia, and Kazakhstan. For the first time since 1917, Jewish religious life can be practiced openly. Chabad shluchim flood into these newly accessible territories. Synagogues reopen, yeshivos are reestablished, mikvaot are built.',world:'Cold War over. 1.5 million Soviet Jews begin emigrating — mostly to Israel, some to America and Germany.',cp:'חב"ד_ברוסיה'},
+  {year:1992,title:'Rebbe Suffers Stroke (27 Adar)',cat:'personal',era:'rebbe_final',hdate:'27 Adar 5752',location:'Brooklyn, New York',key:true,desc:'On 27 Adar 5752 (March 2, 1992), the Rebbe suffers a major stroke. It silences his public speech — he can no longer deliver farbrengens or written discourses. Yet he continues to appear at 770, nodding and gesturing in response to his Chassidim\'s tears. For two years, the Chabad world holds its breath.',world:'Oslo Accords (1993) — Israel and PLO begin peace process.',cp:'מנחם_מנדל_שניאורסון'},
+  {year:1994,title:'Passing of the Rebbe — 3 Tammuz 5754',cat:'passing',era:'rebbe_final',hdate:'3 Tammuz 5754',location:'Brooklyn, New York',key:true,desc:'Rabbi Menachem Mendel Schneerson passes on 3 Tammuz 5754 (June 12, 1994), at age 92. He leaves no children and no appointed successor. The global movement of 10,000 emissary families in 100+ countries faces an unprecedented moment. Many Chassidim believe he will return. The movement does not collapse — it continues to grow.',world:'Nelson Mandela elected South Africa\'s first Black president (May 1994). Peace in Northern Ireland. End of the Cold War era.',cp:'ג\'_תמוז'},
 
   // MODERN
-  {year:1994,title:'Movement Continues to Grow After Rebbe\'s Passing',cat:'milestone',era:'modern',key:true,desc:'Defying all expectations, Chabad does not fracture after the Rebbe\'s passing. The movement grows faster than ever. The infrastructure he built — shluchim, yeshivos, publishing, women\'s organizations — functions independently. Each shliach continues the work he was sent to do. New shluchim continue to be sent.'},
-  {year:1995,title:'Chabad.org — First Major Jewish Website',cat:'organization',era:'modern',location:'Internet',key:true,desc:'Chabad.org launches as one of the first major Jewish content websites. It eventually becomes the most visited Jewish website in the world — millions of pages of Torah content, a library of Jewish texts, and resources in dozens of languages. The Rebbe\'s vision of spreading Torah to every corner of the world is amplified by digital technology.',world:'World Wide Web is 4 years old. Netscape goes public. Digital revolution beginning.'},
-  {year:2000,title:'Chabad Reaches 2,600 Institutions in 100+ Countries',cat:'milestone',era:'modern',desc:'By the year 2000, Chabad operates over 2,600 institutions in over 100 countries. The number will more than double in the next 20 years. The exponential expansion the Rebbe set in motion continues accelerating without him.'},
-  {year:2003,title:'Chabad in Post-Soviet Russia Explodes',cat:'organization',era:'modern',location:'Russia, Ukraine, Belarus',desc:'Chabad becomes the primary face of Jewish institutional life in post-Soviet Russia, Ukraine, and Belarus — building schools, synagogues, and cultural centers where none had existed for 70 years. The Federation of Jewish Communities of Russia, aligned with Chabad, becomes the dominant Jewish body in Russia.'},
+  {year:1994,title:'Movement Continues to Grow After Rebbe\'s Passing',cat:'milestone',era:'modern',key:true,desc:'Defying all expectations, Chabad does not fracture after the Rebbe\'s passing. The movement grows faster than ever. The infrastructure he built — shluchim, yeshivos, publishing, women\'s organizations — functions independently. Each shliach continues the work he was sent to do. New shluchim continue to be sent.',cp:'חב"ד'},
+  {year:1995,title:'Chabad.org — First Major Jewish Website',cat:'organization',era:'modern',location:'Internet',key:true,desc:'Chabad.org launches as one of the first major Jewish content websites. It eventually becomes the most visited Jewish website in the world — millions of pages of Torah content, a library of Jewish texts, and resources in dozens of languages. The Rebbe\'s vision of spreading Torah to every corner of the world is amplified by digital technology.',world:'World Wide Web is 4 years old. Netscape goes public. Digital revolution beginning.',cp:'חב"ד.אורג'},
+  {year:2000,title:'Chabad Reaches 2,600 Institutions in 100+ Countries',cat:'milestone',era:'modern',desc:'By the year 2000, Chabad operates over 2,600 institutions in over 100 countries. The number will more than double in the next 20 years. The exponential expansion the Rebbe set in motion continues accelerating without him.',cp:'שליח_(חב"ד)'},
+  {year:2003,title:'Chabad in Post-Soviet Russia Explodes',cat:'organization',era:'modern',location:'Russia, Ukraine, Belarus',desc:'Chabad becomes the primary face of Jewish institutional life in post-Soviet Russia, Ukraine, and Belarus — building schools, synagogues, and cultural centers where none had existed for 70 years. The Federation of Jewish Communities of Russia, aligned with Chabad, becomes the dominant Jewish body in Russia.',cp:'חב"ד_ברוסיה'},
   {year:2008,title:'Mumbai Terror Attack — Chabad House Targeted',cat:'persecution',era:'modern',hdate:'Kislev 5769',location:'Mumbai, India',key:true,desc:'On November 26-29, 2008, Pakistani Lashkar-e-Taiba terrorists attack multiple sites in Mumbai. The Chabad House at Nariman House is specifically targeted. Rabbi Gavriel and Rivka Holtzberg are murdered along with four other hostages. Their two-year-old son Moshe is rescued by his nanny. The attack shocks the world and highlights the unique vulnerability of open, welcoming Chabad Houses. New Chabad Houses open in Mumbai in the aftermath.',world:'2008 global financial crisis; Obama elected US president.'},
-  {year:2013,title:'Chabad Reaches 5,000 Institutions Worldwide',cat:'milestone',era:'modern',key:true,desc:'The 5,000th Chabad institution opens — from the Alter Rebbe\'s single court in Liadi to five thousand institutions on six continents in 250 years. The network includes yeshivos, day schools, synagogues, Chabad Houses, women\'s organizations, and drug rehabilitation centers.'},
-  {year:2016,title:'100 Countries — 6,000+ Institutions',cat:'milestone',era:'modern',desc:'Chabad operates in more than 100 countries. New outposts: Cuba, Myanmar, Pacific island nations, and even humanitarian presence in North Korea. The Rebbe\'s instruction — "go, and don\'t worry, it will work out" — has proven prophetic on a global scale.'},
-  {year:2019,title:'Poway Chabad Attack',cat:'persecution',era:'modern',location:'Poway, California',desc:'A shooting attack at Chabad of Poway on the last day of Passover kills one worshiper and injures others. Rabbi Yisroel Goldstein, losing a finger, continues his sermon — telling the congregation the Jewish people will endure. The image becomes an emblem of resilience.',world:'Rise of far-right extremism across the Western world; spike in antisemitic attacks.'},
-  {year:2020,title:'COVID-19: Chabad Adapts to a Pandemic World',cat:'campaign',era:'modern',desc:'As COVID-19 closes physical Chabad Houses worldwide, the network pivots to digital programming — Zoom seders, online classes, virtual farbrengens. The global infrastructure proves adaptable. The pandemic accelerates Chabad\'s already strong digital presence.',world:'COVID-19 pandemic kills millions globally; lockdowns across the world.'},
-  {year:2023,title:'October 7 — Hamas Massacre and Chabad Response',cat:'persecution',era:'modern',hdate:'22 Tishrei 5784',location:'Israel / Gaza',key:true,desc:'Hamas launches the largest massacre of Jews since the Holocaust — killing over 1,200 Israelis on October 7, 2023. Chabad shluchim throughout Israel mobilize immediately: field hospitals, emergency welfare, support for soldiers and displaced families. Chabad Houses across Israel become crisis centers. The global Chabad network raises millions for Israeli relief.',world:'The subsequent Israel-Gaza War lasts into 2024 and beyond, with global geopolitical ramifications.'},
-  {year:2024,title:'Chabad: 10,000 Emissary Families in 100+ Countries',cat:'milestone',era:'modern',key:true,desc:'By 2024, Chabad-Lubavitch operates through approximately 10,000 emissary families in over 100 countries, running over 8,000 institutions worldwide. The movement born in a small Belorussian village in 1698 has become the largest Jewish educational and outreach organization in history. The wellsprings have spread outward.',world:'Three decades after the Rebbe\'s passing, the movement he built shows no signs of slowing.'},
+  {year:2013,title:'Chabad Reaches 5,000 Institutions Worldwide',cat:'milestone',era:'modern',key:true,desc:'The 5,000th Chabad institution opens — from the Alter Rebbe\'s single court in Liadi to five thousand institutions on six continents in 250 years. The network includes yeshivos, day schools, synagogues, Chabad Houses, women\'s organizations, and drug rehabilitation centers.',cp:'שליח_(חב"ד)'},
+  {year:2016,title:'100 Countries — 6,000+ Institutions',cat:'milestone',era:'modern',desc:'Chabad operates in more than 100 countries. New outposts: Cuba, Myanmar, Pacific island nations. The Rebbe\'s instruction — "go, and don\'t worry, it will work out" — has proven prophetic on a global scale.',cp:'שליח_(חב"ד)'},
+  {year:2019,title:'Annual Conference of Shluchim — 6,000+ Attendees',cat:'organization',era:'modern',location:'New York',desc:'The annual Kinus HaShluchim grows to over 6,000 attendees from 100+ countries — by far the largest annual gathering of rabbis in history. The event demonstrates the extraordinary scope of the movement 25 years after the Rebbe\'s passing.',cp:'כינוס_השלוחים_הבינלאומי'},
+  {year:2022,title:'Ukraine War — Chabad Shluchim Remain at Their Posts',cat:'persecution',era:'modern',location:'Ukraine',key:true,desc:'Russia\'s invasion of Ukraine in February 2022 threatens the large Chabad infrastructure in both countries. Many shluchim remain at their posts in Ukraine through the bombardment — providing food, shelter, and spiritual support. The Dnipro Menorah Center (a massive Jewish campus) becomes a wartime refuge. Chabad\'s commitment to remaining even in the most dangerous locations is demonstrated once again.',world:'Russia\'s full-scale invasion of Ukraine begins February 24, 2022. Largest war in Europe since WWII.'},
+  {year:2024,title:'~10,000 Shliach Families — 5,000+ Centers',cat:'milestone',era:'modern',key:true,desc:'The Chabad-Lubavitch movement now comprises approximately 10,000 shliach families (the Rebbe and Rebbetzin of each family both count as shluchim) operating 5,000+ centers in over 100 countries. The movement serves millions of Jews and non-Jews annually. From the Alter Rebbe\'s small court in Liadi to a global infrastructure serving humanity — 250 years of unbroken mission.',cp:'חב"ד'},
 ];
 
-const CAT_C={persecution:'#c04848',liberation:'#50c878',milestone:'#c9a84c',passing:'#888',birth:'#8888ff',publication:'#a070d8',education:'#48a8c8',organization:'#60b8a0',campaign:'#e08040',world:'#707070',teaching:'#b870a0',personal:'#909090'};
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+const CAT_C={persecution:'#c04848',liberation:'#50c878',milestone:'#c9a84c',passing:'#888888',birth:'#8888ff',publication:'#a070d8',education:'#48a8c8',organization:'#60b8a0',campaign:'#e08040',teaching:'#b870a0',personal:'#909090'};
+let level=1,currentRebbe=null,currentYear=null,searchQ='',showWorld=true;
 let activeCats=new Set(['persecution','liberation','milestone','passing','birth','publication','education','organization','campaign','teaching','personal']);
-let searchQ='',showWorld=true;
+let selectedEvent=null;
 
-function buildEraNav(){
+// ═══════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════
+function goLevel1(){level=1;currentRebbe=null;currentYear=null;closeDetail();renderView();}
+function goLevel2(rebbeId){level=2;currentRebbe=rebbeId;currentYear=null;closeDetail();renderView();document.getElementById('timeline').scrollIntoView({behavior:'smooth',block:'start'});}
+function goLevel2Current(){if(currentRebbe)goLevel2(currentRebbe);}
+function goLevel3(year){level=3;currentYear=year;closeDetail();renderView();document.getElementById('timeline').scrollIntoView({behavior:'smooth',block:'start'});}
+
+function renderView(){
+  updateBreadcrumb();
+  updateLevelTabs();
+  updateSidebar();
+  const hero=document.getElementById('hero');
+  hero.style.display=level===1?'':'none';
+  if(level===1)renderLevel1();
+  else if(level===2)renderLevel2();
+  else renderLevel3();
+}
+
+function updateBreadcrumb(){
+  const sep2=document.getElementById('bc-sep2'),rebbeEl=document.getElementById('bc-rebbe');
+  const sep3=document.getElementById('bc-sep3'),yearEl=document.getElementById('bc-year');
+  const rebbe=currentRebbe?REBBES.find(r=>r.id===currentRebbe):null;
+  if(level>=2&&rebbe){sep2.classList.remove('hidden');rebbeEl.classList.remove('hidden');rebbeEl.textContent=rebbe.name;rebbeEl.onclick=()=>goLevel2(currentRebbe);}
+  else{sep2.classList.add('hidden');rebbeEl.classList.add('hidden');}
+  if(level===3&&currentYear){sep3.classList.remove('hidden');yearEl.classList.remove('hidden');yearEl.textContent=currentYear;}
+  else{sep3.classList.add('hidden');yearEl.classList.add('hidden');}
+}
+
+function updateLevelTabs(){
+  ['1','2','3'].forEach(n=>{
+    const tab=document.getElementById('tab-'+n);
+    tab.classList.toggle('active',String(level)===n);
+    if(n==='2')tab.disabled=!currentRebbe;
+    if(n==='3')tab.disabled=!currentYear;
+  });
+}
+
+function updateSidebar(){
   const nav=document.getElementById('era-nav');
-  ERAS.forEach(era=>{
-    const d=document.createElement('div');
-    d.className='era-nav-item'; d.dataset.era=era.id;
-    d.style.borderLeftColor=era.color;
-    d.innerHTML=`<div class="era-dot" style="background:${era.color}"></div><div><div class="era-nav-name">${era.rebbe}</div><div class="era-nav-dates">${era.years[0]}–${era.years[1]}</div></div>`;
-    d.onclick=()=>document.getElementById('era-'+era.id)?.scrollIntoView({behavior:'smooth',block:'start'});
-    nav.appendChild(d);
-  });
+  if(level===1){
+    nav.innerHTML=REBBES.map(r=>`<div class="era-nav-item" data-rebbe="${r.id}" onclick="goLevel2('${r.id}')" style="border-left-color:${r.color}"><span class="era-dot" style="background:${r.color}"></span><div><div class="era-nav-name">${r.name}</div><div class="era-nav-dates">${r.years[0]}–${r.years[1]}</div></div></div>`).join('');
+  } else if(level===2&&currentRebbe){
+    const rebbe=REBBES.find(r=>r.id===currentRebbe);
+    const eraEvents=EVENTS.filter(ev=>rebbe.eras.includes(ev.era));
+    const years=[...new Set(eraEvents.map(e=>e.year))].sort((a,b)=>a-b);
+    nav.innerHTML=`<div class="era-nav-item" onclick="goLevel1()" style="border-left-color:var(--gold);color:var(--gold)"><span style="font-size:14px">←</span><div class="era-nav-name">All Generations</div></div>`
+      +years.map(y=>`<div class="era-nav-item ${y===currentYear?' active':''}" onclick="goLevel3(${y})"><span class="era-dot" style="background:${rebbe.color}"></span><div><div class="era-nav-name">${y}</div><div class="era-nav-dates">${eraEvents.filter(e=>e.year===y).length} event${eraEvents.filter(e=>e.year===y).length!==1?'s':''}</div></div></div>`).join('');
+  } else if(level===3&&currentRebbe&&currentYear){
+    const rebbe=REBBES.find(r=>r.id===currentRebbe);
+    const eraEvents=EVENTS.filter(ev=>rebbe.eras.includes(ev.era));
+    const years=[...new Set(eraEvents.map(e=>e.year))].sort((a,b)=>a-b);
+    nav.innerHTML=`<div class="era-nav-item" onclick="goLevel2('${currentRebbe}')" style="border-left-color:var(--gold);color:var(--gold)"><span style="font-size:14px">←</span><div class="era-nav-name">${rebbe.name}</div></div>`
+      +years.map(y=>`<div class="era-nav-item ${y===currentYear?' active':''}" onclick="goLevel3(${y})"><span class="era-dot" style="background:${rebbe.color}"></span><div><div class="era-nav-name">${y}</div><div class="era-nav-dates">${eraEvents.filter(e=>e.year===y).length} event${eraEvents.filter(e=>e.year===y).length!==1?'s':''}</div></div></div>`).join('');
+  }
 }
 
-function buildTimeline(){
-  const c=document.getElementById('timeline'); c.innerHTML='';
-  ERAS.forEach(era=>{
-    const sec=document.createElement('section');
-    sec.className='era-section'; sec.id='era-'+era.id;
-    const dv=document.createElement('div');
-    dv.className='era-divider'; dv.style.setProperty('--era-color',era.color);
-    dv.innerHTML=`<div class="era-divider-inner"><div class="era-number">${era.num}</div><h2 class="era-title">${era.label}</h2><div class="era-years" style="color:${era.color}">${era.years[0]} – ${era.years[1]}</div><div class="era-tagline" style="border-color:${era.color}">${era.tagline}</div><p class="era-desc">${era.desc}</p></div>`;
-    sec.appendChild(dv);
-    const track=document.createElement('div'); track.className='timeline-track';
-    const evs=EVENTS.filter(e=>e.era===era.id);
-    const ws=WORLD.filter(w=>w.year>=era.years[0]&&w.year<=era.years[1]);
-    const all=[...evs.map(e=>({t:'e',d:e,s:e.year})),...ws.map(w=>({t:'w',d:w,s:w.year+0.1}))].sort((a,b)=>a.s-b.s);
-    all.forEach(it=>{
-      if(it.t==='w'){ track.appendChild(mkWorld(it.d)); }
-      else { const card=mkCard(it.d,era.color); if(card) track.appendChild(card); }
-    });
-    sec.appendChild(track); c.appendChild(sec);
-  });
+// ═══════════════════════════════════════════════════════
+// LEVEL 1: REBBE GENERATION OVERVIEW
+// ═══════════════════════════════════════════════════════
+function renderLevel1(){
+  const rc=document.getElementById('result-count');rc.style.display='none';
+  document.getElementById('empty-state').style.display='none';
   document.getElementById('stat-events').textContent=EVENTS.length;
+  document.getElementById('sidebar-subtitle').textContent='300 Years · 7 Generations';
+  document.getElementById('timeline').innerHTML=`<div class="rebbe-cards">`+
+    REBBES.map(r=>`<div class="rebbe-card" onclick="goLevel2('${r.id}')">
+      <div class="rebbe-card-accent" style="background:${r.color}"></div>
+      <div class="rebbe-card-body">
+        <div class="rebbe-card-gen" style="color:${r.color}">${r.gen}</div>
+        <div class="rebbe-card-name">${r.name}</div>
+        <div class="rebbe-card-fullname">${r.fullName}</div>
+        <div class="rebbe-card-years">${r.years[0]} – ${r.years[1]}</div>
+        <div class="rebbe-card-tagline" style="border-left-color:${r.color}">${r.tagline}</div>
+        <div class="rebbe-card-desc">${r.desc}</div>
+        <div class="rebbe-card-achievements"><div class="rebbe-card-ach-label">Key Milestones</div><ul class="rebbe-card-ach-list">${r.achievements.map(a=>`<li>${a}</li>`).join('')}</ul></div>
+        <div style="display:flex;align-items:center;gap:0">
+          <span class="rebbe-card-cta" style="color:${r.color};border-color:${r.color}">Explore this era →</span>
+          ${r.cp?`<a href="https://chabadpedia.co.il/wiki/${encodeURIComponent(r.cp)}" target="_blank" rel="noopener" class="rebbe-card-cp" onclick="event.stopPropagation()">ChabadPedia ↗</a>`:''}
+        </div>
+      </div>
+    </div>`).join('')+`</div>`;
 }
 
-function mkCard(ev,ec){
-  const hidden=!activeCats.has(ev.cat)||(searchQ&&!match(ev,searchQ));
-  const card=document.createElement('article');
-  card.className='event-card'+(ev.key?' key':'')+(hidden?' hidden':'');
-  const col=CAT_C[ev.cat]||'#777';
-  card.innerHTML=`<div class="event-year-col"><div class="event-year">${ev.year}</div>${ev.hdate?`<div class="event-hdate">${ev.hdate}</div>`:''}</div><div class="event-dot-col"><div class="event-dot" style="border-color:${col}"></div></div><div class="event-body"><span class="event-cat-badge" style="color:${col};border-color:${col}">${ev.cat}</span><div class="event-title">${hl(ev.title)}</div><div class="event-desc">${hl(ev.desc)}</div>${ev.location?`<div class="event-location">📍 ${ev.location}</div>`:''}</div>`;
-  card.onclick=()=>openDetail(ev,ec);
-  return card;
-}
+// ═══════════════════════════════════════════════════════
+// LEVEL 2: ERA TIMELINE (filtered to selected rebbe)
+// ═══════════════════════════════════════════════════════
+function renderLevel2(){
+  if(!currentRebbe)return goLevel1();
+  const rebbe=REBBES.find(r=>r.id===currentRebbe);
+  const rebbeEvents=EVENTS.filter(ev=>rebbe.eras.includes(ev.era));
+  const vis=rebbeEvents.filter(ev=>activeCats.has(ev.cat)&&(!searchQ||searchQ.length<2||match(ev,searchQ)));
+  document.getElementById('stat-events').textContent=vis.length+' / '+rebbeEvents.length;
+  document.getElementById('sidebar-subtitle').textContent=rebbe.name+' · '+rebbe.years[0]+'–'+rebbe.years[1];
 
-function mkWorld(w){
-  const hidden=searchQ&&!w.text.toLowerCase().includes(searchQ.toLowerCase());
-  const row=document.createElement('div');
-  row.className='world-row'+(hidden?' hidden':'');
-  row.innerHTML=`<div class="world-year-col">${w.year}</div><div class="world-dot-col"><div class="world-dot"></div></div><div class="world-text">${w.text}</div>`;
-  return row;
-}
-
-function hl(t){ if(!searchQ||searchQ.length<2) return t; return t.replace(new RegExp(`(${escRE(searchQ)})`,'gi'),'<mark>$1</mark>'); }
-function escRE(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
-function match(ev,q){ const l=q.toLowerCase(); return ev.title.toLowerCase().includes(l)||ev.desc.toLowerCase().includes(l)||(ev.location||'').toLowerCase().includes(l)||String(ev.year).includes(l); }
-
-function applyFilters(){
-  let v=0;
-  document.querySelectorAll('.event-card').forEach(card=>{
-    const cat=card.dataset.cat;
-    const ev=EVENTS.find(e=>e.year==card.dataset.year&&card.querySelector('.event-title').textContent.replace(/<[^>]+>/g,'').includes(e.title.substring(0,20)));
-    const ok=activeCats.has(cat)&&(!searchQ||!ev||match(ev,searchQ));
-    card.classList.toggle('hidden',!ok);
-    if(ok) v++;
+  let html='';
+  rebbe.eras.forEach(eraId=>{
+    const era=ERAS.find(e=>e.id===eraId);
+    if(!era)return;
+    const eraEvts=rebbeEvents.filter(ev=>ev.era===eraId);
+    const visEra=eraEvts.filter(ev=>activeCats.has(ev.cat)&&(!searchQ||searchQ.length<2||match(ev,searchQ)));
+    if(visEra.length===0&&searchQ&&searchQ.length>=2)return;
+    html+=`<div class="era-section" id="era-${era.id}">
+      <div class="era-divider" style="--era-color:${era.color}">
+        <div class="era-divider-inner">
+          <div class="era-number">${era.num}</div>
+          <div class="era-title">${era.label}</div>
+          <div class="era-years">${era.years[0]} – ${era.years[1]}</div>
+          <div class="era-tagline">${era.tagline}</div>
+          <div class="era-desc">${era.desc}</div>
+        </div>
+      </div>
+      <div class="timeline-track">`;
+    const eraWorldEvents=WORLD.filter(w=>w.year>=era.years[0]&&w.year<=era.years[1]);
+    const allYears=[...new Set([...eraEvts.map(e=>e.year),...(showWorld?eraWorldEvents.map(w=>w.year):[])])].sort((a,b)=>a-b);
+    allYears.forEach(y=>{
+      const yEvts=eraEvts.filter(e=>e.year===y);
+      const yWorld=showWorld?eraWorldEvents.filter(w=>w.year===y):[];
+      yEvts.forEach(ev=>{
+        const col=CAT_C[ev.cat]||'#777';
+        const hidden=(!activeCats.has(ev.cat)||(searchQ&&searchQ.length>=2&&!match(ev,searchQ)))?'hidden':'';
+        html+=`<div class="event-card ${ev.key?'key':''} ${hidden}" onclick="openDetail(${EVENTS.indexOf(ev)},\'${era.color}\')">
+          <div class="event-year-col"><a class="event-year-link" onclick="event.stopPropagation();goLevel3(${y})" title="See all events in ${y}">${y}</a>${ev.hdate?`<div class="event-hdate">${ev.hdate}</div>`:''}
+          </div>
+          <div class="event-dot-col"><div class="event-dot" style="border-color:${col}"></div></div>
+          <div class="event-body">
+            <div class="event-cat-badge" style="color:${col};border-color:${col}">${ev.cat}</div>
+            <div class="event-title">${hl(ev.title)}</div>
+            <div class="event-desc">${hl(ev.desc)}</div>
+            ${ev.location?`<div class="event-location">📍 ${ev.location}</div>`:''}
+          </div>
+        </div>`;
+      });
+      yWorld.forEach(w=>{
+        html+=`<div class="world-row ${showWorld?'':'hidden'}"><div class="world-year-col">${w.year}</div><div class="world-dot-col"><div class="world-dot"></div></div><div class="world-text">${w.text}</div></div>`;
+      });
+    });
+    html+=`</div></div>`;
   });
-  document.querySelectorAll('.world-row').forEach(row=>{
-    if(!showWorld){row.classList.add('hidden');return;}
-    const txt=row.querySelector('.world-text').textContent;
-    row.classList.toggle('hidden',!!searchQ&&!txt.toLowerCase().includes(searchQ.toLowerCase()));
-  });
+  if(!html)html=`<div style="padding:60px;text-align:center;color:var(--text-3);font-style:italic">No events found.</div>`;
+  document.getElementById('timeline').innerHTML=html;
   const rc=document.getElementById('result-count');
-  if(searchQ||activeCats.size<11){rc.style.display='block';rc.textContent=`Showing ${v} of ${EVENTS.length} events`;}
-  else rc.style.display='none';
-  document.getElementById('empty-state').style.display=v===0?'block':'none';
+  if(searchQ&&searchQ.length>=2){rc.style.display='block';rc.textContent=`Showing ${vis.length} of ${rebbeEvents.length} events`;}else rc.style.display='none';
+  document.getElementById('empty-state').style.display=vis.length===0?'block':'none';
 }
 
-function openDetail(ev,ec){
+// ═══════════════════════════════════════════════════════
+// LEVEL 3: YEAR DETAIL VIEW
+// ═══════════════════════════════════════════════════════
+function renderLevel3(){
+  if(!currentYear)return goLevel1();
+  const yearEvents=EVENTS.filter(ev=>ev.year===currentYear&&(!currentRebbe||REBBES.find(r=>r.id===currentRebbe)?.eras.includes(ev.era)));
+  const worldEvents=WORLD.filter(w=>w.year===currentYear);
+  const era=yearEvents.length>0?ERAS.find(e=>e.id===yearEvents[0].era):null;
+
+  document.getElementById('stat-events').textContent=yearEvents.length;
+  document.getElementById('result-count').style.display='none';
+  document.getElementById('empty-state').style.display='none';
+  document.getElementById('sidebar-subtitle').textContent=`Year ${currentYear}`;
+
+  let html=`<div class="year-detail">
+    <div class="year-detail-header">
+      <div class="year-detail-num">${currentYear}</div>
+      ${era?`<div class="year-detail-era" style="color:${era.color}">${era.label}</div>`:''}
+    </div>`;
+
+  if(yearEvents.length===0){
+    html+=`<div class="year-no-events">No recorded events for ${currentYear}${currentRebbe?' in this era':''}.</div>`;
+  } else {
+    yearEvents.forEach(ev=>{
+      const col=CAT_C[ev.cat]||'#777';
+      const eraColor=era?era.color:'var(--gold)';
+      html+=`<div class="year-event-card" onclick="openDetail(${EVENTS.indexOf(ev)},'${eraColor}')">
+        ${ev.hdate?`<div class="year-event-hdate">${ev.hdate}</div>`:''}
+        <div class="year-event-cat" style="color:${col};border-color:${col}">${ev.cat}</div>
+        <div class="year-event-title">${ev.title}</div>
+        ${ev.location?`<div class="year-event-location">📍 ${ev.location}</div>`:''}
+        <div class="year-event-desc">${ev.desc}</div>
+        ${ev.cp?`<a href="https://chabadpedia.co.il/wiki/${encodeURIComponent(ev.cp)}" target="_blank" rel="noopener" class="year-event-cp" onclick="event.stopPropagation()">Read on ChabadPedia →</a>`:''}
+      </div>`;
+    });
+  }
+
+  if(worldEvents.length>0){
+    html+=`<div class="year-world-section"><div class="year-world-label">World Context — ${currentYear}</div>`
+      +worldEvents.map(w=>`<div class="year-world-item">${w.text}</div>`).join('')
+      +`</div>`;
+  }
+  html+=`</div>`;
+  document.getElementById('timeline').innerHTML=html;
+}
+
+// ═══════════════════════════════════════════════════════
+// DETAIL PANEL
+// ═══════════════════════════════════════════════════════
+function openDetail(evIdx,ec){
+  const ev=EVENTS[evIdx];if(!ev)return;
   const era=ERAS.find(e=>e.id===ev.era);
   const col=CAT_C[ev.cat]||'#777';
-  document.getElementById('detail-content').innerHTML=`<span class="detail-cat-badge" style="color:${col};border-color:${col}">${ev.cat}</span><div class="detail-year">${ev.year}${ev.hdate?' · '+ev.hdate:''}</div><h2 class="detail-title">${ev.title}</h2>${ev.location?`<div class="detail-location">📍 ${ev.location}</div>`:''}<p class="detail-desc">${ev.desc}</p>${ev.world?`<div class="detail-section-label">World Context</div><div class="detail-world">${ev.world}</div>`:''}<div class="detail-divider"></div><div class="detail-era-badge" style="color:${ec}">${era?era.label+' · '+era.years[0]+'–'+era.years[1]:ev.era}</div>`;
+  const cpLink=ev.cp?`<a href="https://chabadpedia.co.il/wiki/${encodeURIComponent(ev.cp)}" target="_blank" rel="noopener" class="cp-link">↗ Read on ChabadPedia</a>`:'';
+  document.getElementById('detail-content').innerHTML=
+    `<span class="detail-cat-badge" style="color:${col};border-color:${col}">${ev.cat}</span>`+
+    `<div class="detail-year">${ev.year}${ev.hdate?' · '+ev.hdate:''}</div>`+
+    `<h2 class="detail-title">${ev.title}</h2>`+
+    (ev.location?`<div class="detail-location">📍 ${ev.location}</div>`:'')+
+    `<p class="detail-desc">${ev.desc}</p>`+
+    (ev.world?`<div class="detail-section-label">World Context</div><div class="detail-world">${ev.world}</div>`:'')+
+    cpLink+
+    `<div class="detail-divider"></div>`+
+    `<div class="detail-era-badge" style="color:${ec}">${era?era.label+' · '+era.years[0]+'–'+era.years[1]:ev.era}</div>`;
   document.getElementById('detail-panel').classList.add('open');
   document.getElementById('main').classList.add('detail-open');
 }
@@ -556,46 +723,45 @@ function closeDetail(){
   document.getElementById('main').classList.remove('detail-open');
 }
 
+// ═══════════════════════════════════════════════════════
+// SEARCH / FILTER HELPERS
+// ═══════════════════════════════════════════════════════
+function hl(t){if(!searchQ||searchQ.length<2)return t;return t.replace(new RegExp(`(${escRE(searchQ)})`,'gi'),'<mark>$1</mark>');}
+function escRE(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function match(ev,q){const l=q.toLowerCase();return ev.title.toLowerCase().includes(l)||ev.desc.toLowerCase().includes(l)||(ev.location||'').toLowerCase().includes(l)||String(ev.year).includes(l);}
+
+// ═══════════════════════════════════════════════════════
+// INIT & EVENT LISTENERS
+// ═══════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded',()=>{
-  buildEraNav(); buildTimeline();
+  renderView();
 
-  // Scroll spy
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        const id=e.target.id.replace('era-','');
-        document.querySelectorAll('.era-nav-item').forEach(el=>{
-          const on=el.dataset.era===id; el.classList.toggle('active',on);
-          if(on) el.scrollIntoView({block:'nearest'});
-        });
-      }
-    });
-  },{threshold:0.15});
-  ERAS.forEach(era=>{ const el=document.getElementById('era-'+era.id); if(el) obs.observe(el); });
-
-  // Search
   document.getElementById('search').addEventListener('input',e=>{
     searchQ=e.target.value.trim();
-    buildTimeline(); // rebuild with highlights
-    applyFilters();
+    if(level===1&&searchQ.length>=2){goLevel2(REBBES[0].id);}
+    else if(level>=2)renderView();
   });
 
-  // Cat chips
   document.getElementById('cat-filters').addEventListener('click',e=>{
-    const chip=e.target.closest('.cat-chip'); if(!chip) return;
+    const chip=e.target.closest('.cat-chip');if(!chip)return;
     const cat=chip.dataset.cat;
     if(activeCats.has(cat)){activeCats.delete(cat);chip.classList.remove('active');}
     else{activeCats.add(cat);chip.classList.add('active');}
-    applyFilters();
+    if(level>=2)renderView();
   });
 
-  // World toggle
   document.getElementById('world-toggle').addEventListener('click',e=>{
-    showWorld=!showWorld; e.currentTarget.classList.toggle('on',showWorld);
-    document.querySelectorAll('.world-row').forEach(r=>r.classList.toggle('hidden',!showWorld));
+    showWorld=!showWorld;e.currentTarget.classList.toggle('on',showWorld);
+    if(level>=2)renderView();
   });
 
-  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeDetail(); });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){
+      if(document.getElementById('detail-panel').classList.contains('open'))closeDetail();
+      else if(level===3)goLevel2(currentRebbe);
+      else if(level===2)goLevel1();
+    }
+  });
 });
 </script>
 </body>
